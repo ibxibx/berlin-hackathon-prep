@@ -1,10 +1,10 @@
-# Decision log — Big Berlin Hack
+﻿# Decision log - Big Berlin Hack
 
 One line per non-trivial fork. Date + time + decision + rationale. When the 2am fog rolls in, this is how we avoid re-litigating.
 
 | Time | Decision | Rationale |
 |---|---|---|
-| — | — | — |
+| - | - | - |
 
 ## Locked before the event
 
