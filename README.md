@@ -107,68 +107,63 @@ Any idea that fails #1 or #2 is an **automatic reject** regardless of how cool i
 
 ---
 
-## Partner tech stack - what's on the table
+## Competition tracks we're targeting
 
-From the Big Berlin Hack poster and the Luma event page. The rule is typically "use at least 3 of N partner tools." Here's how we're thinking about each:
+The Big Berlin Hack has a two-stage format. Nine finalist teams advance - one per track. **Pick the right track and you are competing against ~30 other teams for a finalist slot; pick wrong and you waste the 15 hours.**
 
-### Core model / reasoning layer
-| Partner | What it is | How we'd use it |
-|---|---|---|
-| **Google DeepMind (Gemini 3)** | Frontier multimodal reasoning model | Primary brain for any agent / reasoning task. Long context + vision makes it strong for document-heavy or screenshot-in workflows. |
-| **Pioneer by Fastino Labs** | Small models that train themselves on your data | Pairs beautifully with a domain-specific vertical (fine-tune on the specific corpus, let Gemini handle orchestration). |
+These are the three track prizes we are targeting, plus Wildcard as our escape hatch:
 
-### Agent / orchestration layer
-| Partner | What it is | How we'd use it |
-|---|---|---|
-| **Entire** | Developer platform for agent ↔ human collaboration | When the agent needs a human in the loop - approvals, edits, handoffs. Excellent for any workflow automation pitch. |
-| **Qontext** | Context layer for AI (think: shared memory / structured context) | Any time you need the agent to remember across steps or share state between multiple tools. Load-bearing in multi-agent setups. |
+### Track 1: Buena - The Context Engine (prize: EUR 2,500)
 
-### Data / retrieval / search
-| Partner | What it is | How we'd use it |
-|---|---|---|
-| **Tavily** | Real-time web search, extraction, research API | Essential for any "up-to-date info" angle - news, regulations, competitor data, market signals. |
+> *"Build a self-updating Context Markdown File per property - a living document every AI agent can use, sourced from ERPs, email, Slack, PDFs, and more."*
 
-### Voice / audio
-| Partner | What it is | How we'd use it |
-|---|---|---|
-| **Gradium** | Real-time voice AI (TTS + STT) | Any phone/voice-first interface. Pairs insanely well with telli for inbound/outbound call demos. |
-| **ai\|coustics** | Real-time audio intelligence / enhancement | Clean up real-world audio before it hits the model. Useful for any voice demo recorded in a noisy hackathon room. |
-| **telli** | AI-handled customer calls | Prebuilt calling infrastructure. Dramatic demos: "watch the AI handle this real phone call live." |
+What the brief is really asking: solve the cold-start problem for any AI that serves the property-management industry. Every new property starts with zero context; Buena wants a system that ingests all the scattered signals and produces a structured, human-readable Markdown brief any downstream agent can read.
 
-### Frontend / UI
-| Partner | What it is | How we'd use it |
-|---|---|---|
-| **Lovable** | Build apps and websites by chatting with AI | Our frontend lever. Stops the front-end from eating 6h of our 15h. |
-| **Hera** | AI motion designer | If we want the demo video itself to look polished without a designer on the team. |
+Why we can win this: property is a messy, document-heavy, email-heavy vertical where AI agents genuinely struggle. A team that ships a working demo with real ingestion from 3+ messy sources wins on technical depth alone.
 
-### Security
-| Partner | What it is | How we'd use it |
-|---|---|---|
-| **Aikido** | Secure everything | Only load-bearing if our pitch is explicitly security/compliance. Otherwise skip - don't tack it on. |
+### Track 2: Qontext - Context Layer for AI (prize: 1g real gold bar per team member + private dinner)
 
-### Vertical track partners (bonus prize categories)
-| Partner | Domain | Strategic value |
-|---|---|---|
-| **Buena** | Property / real-estate operations | Dedicated track prize. Huge opportunity if we pick a property-ops idea. |
-| **Inca** | Agentic AI for insurance | Dedicated track. Insurance claims / underwriting automation is a natural fit. |
-| **Reonic** | AI OS for renewable installers | Dedicated track. Great for solar/heat-pump installer workflow automation. |
-| **Peec AI** | AI search analytics (how your brand shows up in ChatGPT/Perplexity) | Dedicated track. Marketing / SEO angle. |
+> *"Most AI systems still reconstruct company reality at runtime: they pull scattered facts from mail, CRM, policies, tickets, docs, and chat, then hope the prompt is good enough. That does not scale. Build the context layer that fixes it."*
 
-> **Strategic observation:** Picking an idea that aligns with a **vertical track partner** gives us two shots - the main prize AND the track-specific prize. This is probably the single highest-EV move available to us.
+What the brief is really asking: the horizontal version of Buena's vertical ask. Not property-specific - any company, any data surface. The bar is higher because the problem is bigger.
+
+Why we can win this: this is the richest prize (real gold, literal gold, plus a dinner that is effectively a partnership conversation). The overlap with Buena is significant, which means one well-architected project could plausibly address both briefs with different demos.
+
+### Track 3: Peec AI - Marketer-in-a-Box (prize: EUR 2,500)
+
+> *"Use Peec AI's competitive visibility data to help early-stage startups find and own organic search & AI answer opportunities - from zero."*
+
+What the brief is really asking: help founders with no existing SEO/AEO presence figure out which ChatGPT / Perplexity / Gemini prompts to win, what content to create to win them, and how to sequence the work when they have no marketing team.
+
+Why we can win this: the brief is very specific to early-stage startups starting from zero, which is most of the people in the room. Existing tools (Peec AI itself, Otterly, AIclicks, Scrunch) are built for established marketing teams. The "from zero" wedge is genuinely open.
+
+### Track 4: Wildcard (prize: direct qualification to the Finalist Stage)
+
+> *"Build whatever you want. Seriously."*
+
+Why we keep it in scope: for ideas where the Berlin-relevant, life-improving framing is too strong to give up (HireSignal, StandUpAgent, JobMatch Reverse). Wildcard has one finalist slot and is probably the most competitive field, but the qualification is automatic - we do not need to beat 8 other teams per track, we need to beat all other wildcards for that one slot.
+
+### The strategic choice
+
+**Priority 1:** An idea that plausibly fits both Buena AND Qontext (so we can pitch it into whichever track has less competition when we see the field on Sunday morning).
+
+**Priority 2:** A Peec AI-specific idea that is genuinely new versus what Peec itself already sells.
+
+**Priority 3:** A Wildcard idea backed by Ian's first-person authority (JobMatch Reverse especially).
 
 ---
 
 ## Shortlisted ideas (analyzed in detail)
 
-Each idea is scored 1-5 on the five strategic filters. Anything below 4/5 average is cut. These 12 ideas are the survivors of a larger filter, now rebuilt around a single lens: **urgent daily problems where AI can create visible impact AND a credible business**.
+The jury scores on **creativity, technical complexity, and effective use of partner tech**. Since only one team per track wins, every idea below declares explicitly which track it is pitching into. Tags: **[Wildcard]** | **[Buena]** | **[Qontext]** | **[Buena+Qontext]** | **[Peec AI]**.
 
-The jury at Big Berlin Hack is staffed by sponsors, several of whom are active investors. The ideas below are picked so that the 2-minute video doubles as an investor teaser: each one names a specific paying customer, a wedge, and a clean partner-tech composition.
-
-Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable with discipline, red = only if a teammate has prior art in the exact stack.
+Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first-person authority, and track-fit. Anything below 4/5 average is cut. Legend for feasibility dots: green = feasible in 15-18h, yellow = tight but doable, red = only if a teammate has prior art in the exact stack.
 
 ### Idea 1 - HireSignal: Job description -> realistic skills interview in 5 minutes
 
 > Recruiter or hiring manager pastes a job description. Agent generates a *specific*, *hands-on*, adaptively difficult interview (not generic STAR-question fluff) in the candidate's browser. As the candidate answers via voice, difficulty adjusts live. At the end, recruiter gets a structured signal report - not a yes/no - scoring on the actual skills the JD implied.
+
+**Track:** Wildcard - build whatever you want; we compete against all other Wildcards for one auto-finalist slot.
 
 **Partner tech (all load-bearing):**
 - **Gemini 3** - JD decomposition into a skill tree, adaptive question generation, scoring
@@ -194,6 +189,8 @@ Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable w
 
 > Every team member sends a 30-second voice note to a number at any point in the morning. The agent transcribes, deduplicates (yes, you already mentioned the Stripe issue yesterday), cross-references GitHub / Linear / Jira activity, and publishes a single structured standup summary to Slack - with blockers highlighted and @-mentions for anyone whose work is blocking someone else.
 
+**Track:** Wildcard - build whatever you want; we compete against all other Wildcards for one auto-finalist slot.
+
 **Partner tech (all load-bearing):**
 - **Gradium** - the voice interface (STT + optional TTS nudge if you forgot to submit)
 - **ai|coustics** - cleans up voice notes recorded on the train
@@ -217,6 +214,8 @@ Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable w
 ### Idea 3 - JobMatch Reverse: for people locked out of the job market, not the other way around
 
 > Most job platforms optimize for employer search. JobMatch Reverse optimizes for the candidate who is unemployed, long-term out of work, or recently migrated. User uploads whatever they have - a CV in Farsi, a photo of a foreign certificate, a voice note describing past work. Agent extracts real skills, translates credentials into German-market equivalents, and produces a ranked list of *specific open roles they have a realistic shot at today*, plus the 1-2 skills that would unlock 10x more roles with a free course link attached.
+
+**Track:** Wildcard - build whatever you want; we compete against all other Wildcards for one auto-finalist slot.
 
 **Theme:** Employment access, economic exclusion, credential recognition
 
@@ -242,284 +241,282 @@ Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable w
 
 ---
 
-### Idea 4 - TriageLine: WhatsApp-first multilingual symptom triage
+### Idea 4 - CasaContext: the living brief every property AI agent starts from
 
-> In Berlin, hundreds of thousands of residents don't have a Hausarzt and can't easily get one. A user sends symptoms to a WhatsApp number in any form - text, voice, or a photo of a rash or eye. Agent runs a safe structured triage in the user's language (Turkish, Arabic, Ukrainian, Russian, English, German), outputs a clear next step - "ER now", "GP within 3 days", "self-care, here's what to watch for" - and for urgent cases calls KV-116117 or finds an open walk-in clinic in real time.
+> Every property in a manager's portfolio has scattered context - the tenancy history buried in email, the maintenance log in a shared drive, the noise complaint from the neighbor in Slack, the meter reading photo on someone's phone. Every new AI agent built for that property has to re-discover all of it. CasaContext is the self-updating Markdown brief for each property: one living document that ingests from email threads, Slack channels, PDF tenancy agreements, meter-reading photos, and property-management ERP exports, and keeps itself current. Any AI agent, any human team member, same starting point.
 
-**Theme:** Treatment access, healthcare inequality, language barriers
+**Track:** Buena - direct answer to the brief. This is the exact Context Markdown File the track is asking for.
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal (text + voice + image) + multilingual safety-critical reasoning
-- **Gradium** - voice input/output for users who can't read well in any written language
-- **ai|coustics** - cleans symptom voice notes recorded in noisy home conditions
-- **telli** - makes the outbound triage booking call to 116117 or walk-in clinics
-- **Tavily** - live walk-in clinic availability
+- **Gemini 3** - multimodal ingestion: reads PDFs, emails, Slack exports, images of meter readings and damage photos; produces structured Markdown with headings, key facts, and a change log
+- **Tavily** - enriches with public context (building year of construction, district characteristics, Mietspiegel bracket)
+- **Qontext** - stores the evolving context layer so every agent query gets a consistent view without re-reading raw sources each time
+- **Entire** - human-in-the-loop review flow for sensitive updates (e.g. a tenant dispute flagged requires the property manager to approve before it goes into the shared context)
+- **Lovable** - the portfolio dashboard where the property manager sees all Context Markdown Files side by side
 
-**The wow moment:** Send a WhatsApp voice note in Turkish describing chest pain and nausea. Twenty seconds later, the system replies in Turkish: "this is potentially a cardiac event, calling 116117 for you now" - and you hear the agent place the call live.
+**The wow moment:** On stage, drop a messy folder into the system: 40 emails about one Berlin flat, 3 PDFs (Mietvertrag, Betriebskostenabrechnung, Hausordnung), a Slack export with a month of maintenance chatter, and 8 photos. Ninety seconds later: a beautifully structured, human-readable Markdown brief for that property that reads like a junior property manager spent 3 hours writing it. Then change one Slack message, rerun: the brief updates just the affected section and shows the diff.
 
-**Technical complexity:** Very high - safety-critical multilingual medical reasoning with voice + vision + phone dispatch. Jury will respect this.
+**Technical complexity:** Very high. Multimodal ingestion + deduplication + structured-output generation + incremental updates (not full regenerations) + audit trail. This is the hardest problem the track posed.
 
-**Feasibility in 15h:** Yellow. Scope to 3 languages and 5 symptom categories. The safety framing (clear "not a doctor" disclaimer, always defaults to escalation on ambiguity) is critical and must be on-screen in the demo.
+**Feasibility in 15-18h:** Yellow. Pre-curate a realistic demo dataset on Saturday evening; the ingestion pipeline is the risk. Scope to 3 Berlin flats.
 
-**Business potential:** Paid by public health authorities (Senatsverwaltung fuer Gesundheit, equivalents in other cities), by NGOs serving migrant health, by employers providing health benefits. Adjacent market: Babylon Health, Ada Health - both have grown into major businesses.
+**Why we can win this track:** The brief specifically calls for "sourced from ERPs, email, Slack, PDFs, and more." Teams that ship 2 of those 5 sources lose to a team that ships all 5 with visible quality. Breadth of ingestion is the differentiator.
 
-**Safety note:** The demo must foreground the safety disclaimer; the jury's January winner built in healthcare and the jury rewarded responsibility, not just cleverness.
+**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
+**Average: 4.4/5**
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Business story 5/5
+---
+
+### Idea 5 - TurnoverBrief: the 10-minute tenant handover that used to take 3 days
+
+> When a tenant moves out and a new one moves in, the property manager has to rebuild the entire knowledge package: what's broken, what was fixed, which neighbor complains about noise, which boiler quirk nobody wrote down, which key opens which back gate. Currently it takes days of email archaeology. TurnoverBrief auto-generates a complete structured handover document between tenancies: outgoing tenant's known issues extracted from their communications, unresolved maintenance items, neighbor dynamics, "things to tell the new tenant on day one," and a week-1 follow-up checklist for the property manager.
+
+**Track:** Buena - same Context Markdown File thesis, but focused on the turnover moment where the context problem is most acute.
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - long-context summarization of an entire tenancy's worth of email + maintenance records into a 2-page brief with no lost facts
+- **Tavily** - fetches current market rent comparisons so the handover brief includes a price recommendation for the next tenancy
+- **Qontext** - the structured context that feeds into the document, so updates to one field propagate
+- **telli** - places the optional outgoing-tenant exit interview as a 5-minute voice call, transcribes the gold nuggets straight into the brief
+- **Lovable** - the property-manager-facing app
+
+**The wow moment:** On stage, feed in a full tenancy's email thread (messy, 2 years worth) plus a 90-second voice clip of the outgoing tenant saying "oh and the boiler makes a weird noise on cold mornings, but if you press reset twice it's fine." The brief assembles in real time: a cleanly-sectioned Markdown document that explicitly captures the boiler quirk as a "unwritten knowledge" section the new tenant will thank the landlord for.
+
+**Technical complexity:** High. Long-context reasoning + voice interview integration + structured extraction with zero hallucination on factual claims is the core engineering.
+
+**Feasibility in 15-18h:** Green. Narrower scope than CasaContext; the telli voice-exit-interview is a dramatic demo centerpiece.
+
+**Why we can win this track:** Turnover is a crisp, well-defined moment where the pain is maximum. A demo that compresses "3 days of email archaeology" into "10 minutes of AI-generated clarity" with a voice-call integration is memorable where generic context engines are forgettable.
+
+**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
+**Average: 4.4/5**
+
+---
+
+### Idea 6 - BriefCraft: one context engine, two submissions (Buena AND Qontext)
+
+> BriefCraft is deliberately designed to submit to both tracks. The core engine is domain-agnostic: point it at any company's scattered sources (mail, Slack, Drive, CRM, PDFs, ticketing system) and it produces a living Markdown "operating manual" any AI agent can read as its starting context. For the Buena submission, we demo it on property management. For the Qontext submission, we demo it on a B2B SaaS company's sales operation. Same engine, two tailored demos.
+
+**Track:** Buena + Qontext (dual submission) - the richest strategic bet. Qontext prize is 1g gold per member + private dinner; Buena is EUR 2,500. Both achievable with one codebase.
+
+**Partner tech (all load-bearing):**
+- **Qontext** - the context layer itself, obviously load-bearing for the Qontext track
+- **Gemini 3** - multimodal ingestion across all source types, structured summarization, incremental update detection
+- **Tavily** - enrichment from public web for any mentioned entity (company, person, regulation, market)
+- **Entire** - human review of the auto-generated context with edit-and-approve flow
+- **Pioneer by Fastino Labs** - the system learns which summary sections that specific company cares most about, so outputs adapt per-customer
+
+**The wow moment:** Run ONE ingest job on stage over a mixed-domain dataset. Pop up two dashboards side by side: left shows a Buena-flavored property brief, right shows a Qontext-flavored sales-account brief, generated from fundamentally different source data. Judges from both sponsor booths see their brief render live.
+
+**Technical complexity:** Very high. The hard part is genuinely generalizing across domains - you cannot hardcode property-specific schemas. Pioneer's self-training angle is the elegant answer: the system learns each company's preferred context shape from a few examples.
+
+**Feasibility in 15-18h:** Yellow. More ambitious than CasaContext alone but the marginal cost of the second demo is small if the engine is genuinely domain-agnostic. The strategic upside is enormous: two prize shots from one build.
+
+**Why we can win BOTH tracks:** Buena's brief is a specific instance of Qontext's brief. A team that builds the general solution can tailor a property demo for Buena and a B2B-sales demo for Qontext on the same engine. Most teams will build vertical-specific solutions that cannot cross over. We compete in both pools.
+
+**Risk:** The dual-submission ambition could become a scope trap. Mitigation: lock the core engine by Sunday 02:00; the "second demo" is 90 minutes of Lovable work on Sunday morning.
+
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5 (double)
 **Average: 4.6/5**
 
 ---
 
-### Idea 5 - BreathRoute: Berlin's real air-quality routing for people who can't just "go outside"
+### Idea 7 - IncidentFile: the property-incident context bundle that writes itself in 60 seconds
 
-> Berlin has wildly uneven air quality between streets a block apart. For a kid with asthma, an elderly person with COPD, or someone in their third trimester, "nice day for a walk" is not a universal statement. BreathRoute takes your personal risk profile (asthma, COPD, pregnancy, heart disease) and gives you two outputs: (1) a 1-5 "go outside today" score for your exact postcode, and (2) a walking, cycling, or Kinderwagen-compatible route that minimizes your specific exposure - around that one construction site on Karl-Marx-Strasse, away from the A100 when wind comes from the south.
+> Water damage happens in a Berlin flat. Right now, the property manager has to: photograph the damage, write up what happened, find the tenancy file, figure out which insurance policy covers it, identify the tradespeople who can fix it, and start 4 parallel conversations. IncidentFile is triggered by one voice note from the tenant ("the kitchen ceiling is leaking, I think from the neighbor above") and auto-generates a complete incident package: the incident description, the relevant tenancy and policy excerpts, photo uploads organized, insurance claim draft pre-filled, 3 recommended tradespeople matched to the damage type, and a proposed communication plan.
 
-**Theme:** Environmental health, chronic respiratory illness, pregnancy safety
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal reasoning over air quality sensor data + weather + traffic patterns + the user's health profile, personalized explanation
-- **Tavily** - live scrape of Berlin's UBA air-quality stations, Senatsverwaltung construction permits (huge particulate source), traffic data
-- **Gradium** - voice output for elderly users; voice input for "how is my breathing right now, should I go to my doctor"
-- **Qontext** - longitudinal tracking of your exposure days, flags when cumulative PM2.5 exposure crosses thresholds that matter for your condition
-- **Lovable** - the map dashboard
-
-**The wow moment:** On stage, drop a Berlin postcode and pick "6-year-old with mild asthma." Thirty seconds later: the block-by-block AQI map, today's "go outside" score of 3/5, and three alternative routes from this address to the nearest Spielplatz color-coded by cumulative PM2.5 exposure. The best route is 4 minutes longer and reduces exposure by 62 percent.
-
-**Technical complexity:** High. Fine-grained air-quality interpolation + medical-condition-specific thresholds + route optimization under a non-standard cost function is real engineering.
-
-**Feasibility in 15h:** Yellow. UBA sensor data is public; the interpolation between sparse sensors is the interesting bit. Scope to one Berlin Bezirk for the demo.
-
-**Why it's life-improving in Berlin:** Berlin has roughly 170,000 children with asthma, 60,000 residents with COPD, and 35,000 pregnancies per year. None of them currently get personalized exposure guidance. Air-quality apps show a single number for the whole city, which is medically useless.
-
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 4/5, First-person authority 3/5, Life-impact 5/5
-**Average: 4.4/5**
-
----
-
-### Idea 6 - FirstFour: live CPR coaching while the Notarzt is still on its way
-
-> Berlin's ambulance arrival time has stretched past 12 minutes in many districts. Cardiac arrest survival drops roughly 10 percent for every minute without CPR. The first four minutes are when bystanders decide whether someone lives. FirstFour is a WhatsApp/phone line that takes over the moment you call 112: parallel to the dispatcher, it calmly voice-coaches you through CPR using the phone's camera to check your hand position and compression depth, talks you through AED retrieval, and keeps you from panicking. When the Notarzt arrives, it hands off a 60-second structured summary of what happened - compressions given, breathing status, estimated time down.
-
-**Theme:** Emergency response, cardiac arrest survival, bystander CPR
+**Track:** Buena (primary) + Qontext (secondary if we pitch the context-bundle angle)
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal: watches your hands via phone camera while coaching your voice, judges compression depth and rate, detects if the patient is breathing
-- **Gradium** - calm, clear voice coaching under extreme user stress (voice quality matters more here than almost anywhere)
-- **ai|coustics** - cleans up frantic home audio so the system can hear the patient's breathing and your questions
-- **telli** - the phone line itself, and the handoff call to arriving paramedics
-- **Qontext** - keeps track of what's been done so the handoff summary is accurate
+- **Gemini 3** - multimodal: voice note + damage photos into a structured incident record; reads the relevant policy PDF and extracts coverage clauses
+- **Qontext** - the property context (who the tenant is, which policy covers this building, maintenance history) feeds the incident package so nothing starts from zero
+- **Tavily** - live lookup of tradespeople in the right Berlin Bezirk with the right specialty, current availability, recent review signals
+- **telli** - dispatches the outbound call to the top-ranked tradesperson to get a site-visit slot
+- **Entire** - the property manager approves the auto-generated insurance claim before it is sent
 
-**The wow moment:** Live on stage, a teammate pretends their colleague collapsed. They call the demo number on speakerphone. The agent's voice coaches them through the first 90 seconds: "kneel beside them, hands one on top of the other on the breastbone, push hard and fast, I'll count with you, one, two, three, four..." At 90 seconds a "paramedic arrives" and the agent immediately generates a spoken handoff summary on the line.
+**The wow moment:** A teammate voice-notes a fake incident: "hi it's flat 3B, there's water coming through the kitchen ceiling, I think the upstairs neighbor has a leak." Sixty seconds later on the manager dashboard: complete incident file with the right policy page highlighted, claim draft pre-filled with amount estimate, two tradespeople ringing in parallel on telli to see who can come first, and a drafted message to the upstairs neighbor. All from one voice note.
 
-**Technical complexity:** Very high. Voice + vision + real-time coaching under stress + calm-but-urgent persona + clean handoff. Safety-critical by definition.
+**Technical complexity:** High. Multimodal input + policy document RAG + real-time dispatch + document drafting + multi-party orchestration.
 
-**Feasibility in 15h:** Yellow. The phone camera + Gemini vision on hand position is the hard part; we demo this with a pre-recorded compressions clip if live vision is not reliable enough.
+**Feasibility in 15-18h:** Yellow. Tight but doable; the insurance-policy RAG is the piece to prototype first.
 
-**Why it's life-saving in Berlin:** Berlin has roughly 8,000 out-of-hospital cardiac arrests per year. Current bystander-CPR rate is under 40 percent. Every point of improvement is lives saved. This is not a business pitch; it is a "build it because someone in Berlin dies every week who should not have" pitch.
+**Why we can win this track:** Incidents are Buena's high-value moment - when the property manager desperately needs structured context RIGHT NOW. A demo that compresses 4 hours of first-response work into 60 seconds of AI-orchestrated output is exactly the "living document every AI agent can use" thesis made dramatic.
 
-**Safety framing:** Demo must include the 112-first disclaimer, the "hand off to dispatcher instantly, do not replace" disclaimer, and the "all suggestions follow ERC 2025 guidelines" credibility line.
-
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Life-impact 5/5
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
 **Average: 4.6/5**
 
 ---
 
-### Idea 7 - SafeWord: discreet help when you can't say what's happening
+### Idea 8 - DealMemory: the B2B sales context layer that survives rep turnover
 
-> A domestic abuse victim often cannot say what is happening to them. The Hilfetelefon is overwhelmed and phone-only. SafeWord is a voice-first agent that looks and sounds like anything else - a food delivery app, a weather check-in, a fake language-learning lesson - chosen by the user in advance. Saying a specific phrase ("I'd like the vegetarian option tonight") triggers a silent workflow: precise location captured, Berlin-specific safe-house availability queried in real time, a trusted contact notified, and if needed police dispatched with a precise description of the situation the victim has pre-written in safe moments. The interface stays innocent the whole time.
+> When a B2B sales rep leaves, their pipeline knowledge goes with them. The new rep inherits 40 accounts, each with scattered history across email, calls, CRM notes, product documents, and Slack channels. Weeks of context-building. DealMemory auto-generates and maintains a living Markdown brief per account - the champion at the customer, the specific objections they have raised, the product features they mentioned caring about, the stakeholder map with relationship quality, the competitive context - so a new rep is effective on day 3, not week 12.
 
-**Theme:** Domestic violence, acute personal safety, coercive control
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - natural-sounding cover conversation that can run for minutes while doing work in the background
-- **Gradium** - voice that can match the cover persona (food delivery, friend, meditation app)
-- **Tavily** - live Berlin safe-house availability (Frauenhaus beds are scarce and change hourly), nearest police station, open counseling services right now
-- **telli** - places the notification call to a trusted contact or emergency services, speaking the pre-written situation description on the victim's behalf
-- **Qontext** - the victim's pre-written "escape plan" maintained privately and available the second the safe word fires
-
-**The wow moment:** On stage, a teammate opens what looks like a meditation app, says "I want to try the calming breath exercise for tonight." The app replies calmly about breathing. Meanwhile, on a second screen, the operator dashboard shows: GPS locked, Frauenhaus Spandau has 1 bed, trusted contact notified by SMS, outbound call to a listed friend ready to dial. The victim's interface never breaks character.
-
-**Technical complexity:** High. Dual-track conversation (innocent foreground + urgent background) + trigger detection without false positives + real-time Frauenhaus capacity queries.
-
-**Feasibility in 15h:** Yellow. The cover-app illusion is the visible engineering feat. Scope to one cover persona and Berlin-only safe-house list for the demo.
-
-**Why it's life-saving in Berlin:** Berlin records over 16,000 domestic-violence cases per year and the numbers are rising. The Hilfetelefon receives hundreds of thousands of calls nationally per year and cannot reach everyone; many victims can never call openly. Covert help is an unmet need that existing systems cannot serve because they require the victim to speak freely.
-
-**Safety and ethics framing:** Demo must discuss the false-positive risk, the trusted-contact safeguard, and the collaboration model with Berlin Frauennotrufe. This is the kind of idea that wins a jury precisely because the team has thought hard about the failure modes.
-
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 2/5, Life-impact 5/5
-**Average: 4.4/5**
-
----
-
-### Idea 8 - HeatGuard: the Berlin heatwave safety net for people who have nobody
-
-> Berlin's 2024 and 2025 summers had documented excess deaths during heatwaves, concentrated among isolated elderly residents in top-floor flats without cooling. Current "heatwave warnings" on weather apps do nothing for someone who does not check weather apps. HeatGuard is different: during forecast heat emergencies, it calls registered at-risk residents proactively with a 2-minute voice check ("how are you feeling, have you drunk water today, do you have a fan running"), dispatches volunteer checkers to anyone who does not answer two calls in a row, and coordinates with Berlin's Kuehlraum network so the system actually suggests a cool refuge the person can walk to.
-
-**Theme:** Climate health, elder isolation, heat-related mortality
+**Track:** Qontext - pure expression of the "scattered facts to structured context" brief, in a B2B sales vertical that every startup understands.
 
 **Partner tech (all load-bearing):**
-- **telli** - the core. Warm outbound calls to elderly residents who cannot install apps.
-- **Gradium** - natural voice conversation that does not sound robotic (elderly users hang up on robot voices fast)
-- **ai|coustics** - elderly phones are often poor quality; audio cleanup is load-bearing
-- **Gemini 3** - distress detection from voice (slurred speech, confusion, weakness = possible heatstroke), conversational check-in flow, dispatch decision
-- **Tavily** - live Berlin Kuehlraum / cooling-center availability, weather forecasts, subway stations used as informal cool spaces
-- **Qontext** - keeps the resident's profile (top-floor yes/no, medications that affect heat response, mobility)
+- **Qontext** - the context layer, literal track partner
+- **Gemini 3** - long-context synthesis across 2 years of email threads, 30 call recordings, 200 Slack messages, CRM notes, proposal documents
+- **Tavily** - enriches accounts with current public signals (recent funding, org changes, new product launches, news)
+- **ai|coustics** - cleans recorded sales-call audio (often poor quality) so transcription is reliable
+- **Entire** - the rep reviews and corrects the auto-generated account brief; corrections feed back into the system's understanding of what "good" looks like
 
-**The wow moment:** Live on stage, simulate a 38-degree day. A teammate plays an 83-year-old in a top-floor Neukoelln flat. The agent calls, has a warm 90-second conversation, picks up subtle confusion in the person's voice, and immediately dispatches a volunteer ("we would like to send someone round to check on you within the hour") while listing two cool spaces within walking distance.
+**The wow moment:** On stage, ingest one synthetic B2B account: 50 emails + 4 call recordings + CRM export + 80 Slack messages. Forty-five seconds later: a structured account brief where every claim links back to a specific source. Change the account to a different industry; the brief adapts (the "competitive context" section looks different for healthcare SaaS than for devtools).
 
-**Technical complexity:** Medium-high. Voice-quality distress detection is the technical flex; the orchestration layer is also non-trivial.
+**Technical complexity:** Very high. The grounding problem (every fact in the brief must be traceable to a source) is the hard engineering. Sales context is richer and messier than property context.
 
-**Feasibility in 15h:** Green. Most components are straightforward; the distress-detection prompt is the one piece to iterate on.
+**Feasibility in 15-18h:** Yellow. The demo data assembly is non-trivial; we pre-seed a realistic synthetic account on Saturday evening.
 
-**Why it's life-saving in Berlin:** Heat mortality is rising every year. Berlin's demographic skew means the number of isolated elderly in heat-vulnerable housing is growing. This problem gets worse, not better.
+**Why we can win this track:** B2B sales is a problem 90 percent of the jury understands intimately (every sponsor has salespeople; several are growth-stage companies who have lost reps). The emotional pitch writes itself: "we all know what it feels like when a rep leaves with your best account in their head."
 
-**Scores:** Creativity 4/5, Complexity 4/5, Partner fit 5/5, First-person authority 3/5, Life-impact 5/5
-**Average: 4.2/5**
-
----
-
-### Idea 9 - MindBridge: psychiatric help available tonight, matched to who will actually take you
-
-> Berlin's psychiatric emergency system is gridlocked. Walking into a Klinik often means a multi-hour wait followed by a referral you cannot get for six weeks. In acute mental health crisis, six weeks might as well be six years. MindBridge is a voice-first agent that triages the user's current state, queries real-time availability across Berlin's crisis services - Krisendienst, Sozialpsychiatrischer Dienst, specific private practices that take walk-ins, specialized services for LGBTQ+ / migrant / young adults - and finds the closest place that has capacity tonight and will see the user without a Hausarzt referral. If nothing is available in person, it matches to an online therapist who can see them in the next 4 hours.
-
-**Theme:** Mental health access, crisis care, psychiatric emergency
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - safe triage of mental-health state (never diagnostic; always refers), multi-criterion matching against service capacity
-- **Gradium** - voice-first interaction because users in crisis often cannot navigate text interfaces
-- **ai|coustics** - cleans crisis-state audio (tears, rapid breathing, background noise)
-- **Tavily** - live capacity scraping across Krisendienst, Jugend-KJP, Frauenkrisentelefon, specialist LGBTQ+ and migrant services
-- **telli** - calls the identified service on the user's behalf to hold an appointment slot while the user is still on the line
-- **Qontext** - keeps the journey state across nights so a user returning in a week does not start from zero
-
-**The wow moment:** Live, a teammate says calmly, "I haven't slept in four days and I'm scared of what I'm thinking about." The agent responds warmly, asks two safety-triage questions, finds three services taking walk-ins this evening within 20 minutes transit, calls the best-matched one to hold a slot, and returns to the user with the address, contact name, and transit route - all in under 2 minutes.
-
-**Technical complexity:** Very high. Safety-critical triage + real-time capacity + empathic tone + live outbound coordination call. This is as technically deep as MedAccura was.
-
-**Feasibility in 15h:** Yellow. The live-capacity data is the hardest piece; scope the demo to 5 Berlin services with simulated-live availability backing onto real phone numbers.
-
-**Why it's life-saving in Berlin:** Berlin has one of the highest rates of young-adult mental health crises in Germany. Waiting lists are documented to be 12+ weeks for standard psychotherapy. Crisis services exist but their availability is opaque. People suffer avoidably in the gap.
-
-**Safety framing:** Demo must foreground Berliner Krisendienst as the primary escalation, include a clear "if you are in immediate danger, 112 is the answer" disclaimer, and show the always-on suicide-prevention protocol.
-
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Life-impact 5/5
+**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
 **Average: 4.6/5**
 
 ---
 
-### Idea 10 - PillPath: the polypharmacy safety check your GP doesn't have time to do
+### Idea 9 - SupportCore: the customer-support context layer that actually remembers
 
-> Many elderly Berliners take 7+ prescription medications - one from the cardiologist, one from the diabetologist, three from the GP, two over-the-counter. Nobody is looking at the whole picture. Dangerous interactions are a leading cause of avoidable hospital admissions in over-75s. PillPath lets the patient or a family member photograph every medication box they have. The agent extracts all drugs, cross-references every pairwise interaction against current clinical databases, flags dangerous combinations in plain language ("your blood thinner and the new pain medicine together triple your bleeding risk"), and generates a one-page summary the patient can bring to their next GP visit.
+> Customer-support AI agents hallucinate because they reconstruct company reality at runtime from scattered docs, tickets, and policies. Every query is a cold start. SupportCore is the context layer feeding every support agent, human or AI: product documentation parsed into canonical facts, historical ticket resolutions distilled into a playbook, policy edge cases documented as "what to say when X," and per-customer history layered on top. When a ticket comes in, the AI agent gets a pre-assembled context bundle specific to that customer and that issue, rather than attempting to pull everything from scratch.
 
-**Theme:** Medication safety, elderly care, polypharmacy-related hospital admissions
+**Track:** Qontext - the canonical expression of the track brief. "AI systems reconstruct company reality at runtime. That does not scale. Build the context layer that fixes it." This idea is almost the brief verbatim.
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal: photographs of medication boxes to structured drug list, pairwise and n-way interaction reasoning, plain-language explanation at the user's reading level
-- **Tavily** - live clinical interaction databases (ABDA-Datenbank, Rote Liste), drug-safety bulletins from BfArM, recall notices
-- **Gradium** - voice output because reading small text is hard for elderly users; voice input for listing symptoms
-- **Qontext** - the medication list maintained longitudinally so every new prescription gets checked against what's already there
-- **Lovable** - the dashboard and the GP-visit handout
+- **Qontext** - the layer itself
+- **Gemini 3** - ingests documentation, ticket history, policy documents into a structured fact base; reasons about which facts are relevant for a given incoming ticket
+- **Tavily** - live product status, current outages, recent changelog, used when relevant to a live ticket
+- **Pioneer by Fastino Labs** - the system learns per-customer nuances (this enterprise customer always needs the SLA explanation; this SMB never does)
+- **Aikido** - security framing is real here because support context contains PII; demoing access controls correctly adds credibility
 
-**The wow moment:** On stage, a teammate piles 8 real (empty) medication boxes on a table and photographs them together. Ninety seconds later: complete drug list extracted, two critical interactions flagged in red with plain-language explanations, one moderate interaction in amber, and a one-page printable summary for the next GP visit. A judge who is a doctor will gasp.
+**The wow moment:** On stage, show two AI support agents side by side answering the same incoming ticket. Left agent: vanilla RAG over docs, hallucinates a non-existent feature. Right agent: SupportCore-backed, answers correctly with a link to the exact policy clause AND the context that this specific customer is on the enterprise plan. The jury sees the hallucination happen in real time.
 
-**Technical complexity:** High. The multimodal extraction from cluttered photographs + the n-way interaction reasoning (not just pairwise) is genuinely hard.
+**Technical complexity:** Very high. Per-customer context stratification + grounded generation + security boundaries is a serious engineering stack.
 
-**Feasibility in 15h:** Green. Interaction databases are accessible; the photo extraction is the one piece to prototype early. Pre-test with 5 real medication sets.
+**Feasibility in 15-18h:** Yellow. The "two agents side by side" demo framing is the crucial piece; lock that storyboard Saturday evening.
 
-**Why it's life-saving in Berlin:** Medication-interaction-related hospital admissions in Germany are estimated at over 250,000 per year in elderly patients. A single good polypharmacy review prevents on average 2-3 admissions per patient per year. This is a massive, measurable, unmet need.
+**Why we can win this track:** The demo explicitly shows the failure mode Qontext describes in their brief ("reconstruct reality at runtime, hope the prompt is good enough"). A team that LITERALLY SHOWS the problem happening and THEIR solution preventing it is the most on-brief possible submission.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 4/5, First-person authority 3/5, Life-impact 5/5
+**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
 **Average: 4.4/5**
 
 ---
 
-### Idea 11 - GoldenPath: getting to the RIGHT hospital in the therapeutic window
+### Idea 10 - AnsweredFromZero: the founder-solo AI-search growth agent
 
-> For a stroke, you have roughly 4.5 hours from symptom onset to get tPA thrombolysis. For a heart attack, roughly 90 minutes for stenting. The closest hospital is often NOT the right hospital - only some Berlin hospitals are certified stroke units, only some run 24/7 cath labs. Ambulances usually route correctly, but Ubers, family members driving, and people who walk into the wrong ER waste the therapeutic window. GoldenPath is called by a family member when they recognize symptoms ("my mother's face is drooping and she can't raise her left arm"). It confirms stroke vs non-stroke in 30 seconds, identifies the nearest certified stroke unit with current bed availability, dispatches an ambulance, and if the family is already driving, redirects them AND calls the receiving hospital ahead to prep the team.
+> A pre-revenue founder has a website, a product, and no idea which 50 ChatGPT/Perplexity prompts would send them their first 100 customers if they could win them. Existing AI-visibility tools (including Peec itself) are built for marketing teams with established content engines; they tell you your rank against competitors and what content to create. A founder alone does not have a content engine. AnsweredFromZero is a week-one agent: founder types in their product and ideal customer. Agent generates the 50 most commercially-valuable prompts to target, drafts the first piece of content for each (ranked by lowest-competition-first), queues the publishing schedule, and uses Peec's visibility data to check every 48 hours which ones are landing.
 
-**Theme:** Cardiovascular emergency, therapeutic window, hospital routing
+**Track:** Peec AI - direct hit on "help early-stage startups find and own organic search and AI answer opportunities FROM ZERO." The "from zero" framing in the brief is the strategic wedge.
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal symptom triage (voice description + optional video of the person's face for facial-droop detection), real-time routing reasoning
-- **Gradium** - calm voice guidance for the panicking family member
-- **ai|coustics** - cleans frantic-car or frantic-home audio
-- **telli** - parallel calls: 112, redirect family driving, warn receiving hospital team
-- **Tavily** - live bed/team availability across Berlin stroke units and cath labs (this data exists in hospital systems; Berlin has been working on a central registry)
-- **Qontext** - keeps the event state as it unfolds so any handoff has complete context
+- **Peec AI** - the visibility data itself: which prompts mention this startup, which mention competitors, which are completely open territory
+- **Gemini 3** - generates the founder's ICP and product context into a prompt tree; drafts content tuned to be citable by ChatGPT/Perplexity
+- **Tavily** - checks existing web results for each targeted prompt so the content is genuinely differentiated, not duplicate
+- **Lovable** - the founder-facing dashboard
+- **Entire** - founder approves each drafted piece before publishing
 
-**The wow moment:** Live on stage, a teammate panicked: "my father just started slurring his words and his right arm fell down when I asked him to raise it." The agent responds calmly in 5 seconds: "this is a possible stroke. I have already called 112. The best hospital for you is Charite Campus Benjamin Franklin, not the closer one - they are certified and have capacity. Do not drive; ambulance will be 8 minutes. Here is what to do while you wait." Simultaneously, the operator dashboard shows: 112 called, Charite CBF notified, family GPS tracked.
+**The wow moment:** A teammate plays a real pre-revenue founder. Enters product (say, "an AI tool for translating legal contracts into plain language for small business owners"). Ninety seconds later: 50 ranked prompts, first 5 content pieces drafted, a publish queue for the next 2 weeks, and the projected visibility curve based on Peec's data showing which prompts a founder can realistically win in 30 days versus which take 6+ months.
 
-**Technical complexity:** Very high. Safety-critical multimodal triage + multi-party phone orchestration + live hospital data.
+**Technical complexity:** High. The prompt-opportunity discovery + content-draft-that-is-actually-citable + sequencing-for-a-solo-founder is real product thinking, not generic SEO.
 
-**Feasibility in 15h:** Yellow. Hospital bed data is the risk; we fake-live it for the demo but frame it as a public data gap we would work to close post-hackathon.
+**Feasibility in 15-18h:** Green. Peec's data is accessible as the track partner; most of the work is prompt engineering + a sharp dashboard.
 
-**Why it's life-saving in Berlin:** Stroke is a leading cause of disability in Germany. Treatment delays translate directly to lifelong disability. The routing-to-right-hospital gap is real and documented; Berlin's stroke registry work is public policy.
+**Why we can win this track:** The brief says "from zero" and most teams will default to "improve visibility for an established brand" because that is what every existing tool does. Solving the cold-start specifically, with a concrete 50-prompt output and sequenced drafts, is the distinctive answer.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 2/5, Life-impact 5/5
-**Average: 4.4/5**
+**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
+**Average: 4.6/5**
 
 ---
 
-### Idea 12 - FoundSafe: the first 24 hours when a vulnerable adult goes missing
+### Idea 11 - CitationForge: get cited by ChatGPT without writing your own content
 
-> When a person with dementia, a mental-health episode, or a cognitive disability wanders off in Berlin, the first 24 hours are decisive. Right now, the family's response is phone calls and panic. Police get involved but have limited resources for non-criminal missing persons. FoundSafe coordinates the first-24-hour response: it ingests everything the family can give (last seen where, photo, clothing, medical needs, places the person feels safe), alerts a verified volunteer network in the precise Berlin neighborhood, queries hospital admissions and police checkpoints for matching persons, and acts as a single coordinator so the family does not have to call 30 places while losing their mind.
+> A startup that cannot invest in content can still get cited by AI engines - IF they appear on the third-party sources that ChatGPT and Perplexity already trust. CitationForge identifies, for a given startup's category, exactly which third-party sources (Reddit threads, G2/Capterra listings, niche Substacks, industry wikis, YouTube channels) are cited most often when the models answer the target prompts - and generates the specific, credible outreach a founder can send to each source to be included. Not "please link to me," but "here is a precise paragraph I can contribute that fills a gap in your existing article on X."
 
-**Theme:** Dementia care, mental health crisis, missing vulnerable adults
+**Track:** Peec AI - uses Peec's source-citation data as the core input. This is what Peec already measures but nobody has turned into an actionable outreach engine.
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal profile building (photo + description + medical needs), continuous matching against reports
-- **Tavily** - live queries against hospital admission notices, police missing-persons channels, BVG lost-and-found, homeless outreach logs
-- **telli** - the coordination calls - checking with hospitals, shelters, known safe spots, family members
-- **Gradium** - the distressed family member can give everything they know by voice in one go instead of filling forms
-- **Qontext** - the live search state: who's been called, what's been checked, when the last lead was, preventing the family from re-covering the same ground
+- **Peec AI** - the citation-source data: which third-party URLs feed the models for a given category
+- **Tavily** - fetches the full content of each cited third-party source so we can find contribution-worthy gaps
+- **Gemini 3** - reads each source, identifies specific gaps the startup could plausibly fill, drafts a credible contribution paragraph + outreach email
+- **Entire** - founder approves every outreach email (critical: bad outreach burns goodwill)
+- **Lovable** - the dashboard with a prioritized list of "if you win these 10 citations, your visibility in ChatGPT on these 8 prompts will roughly double"
 
-**The wow moment:** Live on stage, a teammate plays a daughter whose 78-year-old father with early dementia left the flat in Pankow 2 hours ago. She tells the agent everything by voice in 60 seconds. The operator dashboard lights up: photo distributed to 14 volunteers in 800-meter radius around last-seen location, 3 hospitals called, BVG alerted, U-Bahn stations flagged, family's phone ringtone set to escalate on any match. She does not make a single other call herself.
+**The wow moment:** On stage, a founder's domain goes in. Forty-five seconds later: a ranked list of 10 specific Reddit threads / G2 comparison pages / niche blogs where this startup could credibly contribute - with the exact paragraph drafted for each, and a personalized outreach email to the page owner. The judge from Peec AI sees their own data being used in a way that is clearly novel.
 
-**Technical complexity:** High. The orchestration + volunteer-network coordination + live multi-source querying under emotional pressure is the engineering.
+**Technical complexity:** High. The gap-identification + contribution-drafting that is credible (not spammy) is the genuine product craft.
 
-**Feasibility in 15h:** Yellow. The volunteer network is the policy question; for the demo, "14 volunteers notified" is a simulated geo-targeted push.
+**Feasibility in 15-18h:** Green. Most of it is prompt engineering + a good list UI.
 
-**Why it's life-improving in Berlin:** Berlin has a significant and rising population with dementia (estimated 60,000+ in the Berlin region) and a large homeless / mental-health crisis population. Missing-person episodes are more common than anyone realizes. Current response is amateur-hour by default.
+**Why we can win this track:** Peec's existing product tells you your visibility. The next step - what do I actually do about it - is explicitly where they are directing teams ("help startups OWN opportunities"). Turning their data into outreach is the natural extension they have not built themselves.
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 2/5, Life-impact 5/5
-**Average: 4.2/5**
+**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
+**Average: 4.6/5**
+
+---
+
+### Idea 12 - PromptTerritory: the month-by-month prompt-claiming roadmap
+
+> Knowing the 50 prompts you want to win does not tell a founder in which order to fight for them. Some prompts are crowded with established competitors; some are wide open but have thin search volume; some are rising fast and will be contested in 3 months. PromptTerritory is a strategic sequencer: it uses Peec's competitive visibility data plus query-volume signals to produce a month-by-month roadmap of which prompt territory to claim first, second, third. Each month's batch is a "push" with drafted content, outreach plan, and measurable visibility targets. Miss a month, the plan reshuffles.
+
+**Track:** Peec AI - strategic planning layer built on Peec's competitive data.
+
+**Partner tech (all load-bearing):**
+- **Peec AI** - competitive visibility rankings per prompt; trend direction over time
+- **Tavily** - query-volume proxy signals from public web searches; adjacent topic discovery
+- **Gemini 3** - strategic reasoning: sequencing, dependency detection between prompts, opportunity scoring
+- **Qontext** - the startup's claimed-territory state across months so the plan adapts to what has actually been won
+- **Lovable** - the roadmap visualization
+
+**The wow moment:** On stage, two founders with similar products start with the same 50-prompt list. One follows the default alphabetical order. The other follows PromptTerritory's sequencing. Six-month simulation: the PromptTerritory founder has roughly 3x the visibility by month 6 because they claimed the easy-uncontested prompts first, built citation authority, then attacked the competitive ones from strength.
+
+**Technical complexity:** Medium-high. The sequencing algorithm is the intellectual core; the data integration is moderate.
+
+**Feasibility in 15-18h:** Green. Heavy on prompt engineering and simulation visualization; light on novel engineering.
+
+**Why we can win this track:** Strategic sequencing of limited marketing resources is exactly what a resource-constrained early-stage startup needs and exactly what Peec's existing dashboards do not deliver. The "claim this territory first, that one in month 3" framing is visually memorable in a way generic visibility dashboards are not.
+
+**Scores:** Creativity 4/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
+**Average: 4.4/5**
 
 ---
 
 ### Summary ranking
 
-| # | Idea | Theme | Score | Why it ranks here |
+| # | Idea | Track | Score | Why it ranks here |
 |---|---|---|---|---|
-| 3 | **JobMatch Reverse** - candidate-first job platform | Employment access, Ian's authority | **5.0** | Max first-person authority for Ian; multimodal credential reasoning is a genuine 2026-capability demo. |
-| 1 | **HireSignal** - JD to adaptive skills interview | Hiring fairness, Ian's authority | 4.8 | Strongest personal story + voice + adaptive reasoning is a real technical flex. |
-| 4 | **TriageLine** - multilingual WhatsApp triage | Healthcare access | 4.6 | Safety-critical multilingual health reasoning; Berlin's underserved non-German-speaking population is enormous. |
-| 6 | **FirstFour** - live CPR coaching during 112 call | Cardiac arrest survival | 4.6 | Directly life-saving, visible on-stage demo, and the vision-on-hands coaching is a flag-planting 2026 capability. |
-| 9 | **MindBridge** - psychiatric help tonight matcher | Mental health crisis | 4.6 | Safety-critical; addresses a well-documented Berlin crisis-care gap; emotional-narrative pitch lands hard. |
-| 5 | **BreathRoute** - personalized air-quality routing | Environmental health | 4.4 | Affects hundreds of thousands of Berliners with respiratory conditions; personalization is the wedge existing apps miss. |
-| 7 | **SafeWord** - discreet domestic-abuse help | Personal safety | 4.4 | Dual-track conversation is a genuinely novel interaction pattern; solves a problem current systems structurally cannot. |
-| 10 | **PillPath** - polypharmacy interaction checker | Medication safety, elderly | 4.4 | Massive measurable impact on avoidable hospital admissions; multimodal extraction is the demo moment. |
-| 11 | **GoldenPath** - stroke/cardiac hospital routing | Therapeutic-window emergency | 4.4 | Routes patients to the RIGHT hospital, not the closest; jury's medical judge will immediately understand the impact. |
-| 2 | **StandUpAgent** - async voice standup | Universal dev pain | 4.2 | Kept for team-familiarity fallback; weaker jury differentiation. |
-| 8 | **HeatGuard** - heatwave check-in network | Climate health, elderly | 4.2 | Climate-adjacent angle appeals to younger jury members; telli's canonical use case. |
-| 12 | **FoundSafe** - missing vulnerable adult coordinator | Dementia, crisis response | 4.2 | Emotional narrative + multi-source orchestration; harder to scope for a clean 2-minute demo. |
+| 6 | **BriefCraft** - domain-agnostic context engine | Buena + Qontext (dual) | **4.6** | Two prize shots from one build; Qontext is the richest prize; most strategic EV. |
+| 7 | **IncidentFile** - property incident in 60 seconds | Buena | **4.6** | Most dramatic single demo moment; hits Buena's highest-value operational moment. |
+| 8 | **DealMemory** - B2B sales context layer | Qontext | **4.6** | Every sponsor feels the "rep quit, knowledge left with them" pain; emotional pitch lands. |
+| 10 | **AnsweredFromZero** - founder solo growth agent | Peec AI | **4.6** | Direct hit on "from zero" framing; most teams will default to established-brand angle. |
+| 11 | **CitationForge** - third-party citation outreach | Peec AI | **4.6** | Turns Peec's data into action Peec itself has not built; judges will see their own data used novel-ly. |
+| 4 | **CasaContext** - living property Markdown brief | Buena | 4.4 | Breadth of ingestion (5+ source types) is the differentiator; the purest read of the brief. |
+| 5 | **TurnoverBrief** - tenant handover auto-brief | Buena | 4.4 | Crisp demo with a voice-interview punchline; narrower scope than CasaContext. |
+| 9 | **SupportCore** - customer support context layer | Qontext | 4.4 | "Two agents side by side, one hallucinates" is a memorable demo; on-brief verbatim. |
+| 12 | **PromptTerritory** - prompt-claiming roadmap | Peec AI | 4.4 | Sequencing is strategic, but demo is more chart than narrative. |
+| 1 | **HireSignal** - JD to adaptive skills interview | Wildcard | 4.8 | Ian's strongest personal story; but Wildcard is one finalist slot against all other Wildcards. |
+| 3 | **JobMatch Reverse** - candidate-first platform | Wildcard | 5.0 | Max first-person authority for Ian; multimodal credential reasoning is a 2026-capability flex. |
+| 2 | **StandUpAgent** - async voice standup | Wildcard | 4.2 | Kept for safety; lower jury differentiation. |
+
+Note: Wildcard ideas have higher raw averages but lower effective probability of winning, because Wildcard has one finalist slot against all other Wildcard submissions (probably the biggest pool). The track ideas have lower raw averages but compete against a smaller, more specific pool per track.
 
 ### The meta-observation
 
-**Every idea in the new top tier (5.0 / 4.8 / 4.6 / 4.6 / 4.6) passes the "does this save or materially improve Berlin lives?" test.** The framing for the 2-minute video should be a real Berlin scenario, told in first person when possible ("my grandmother lives in a top-floor flat in Wedding..." or "last August, I called 112 for a neighbor and the dispatcher was overwhelmed..."), not a product pitch.
+**The biggest strategic insight of this pass:** the tracks specified the game board. Buena and Qontext are near-duplicate briefs (vertical vs horizontal context engine). This means **BriefCraft (idea 6) is almost strictly dominant** as long as we can execute the dual submission without scope collapse. One codebase, two prize pools, two shots at a finalist slot.
 
-**The shift in this pass:** previous iterations leaned on existing business analogs for credibility. That framing is dropped. Every idea here is justified by the Berlin-specific problem it solves and by a 2026-AI capability (multimodal reasoning on photos/video/voice, parallel phone orchestration, real-time multi-source data synthesis) that would not have been possible 18 months ago. The jury will recognize this; it is exactly the flavor MedAccura won on in January.
+**Peec AI track has the cleanest "from zero" wedge.** Every existing AI-visibility tool is built for established marketing teams. The brief explicitly says "early-stage startups from zero." Ideas 10 and 11 (AnsweredFromZero and CitationForge) solve for founders, not CMOs. The jury from Peec AI will recognize immediately what is being built.
 
-**Tiebreaker rule:** when scores are tied, prefer the idea where the team can credibly demonstrate the "wow moment" live on stage in under 2 minutes, with a visible before/after and a palpable human stake. By that rule the practical shortlist is:
+**Wildcard is the hardest competition pool but retains Ian's first-person authority advantage.** JobMatch Reverse remains a strong personal-story pick. If the team has 4+ members and can plausibly run two parallel workstreams, one person can pre-prototype a Wildcard submission alongside the main track pitch - but this is a risky scope expansion.
 
-- **FirstFour** (cardiac arrest coaching) - highest emotional stakes, hardest technical flex, visibility of multimodal vision+voice
-- **MindBridge** (mental health tonight) - safety-critical reasoning + live outbound coordination
-- **GoldenPath** (stroke/cardiac routing) - the doctor-judge test: would a physician immediately say "I need this in my ER"
-- **PillPath** (polypharmacy) - most tractable in 15h; huge measurable impact
+**Tiebreaker rule:** when scores are tied, pick the idea whose 2-minute video can show the jury their own brief text being solved on screen. CasaContext, IncidentFile, BriefCraft, and SupportCore all pass this test most directly. Peec ideas pass it second-best. Wildcards are farther from any brief text.
 
-If Ian's first-person authority angle carries weight for the team, **JobMatch Reverse** and **HireSignal** remain the personal-story choices.
+### Strong recommendation
 
-**Strong recommendation:** Lock the decision between **FirstFour**, **MindBridge**, and **JobMatch Reverse**. FirstFour for maximum jury impact and technical showcase. MindBridge for mission depth. JobMatch Reverse for execution reliability and Ian's first-person story.
+Lock the decision among these three options:
+
+1. **BriefCraft (idea 6)** - highest strategic EV. Dual submission; Qontext prize is the most valuable; Buena prize is a backup. Execution risk is highest because of ambition, but the team composition can handle it if we have 3-4 people.
+
+2. **IncidentFile (idea 7)** - single-track focus on Buena with the most dramatic demo moment. Easier to execute well; narrower upside (one prize pool).
+
+3. **AnsweredFromZero (idea 10)** - Peec AI-only, lowest execution risk, still hits a Euro 2,500 prize with a crisp demo. Good choice if the team wants one clean win over a strategic gamble.
+
+**Tactical playbook for Saturday morning:** in the first 90 minutes at the venue, we walk the Qontext and Buena sponsor booths. If both sponsors say "we want to see integrations with X and Y real source types" in a way that is compatible, lock BriefCraft. If the briefs drift apart in conversation, commit to IncidentFile (Buena only) and do not look back.
 
 ---
 
