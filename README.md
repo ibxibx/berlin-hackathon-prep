@@ -242,33 +242,7 @@ Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable w
 
 ---
 
-### Idea 4 - MedStockNow: find the medicine you can actually get today
-
-> Patient or caregiver types or voice-dictates a drug name. In under 60 seconds, the agent returns: live stock across nearby pharmacies with distance and price, legal generic equivalents with price delta, insurance-coverage status per option, and - if everything is out - an automated phone call to the top 3 pharmacies asking expected restock time. For high-cost drugs, surfaces patient-assistance programs the patient qualifies for.
-
-**Theme:** Medicine access, care for the chronically ill
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - drug-name parsing (misspellings, brand vs active ingredient), generic-equivalence reasoning, eligibility filtering
-- **Tavily** - live pharmacy stock scraping (several German chains publish this), drug shortage feeds from BfArM
-- **telli** - places the real phone call to pharmacies to confirm stock / restock
-- **Gradium** - voice input for elderly users who won't type long drug names
-- **ai|coustics** - cleans the live pharmacy call audio for reliable transcription
-
-**The wow moment:** Live on stage, type "Eliquis 5mg" into the phone. Screen shows 4 nearby pharmacies (2 out, 1 in, 1 unknown), the agent auto-dials the unknown one through telli, and 40 seconds later the pharmacist's answer is transcribed back into the dashboard: "yes, 12 packs in stock." The jury will clap.
-
-**Technical complexity:** High. Drug reasoning + live stock + real phone calls + insurance logic is four non-trivial layers.
-
-**Feasibility in 15h:** Yellow. We curate a drug list of 50 common chronic-illness meds and pre-seed pharmacy data; live phone call is the one piece we demo end-to-end.
-
-**Business potential:** B2C freemium (free lookup, premium subscription for auto-reminders and insurance navigation). B2B: insurers (Krankenkassen reduce claims when adherence goes up), pharmacy chains paying for routing traffic, patient-assistance program orgs paying for qualified referrals.
-
-**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Business story 5/5
-**Average: 4.4/5**
-
----
-
-### Idea 5 - TriageLine: WhatsApp-first multilingual symptom triage
+### Idea 4 - TriageLine: WhatsApp-first multilingual symptom triage
 
 > In Berlin, hundreds of thousands of residents don't have a Hausarzt and can't easily get one. A user sends symptoms to a WhatsApp number in any form - text, voice, or a photo of a rash or eye. Agent runs a safe structured triage in the user's language (Turkish, Arabic, Ukrainian, Russian, English, German), outputs a clear next step - "ER now", "GP within 3 days", "self-care, here's what to watch for" - and for urgent cases calls KV-116117 or finds an open walk-in clinic in real time.
 
@@ -296,190 +270,219 @@ Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable w
 
 ---
 
-### Idea 6 - BenefitRecovery: the EUR 3,000 you never claimed
+### Idea 5 - BreathRoute: Berlin's real air-quality routing for people who can't just "go outside"
 
-> Billions in German welfare benefits go unclaimed every year because the rules are too complex - Wohngeld, Kinderzuschlag, Bildungspaket, Buergergeld top-ups, energy-relief, city-level programs. User answers 5 questions by voice. Agent figures out which federal, state, and city-level benefits they qualify for, totals the annual sum, pre-fills every form, and books the Termine. Monetization: success-fee cut on the first year's recovered amount.
+> Berlin has wildly uneven air quality between streets a block apart. For a kid with asthma, an elderly person with COPD, or someone in their third trimester, "nice day for a walk" is not a universal statement. BreathRoute takes your personal risk profile (asthma, COPD, pregnancy, heart disease) and gives you two outputs: (1) a 1-5 "go outside today" score for your exact postcode, and (2) a walking, cycling, or Kinderwagen-compatible route that minimizes your specific exposure - around that one construction site on Karl-Marx-Strasse, away from the A100 when wind comes from the south.
 
-**Theme:** Income fairness, hidden entitlements, bureaucratic exclusion
+**Theme:** Environmental health, chronic respiratory illness, pregnancy safety
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - navigates the decision tree across many overlapping programs; generates pre-filled forms
-- **Tavily** - current rule tables for each program (these change every year, hard-coding is a trap)
-- **telli** - books the Termine at Jobcenter, Wohngeldstelle, Familienkasse
-- **Qontext** - maintains the household state across multiple applications
-- **Lovable** - the dashboard with the big "you qualify for EUR 2,860 per year" number front and center
+- **Gemini 3** - multimodal reasoning over air quality sensor data + weather + traffic patterns + the user's health profile, personalized explanation
+- **Tavily** - live scrape of Berlin's UBA air-quality stations, Senatsverwaltung construction permits (huge particulate source), traffic data
+- **Gradium** - voice output for elderly users; voice input for "how is my breathing right now, should I go to my doctor"
+- **Qontext** - longitudinal tracking of your exposure days, flags when cumulative PM2.5 exposure crosses thresholds that matter for your condition
+- **Lovable** - the map dashboard
 
-**The wow moment:** A teammate pretends to be a single parent with 2 kids earning EUR 2,100/month. Ninety seconds of voice conversation later: "you qualify for Wohngeld EUR 147/month, Kinderzuschlag EUR 250/month, Bildungspaket annually EUR 380 - total EUR 5,144/year you're not getting." Forms appear pre-filled with placeholders for sensitive fields.
+**The wow moment:** On stage, drop a Berlin postcode and pick "6-year-old with mild asthma." Thirty seconds later: the block-by-block AQI map, today's "go outside" score of 3/5, and three alternative routes from this address to the nearest Spielplatz color-coded by cumulative PM2.5 exposure. The best route is 4 minutes longer and reduces exposure by 62 percent.
 
-**Technical complexity:** High. The eligibility reasoning across federal + state + city programs is the real engineering.
+**Technical complexity:** High. Fine-grained air-quality interpolation + medical-condition-specific thresholds + route optimization under a non-standard cost function is real engineering.
 
-**Feasibility in 15h:** Green. Most of the work is prompt engineering + a good form-filler. Scope to Berlin residents + 4 programs.
+**Feasibility in 15h:** Yellow. UBA sensor data is public; the interpolation between sparse sensors is the interesting bit. Scope to one Berlin Bezirk for the demo.
 
-**Business potential:** Very strong. Proven model: UK's "Billy", "Entitledto", US "Benefits.com" all raised serious rounds. German market is even more fragmented (good for a tech wedge) and has no dominant player. Revenue: 10-20% success fee or EUR 9.99/month subscription.
+**Why it's life-improving in Berlin:** Berlin has roughly 170,000 children with asthma, 60,000 residents with COPD, and 35,000 pregnancies per year. None of them currently get personalized exposure guidance. Air-quality apps show a single number for the whole city, which is medically useless.
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 3/5, Business story 5/5
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 4/5, First-person authority 3/5, Life-impact 5/5
 **Average: 4.4/5**
 
 ---
 
-### Idea 7 - RentShield: know exactly what your landlord is overcharging you
+### Idea 6 - FirstFour: live CPR coaching while the Notarzt is still on its way
 
-> Tenant uploads their Mietvertrag (photo or PDF). Agent extracts Kaltmiete, Nebenkosten, apartment size, year of build, district. Cross-references the official Berlin Mietspiegel and current comparable listings. Returns a one-pager: "your rent is EUR 187/month above the legal Mietspiegel range for your apartment class. Here is the BGB paragraph to cite, a ready-to-send Mietminderung letter, and Berlin tenants win this in court with ~85% success rate."
+> Berlin's ambulance arrival time has stretched past 12 minutes in many districts. Cardiac arrest survival drops roughly 10 percent for every minute without CPR. The first four minutes are when bystanders decide whether someone lives. FirstFour is a WhatsApp/phone line that takes over the moment you call 112: parallel to the dispatcher, it calmly voice-coaches you through CPR using the phone's camera to check your hand position and compression depth, talks you through AED retrieval, and keeps you from panicking. When the Notarzt arrives, it hands off a 60-second structured summary of what happened - compressions given, breathing status, estimated time down.
 
-**Theme:** Income fairness, housing, legal empowerment
-
-**Track fit:** Buena (property track prize)
+**Theme:** Emergency response, cardiac arrest survival, bystander CPR
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - OCR + extraction from messy contract PDFs; legal reasoning against Mietspiegel tables
-- **Tavily** - live comparable-listing lookup for sanity check
-- **Qontext** - stores the tenant's evidence pack across the multi-week dispute process
-- **Lovable** - the dashboard + the letter-generation UI
-- **Aikido** - security framing matters when the input is a signed legal contract
+- **Gemini 3** - multimodal: watches your hands via phone camera while coaching your voice, judges compression depth and rate, detects if the patient is breathing
+- **Gradium** - calm, clear voice coaching under extreme user stress (voice quality matters more here than almost anywhere)
+- **ai|coustics** - cleans up frantic home audio so the system can hear the patient's breathing and your questions
+- **telli** - the phone line itself, and the handoff call to arriving paramedics
+- **Qontext** - keeps track of what's been done so the handoff summary is accurate
 
-**The wow moment:** A teammate uploads a real (anonymized) Mietvertrag. Thirty seconds later, the screen shows the overcharge calculation, the BGB paragraph highlighted, and a complete Mietminderung letter ready for German postal mail.
+**The wow moment:** Live on stage, a teammate pretends their colleague collapsed. They call the demo number on speakerphone. The agent's voice coaches them through the first 90 seconds: "kneel beside them, hands one on top of the other on the breastbone, push hard and fast, I'll count with you, one, two, three, four..." At 90 seconds a "paramedic arrives" and the agent immediately generates a spoken handoff summary on the line.
 
-**Technical complexity:** Medium-high. OCR + legal-rule reasoning against structured Mietspiegel data + letter generation in formal German.
+**Technical complexity:** Very high. Voice + vision + real-time coaching under stress + calm-but-urgent persona + clean handoff. Safety-critical by definition.
 
-**Feasibility in 15h:** Green. Mietspiegel tables are public, BGB is public, formal letter template is straightforward. The OCR/extraction step is the risk; pre-test with 5 real contracts on Saturday night.
+**Feasibility in 15h:** Yellow. The phone camera + Gemini vision on hand position is the hard part; we demo this with a pre-recorded compressions clip if live vision is not reliable enough.
 
-**Business potential:** Strong. Proven model: British "Resolver" and "Flatfair", German "Conny" (formerly wenigermiete.de) - Conny does exactly this and sued landlords on behalf of tenants for tens of millions of EUR. They were acquired by LexFox. A voice-first, AI-native version is a credible wedge into the same market.
+**Why it's life-saving in Berlin:** Berlin has roughly 8,000 out-of-hospital cardiac arrests per year. Current bystander-CPR rate is under 40 percent. Every point of improvement is lives saved. This is not a business pitch; it is a "build it because someone in Berlin dies every week who should not have" pitch.
 
-**First-person authority:** Universal in Berlin. Every resident of Berlin has an opinion about rent; a Berlin jury will feel this one immediately.
+**Safety framing:** Demo must include the 112-first disclaimer, the "hand off to dispatcher instantly, do not replace" disclaimer, and the "all suggestions follow ERC 2025 guidelines" credibility line.
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 5/5, Business story 5/5
-**Average: 4.8/5**
-
----
-
-### Idea 8 - CareCall: weekly voice check-ins for elderly chronic-illness patients
-
-> Elderly patients with diabetes, heart failure, or COPD decompensate between GP visits because nobody is watching. CareCall auto-dials the patient weekly (voice-only, no app, no smartphone), runs a 5-minute condition-specific protocol - "how is your breathing today on a scale of 1 to 10; did you take your evening meds; have you weighed yourself" - flags red flags for the GP or community nurse, and just talks warmly for a minute because isolation itself is a health risk.
-
-**Theme:** Chronic illness management, elder care, healthcare cost reduction
-
-**Partner tech (all load-bearing):**
-- **telli** - the core product. Places warm, reliable outbound calls at scheduled times.
-- **Gradium** - voice conversation with natural cadence (elderly patients hate robotic TTS)
-- **ai|coustics** - critical: elderly patients often have poor mics, hearing aids, or background TV
-- **Gemini 3** - protocol reasoning + red-flag detection + empathetic conversation
-- **Qontext** - tracks the patient's trajectory week over week, surfaces "this is the third week they've mentioned dizziness"
-
-**The wow moment:** Live on stage, trigger a call to a teammate playing an 80-year-old with diabetes. The full natural conversation plays out on speakerphone. At the end, a dashboard lights up: "red flag - patient reports 2kg weight gain in 5 days and increased swelling. Notify GP."
-
-**Technical complexity:** High. Voice naturalness + clinical protocol adherence + red-flag detection + multi-week memory.
-
-**Feasibility in 15h:** Green. telli handles the hard parts; we own the conversation flow and dashboard.
-
-**Business potential:** Very strong and underserved in Germany. Paid by Krankenkassen (insurers), because preventing one hospital readmission saves them EUR 5,000+. US parallels: Papa, Honor - both have raised hundreds of millions. German Krankenkassen have explicit mandates to fund preventive care.
-
-**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Business story 5/5
-**Average: 4.4/5**
-
----
-
-### Idea 9 - WageRadar: know your real market rate before you sign
-
-> Job-seeker pastes an offer letter or job description. Agent pulls live comparable salaries from Kununu, Glassdoor, StepStone, LinkedIn, adjusts for role, years of experience, city, company size, and reports: "your offer is 12% below market median for your profile. Here are the 3 highest-leverage asks for your negotiation, based on what this company has conceded in past hires." Then: voice role-play where the agent plays the recruiter and the user practices the negotiation call live.
-
-**Theme:** Income fairness, wage transparency, hiring asymmetry
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - offer decomposition, comparable synthesis, negotiation coaching reasoning
-- **Tavily** - live salary-data scraping + company-specific negotiation signal (Kununu reviews mention "they flex on signing bonus")
-- **Gradium** - the voice role-play (this is the demo)
-- **ai|coustics** - cleans the role-play audio so the feedback module can score tone
-- **Lovable** - the dashboard
-
-**The wow moment:** Live on stage, a teammate takes a 60-second negotiation role-play call. At the end, the dashboard shows a scored transcript: "you conceded too early on base; you missed the signing bonus leverage; here is the sentence you should have said."
-
-**Technical complexity:** Medium-high. The voice role-play with scored feedback is the technical flex.
-
-**Feasibility in 15h:** Green. Salary data scraping + a well-prompted role-play + basic scoring is doable.
-
-**Business potential:** Strong B2C subscription potential (Levels.fyi has proven users pay for salary transparency). B2B: executive coaching firms, career-transition programs, MBA career offices, diversity hiring orgs (closing the gender pay gap starts with knowing the gap).
-
-**First-person authority:** High for Ian as an active job-seeker negotiating offers right now.
-
-**Scores:** Creativity 4/5, Complexity 4/5, Partner fit 5/5, First-person authority 5/5, Business story 5/5
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Life-impact 5/5
 **Average: 4.6/5**
 
 ---
 
-### Idea 10 - FoodRescue: redirect tonight's restaurant surplus to the people who need it
+### Idea 7 - SafeWord: discreet help when you can't say what's happening
 
-> Restaurants, bakeries, and supermarkets throw away roughly a third of their daily stock every evening. Food banks and shelters can't plan around ad-hoc donations. FoodRescue is a two-sided voice agent. At closing time, restaurant staff dictate a 10-second voice note: "8kg bread, 20 pastries, 12 salads, available until 10pm." Agent auto-matches to the nearest food bank or shelter with capacity and the right dietary mix, and dispatches a volunteer driver via phone call. Zero app install on the donor side.
+> A domestic abuse victim often cannot say what is happening to them. The Hilfetelefon is overwhelmed and phone-only. SafeWord is a voice-first agent that looks and sounds like anything else - a food delivery app, a weather check-in, a fake language-learning lesson - chosen by the user in advance. Saying a specific phrase ("I'd like the vegetarian option tonight") triggers a silent workflow: precise location captured, Berlin-specific safe-house availability queried in real time, a trusted contact notified, and if needed police dispatched with a precise description of the situation the victim has pre-written in safe moments. The interface stays innocent the whole time.
 
-**Theme:** Food access, food waste, urban inequality
+**Theme:** Domestic violence, acute personal safety, coercive control
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - parses messy voice notes about inventory + matches by dietary mix, capacity, distance
-- **Gradium** - voice capture from restaurant staff during closing crunch
-- **ai|coustics** - restaurant kitchens are loud; audio cleanup is load-bearing
-- **telli** - dispatches volunteer drivers and confirms pickup windows
-- **Lovable** - the coordinator dashboard for the food bank
+- **Gemini 3** - natural-sounding cover conversation that can run for minutes while doing work in the background
+- **Gradium** - voice that can match the cover persona (food delivery, friend, meditation app)
+- **Tavily** - live Berlin safe-house availability (Frauenhaus beds are scarce and change hourly), nearest police station, open counseling services right now
+- **telli** - places the notification call to a trusted contact or emergency services, speaking the pre-written situation description on the victim's behalf
+- **Qontext** - the victim's pre-written "escape plan" maintained privately and available the second the safe word fires
 
-**The wow moment:** A teammate playing a pizzeria owner dictates tonight's surplus into their phone. Twenty seconds later, a volunteer driver's phone rings (live, on stage), the driver accepts, and the food-bank dashboard updates with ETA. Zero friction on the restaurant side.
+**The wow moment:** On stage, a teammate opens what looks like a meditation app, says "I want to try the calming breath exercise for tonight." The app replies calmly about breathing. Meanwhile, on a second screen, the operator dashboard shows: GPS locked, Frauenhaus Spandau has 1 bed, trusted contact notified by SMS, outbound call to a listed friend ready to dial. The victim's interface never breaks character.
 
-**Technical complexity:** Medium-high. Voice parsing under real conditions + multi-agent coordination + phone dispatch.
+**Technical complexity:** High. Dual-track conversation (innocent foreground + urgent background) + trigger detection without false positives + real-time Frauenhaus capacity queries.
 
-**Feasibility in 15h:** Green. telli does the hard phone part; the matching logic is straightforward.
+**Feasibility in 15h:** Yellow. The cover-app illusion is the visible engineering feat. Scope to one cover persona and Berlin-only safe-house list for the demo.
 
-**Business potential:** Paid by restaurant chains as part of ESG/CSR budget (tax-deductible in Germany), by corporate sponsors wanting impact metrics, by municipalities. Parallels: Too Good To Go (unicorn, Danish), Olio (UK). Neither owns the operational food-bank side; that's the wedge.
+**Why it's life-saving in Berlin:** Berlin records over 16,000 domestic-violence cases per year and the numbers are rising. The Hilfetelefon receives hundreds of thousands of calls nationally per year and cannot reach everyone; many victims can never call openly. Covert help is an unmet need that existing systems cannot serve because they require the victim to speak freely.
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 3/5, Business story 5/5
+**Safety and ethics framing:** Demo must discuss the false-positive risk, the trusted-contact safeguard, and the collaboration model with Berlin Frauennotrufe. This is the kind of idea that wins a jury precisely because the team has thought hard about the failure modes.
+
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 2/5, Life-impact 5/5
 **Average: 4.4/5**
 
 ---
 
-### Idea 11 - AidMatch: refugee and migrant credential recognition, done in a day not a year
+### Idea 8 - HeatGuard: the Berlin heatwave safety net for people who have nobody
 
-> A newly-arrived asylum seeker or migrant brings whatever documents they have - diplomas, work references, licensing certificates - often in Arabic, Farsi, Ukrainian, Tigrinya. Germany's official credential-recognition process (Anerkennung) takes 6-18 months. AidMatch does a first-pass equivalence assessment in 5 minutes: "your Syrian medical degree maps to German Approbation requirements as follows; here are the 3 exams you need; here is a specific Landesaerztekammer contact in Berlin; here are 2 pre-Approbation roles you could take today that count as experience." Handles teachers, nurses, electricians, engineers - not just doctors.
+> Berlin's 2024 and 2025 summers had documented excess deaths during heatwaves, concentrated among isolated elderly residents in top-floor flats without cooling. Current "heatwave warnings" on weather apps do nothing for someone who does not check weather apps. HeatGuard is different: during forecast heat emergencies, it calls registered at-risk residents proactively with a 2-minute voice check ("how are you feeling, have you drunk water today, do you have a fan running"), dispatches volunteer checkers to anyone who does not answer two calls in a row, and coordinates with Berlin's Kuehlraum network so the system actually suggests a cool refuge the person can walk to.
 
-**Theme:** Employment access, integration, recognition of foreign qualifications
+**Theme:** Climate health, elder isolation, heat-related mortality
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal + multilingual credential parsing + mapping to German professional frameworks
-- **Tavily** - live search of Landesaerztekammer, Handwerkskammer, IHK, BQ-Portal resources
-- **telli** - books orientation calls at the relevant Kammer
-- **Gradium** - voice-first intake for users with low German literacy
-- **Qontext** - multi-session memory as the user progresses through the recognition journey
+- **telli** - the core. Warm outbound calls to elderly residents who cannot install apps.
+- **Gradium** - natural voice conversation that does not sound robotic (elderly users hang up on robot voices fast)
+- **ai|coustics** - elderly phones are often poor quality; audio cleanup is load-bearing
+- **Gemini 3** - distress detection from voice (slurred speech, confusion, weakness = possible heatstroke), conversational check-in flow, dispatch decision
+- **Tavily** - live Berlin Kuehlraum / cooling-center availability, weather forecasts, subway stations used as informal cool spaces
+- **Qontext** - keeps the resident's profile (top-floor yes/no, medications that affect heat response, mobility)
 
-**The wow moment:** A teammate uploads a genuine Syrian nursing diploma (translated) and a work reference. Ninety seconds later: a precise mapping against Krankenpflege requirements, the specific Kenntnispruefung the user needs, the Berlin contact point, and 3 bridging roles they can do right now while waiting.
+**The wow moment:** Live on stage, simulate a 38-degree day. A teammate plays an 83-year-old in a top-floor Neukoelln flat. The agent calls, has a warm 90-second conversation, picks up subtle confusion in the person's voice, and immediately dispatches a volunteer ("we would like to send someone round to check on you within the hour") while listing two cool spaces within walking distance.
 
-**Technical complexity:** Very high. Cross-language credential parsing + German professional framework + live Kammer data + journey state.
+**Technical complexity:** Medium-high. Voice-quality distress detection is the technical flex; the orchestration layer is also non-trivial.
 
-**Feasibility in 15h:** Yellow. Scope tightly - 3 professions (nursing, engineering, one Handwerk trade), 4 source languages.
+**Feasibility in 15h:** Green. Most components are straightforward; the distress-detection prompt is the one piece to iterate on.
 
-**Business potential:** Paid by the German federal government (BQ-Portal has explicit modernization budget), by staffing agencies (the healthcare staffing crisis is acute), by corporate diversity programs, by NGOs. German shortage of skilled workers is a national-priority political issue.
+**Why it's life-saving in Berlin:** Heat mortality is rising every year. Berlin's demographic skew means the number of isolated elderly in heat-vulnerable housing is growing. This problem gets worse, not better.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 4/5, Business story 5/5
-**Average: 4.8/5**
+**Scores:** Creativity 4/5, Complexity 4/5, Partner fit 5/5, First-person authority 3/5, Life-impact 5/5
+**Average: 4.2/5**
 
 ---
 
-### Idea 12 - AquaAlert: satellite drought early warning for smallholder farms
+### Idea 9 - MindBridge: psychiatric help available tonight, matched to who will actually take you
 
-> Smallholder farmers in drought-prone regions lose harvests because they learn about water stress only when crops visibly fail - too late. AquaAlert takes a farm's coordinates (GPS pin, voice-described landmark, or a photo), pulls Sentinel-2 satellite imagery weekly, combines with local weather and soil data, and sends a voice message in the farmer's language: "your north field will be water-stressed in 8 days; here is your irrigation priority order; here is the subsidy program you qualify for if you install drip irrigation, with the application form pre-filled."
+> Berlin's psychiatric emergency system is gridlocked. Walking into a Klinik often means a multi-hour wait followed by a referral you cannot get for six weeks. In acute mental health crisis, six weeks might as well be six years. MindBridge is a voice-first agent that triages the user's current state, queries real-time availability across Berlin's crisis services - Krisendienst, Sozialpsychiatrischer Dienst, specific private practices that take walk-ins, specialized services for LGBTQ+ / migrant / young adults - and finds the closest place that has capacity tonight and will see the user without a Hausarzt referral. If nothing is available in person, it matches to an online therapist who can see them in the next 4 hours.
 
-**Theme:** Water access, food security, climate resilience
+**Theme:** Mental health access, crisis care, psychiatric emergency
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - multimodal reasoning over satellite imagery + weather + soil data; generates personalized advice in local language
-- **Tavily** - live weather forecasts, subsidy program data, local agricultural extension resources
-- **Gradium** - voice message output in local language; voice input from farmers who can't read
-- **telli** - optional follow-up call with the farmer to confirm actions; call to subsidy office
-- **Qontext** - tracks the farm across seasons, learns which advice the farmer actually acts on
+- **Gemini 3** - safe triage of mental-health state (never diagnostic; always refers), multi-criterion matching against service capacity
+- **Gradium** - voice-first interaction because users in crisis often cannot navigate text interfaces
+- **ai|coustics** - cleans crisis-state audio (tears, rapid breathing, background noise)
+- **Tavily** - live capacity scraping across Krisendienst, Jugend-KJP, Frauenkrisentelefon, specialist LGBTQ+ and migrant services
+- **telli** - calls the identified service on the user's behalf to hold an appointment slot while the user is still on the line
+- **Qontext** - keeps the journey state across nights so a user returning in a week does not start from zero
 
-**The wow moment:** Live on stage, drop a coordinate pin on a farm in (say) southern Spain or Kenya. Ten seconds later: a color-coded satellite image of the farm's fields, stress prediction for each parcel, a voice message in Spanish/Swahili, and the subsidy application form pre-filled.
+**The wow moment:** Live, a teammate says calmly, "I haven't slept in four days and I'm scared of what I'm thinking about." The agent responds warmly, asks two safety-triage questions, finds three services taking walk-ins this evening within 20 minutes transit, calls the best-matched one to hold a slot, and returns to the user with the address, contact name, and transit route - all in under 2 minutes.
 
-**Technical complexity:** Very high. Vision on satellite imagery is the core technical flex. Combining it with weather data and local subsidies is the product wedge.
+**Technical complexity:** Very high. Safety-critical triage + real-time capacity + empathic tone + live outbound coordination call. This is as technically deep as MedAccura was.
 
-**Feasibility in 15h:** Yellow. Satellite imagery is available free via Copernicus. The vision-reasoning step is the wildcard; prototype early on Saturday night with a fallback of "pre-run analysis on 3 demo farms" if live Gemini vision accuracy is insufficient.
+**Feasibility in 15h:** Yellow. The live-capacity data is the hardest piece; scope the demo to 5 Berlin services with simulated-live availability backing onto real phone numbers.
 
-**Business potential:** Paid by agri-insurance providers (index insurance pricing), by agricultural input companies (Bayer, BASF, Syngenta have channel budgets for African/Latin American markets), by development finance orgs (KfW, IFC). Real money flows through smallholder agriculture via carbon credits and climate-adaptation grants.
+**Why it's life-saving in Berlin:** Berlin has one of the highest rates of young-adult mental health crises in Germany. Waiting lists are documented to be 12+ weeks for standard psychotherapy. Crisis services exist but their availability is opaque. People suffer avoidably in the gap.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 4/5, First-person authority 2/5, Business story 4/5
+**Safety framing:** Demo must foreground Berliner Krisendienst as the primary escalation, include a clear "if you are in immediate danger, 112 is the answer" disclaimer, and show the always-on suicide-prevention protocol.
+
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Life-impact 5/5
+**Average: 4.6/5**
+
+---
+
+### Idea 10 - PillPath: the polypharmacy safety check your GP doesn't have time to do
+
+> Many elderly Berliners take 7+ prescription medications - one from the cardiologist, one from the diabetologist, three from the GP, two over-the-counter. Nobody is looking at the whole picture. Dangerous interactions are a leading cause of avoidable hospital admissions in over-75s. PillPath lets the patient or a family member photograph every medication box they have. The agent extracts all drugs, cross-references every pairwise interaction against current clinical databases, flags dangerous combinations in plain language ("your blood thinner and the new pain medicine together triple your bleeding risk"), and generates a one-page summary the patient can bring to their next GP visit.
+
+**Theme:** Medication safety, elderly care, polypharmacy-related hospital admissions
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - multimodal: photographs of medication boxes to structured drug list, pairwise and n-way interaction reasoning, plain-language explanation at the user's reading level
+- **Tavily** - live clinical interaction databases (ABDA-Datenbank, Rote Liste), drug-safety bulletins from BfArM, recall notices
+- **Gradium** - voice output because reading small text is hard for elderly users; voice input for listing symptoms
+- **Qontext** - the medication list maintained longitudinally so every new prescription gets checked against what's already there
+- **Lovable** - the dashboard and the GP-visit handout
+
+**The wow moment:** On stage, a teammate piles 8 real (empty) medication boxes on a table and photographs them together. Ninety seconds later: complete drug list extracted, two critical interactions flagged in red with plain-language explanations, one moderate interaction in amber, and a one-page printable summary for the next GP visit. A judge who is a doctor will gasp.
+
+**Technical complexity:** High. The multimodal extraction from cluttered photographs + the n-way interaction reasoning (not just pairwise) is genuinely hard.
+
+**Feasibility in 15h:** Green. Interaction databases are accessible; the photo extraction is the one piece to prototype early. Pre-test with 5 real medication sets.
+
+**Why it's life-saving in Berlin:** Medication-interaction-related hospital admissions in Germany are estimated at over 250,000 per year in elderly patients. A single good polypharmacy review prevents on average 2-3 admissions per patient per year. This is a massive, measurable, unmet need.
+
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 4/5, First-person authority 3/5, Life-impact 5/5
+**Average: 4.4/5**
+
+---
+
+### Idea 11 - GoldenPath: getting to the RIGHT hospital in the therapeutic window
+
+> For a stroke, you have roughly 4.5 hours from symptom onset to get tPA thrombolysis. For a heart attack, roughly 90 minutes for stenting. The closest hospital is often NOT the right hospital - only some Berlin hospitals are certified stroke units, only some run 24/7 cath labs. Ambulances usually route correctly, but Ubers, family members driving, and people who walk into the wrong ER waste the therapeutic window. GoldenPath is called by a family member when they recognize symptoms ("my mother's face is drooping and she can't raise her left arm"). It confirms stroke vs non-stroke in 30 seconds, identifies the nearest certified stroke unit with current bed availability, dispatches an ambulance, and if the family is already driving, redirects them AND calls the receiving hospital ahead to prep the team.
+
+**Theme:** Cardiovascular emergency, therapeutic window, hospital routing
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - multimodal symptom triage (voice description + optional video of the person's face for facial-droop detection), real-time routing reasoning
+- **Gradium** - calm voice guidance for the panicking family member
+- **ai|coustics** - cleans frantic-car or frantic-home audio
+- **telli** - parallel calls: 112, redirect family driving, warn receiving hospital team
+- **Tavily** - live bed/team availability across Berlin stroke units and cath labs (this data exists in hospital systems; Berlin has been working on a central registry)
+- **Qontext** - keeps the event state as it unfolds so any handoff has complete context
+
+**The wow moment:** Live on stage, a teammate panicked: "my father just started slurring his words and his right arm fell down when I asked him to raise it." The agent responds calmly in 5 seconds: "this is a possible stroke. I have already called 112. The best hospital for you is Charite Campus Benjamin Franklin, not the closer one - they are certified and have capacity. Do not drive; ambulance will be 8 minutes. Here is what to do while you wait." Simultaneously, the operator dashboard shows: 112 called, Charite CBF notified, family GPS tracked.
+
+**Technical complexity:** Very high. Safety-critical multimodal triage + multi-party phone orchestration + live hospital data.
+
+**Feasibility in 15h:** Yellow. Hospital bed data is the risk; we fake-live it for the demo but frame it as a public data gap we would work to close post-hackathon.
+
+**Why it's life-saving in Berlin:** Stroke is a leading cause of disability in Germany. Treatment delays translate directly to lifelong disability. The routing-to-right-hospital gap is real and documented; Berlin's stroke registry work is public policy.
+
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 2/5, Life-impact 5/5
+**Average: 4.4/5**
+
+---
+
+### Idea 12 - FoundSafe: the first 24 hours when a vulnerable adult goes missing
+
+> When a person with dementia, a mental-health episode, or a cognitive disability wanders off in Berlin, the first 24 hours are decisive. Right now, the family's response is phone calls and panic. Police get involved but have limited resources for non-criminal missing persons. FoundSafe coordinates the first-24-hour response: it ingests everything the family can give (last seen where, photo, clothing, medical needs, places the person feels safe), alerts a verified volunteer network in the precise Berlin neighborhood, queries hospital admissions and police checkpoints for matching persons, and acts as a single coordinator so the family does not have to call 30 places while losing their mind.
+
+**Theme:** Dementia care, mental health crisis, missing vulnerable adults
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - multimodal profile building (photo + description + medical needs), continuous matching against reports
+- **Tavily** - live queries against hospital admission notices, police missing-persons channels, BVG lost-and-found, homeless outreach logs
+- **telli** - the coordination calls - checking with hospitals, shelters, known safe spots, family members
+- **Gradium** - the distressed family member can give everything they know by voice in one go instead of filling forms
+- **Qontext** - the live search state: who's been called, what's been checked, when the last lead was, preventing the family from re-covering the same ground
+
+**The wow moment:** Live on stage, a teammate plays a daughter whose 78-year-old father with early dementia left the flat in Pankow 2 hours ago. She tells the agent everything by voice in 60 seconds. The operator dashboard lights up: photo distributed to 14 volunteers in 800-meter radius around last-seen location, 3 hospitals called, BVG alerted, U-Bahn stations flagged, family's phone ringtone set to escalate on any match. She does not make a single other call herself.
+
+**Technical complexity:** High. The orchestration + volunteer-network coordination + live multi-source querying under emotional pressure is the engineering.
+
+**Feasibility in 15h:** Yellow. The volunteer network is the policy question; for the demo, "14 volunteers notified" is a simulated geo-targeted push.
+
+**Why it's life-improving in Berlin:** Berlin has a significant and rising population with dementia (estimated 60,000+ in the Berlin region) and a large homeless / mental-health crisis population. Missing-person episodes are more common than anyone realizes. Current response is amateur-hour by default.
+
+**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 2/5, Life-impact 5/5
 **Average: 4.2/5**
 
 ---
@@ -488,30 +491,35 @@ Legend for difficulty dots: green = feasible in 15h, yellow = tight but doable w
 
 | # | Idea | Theme | Score | Why it ranks here |
 |---|---|---|---|---|
-| 3 | **JobMatch Reverse** - candidate-first job platform | Employment access, Ian's authority | **5.0** | Max first-person authority for Ian; WorkScanAI inverse; huge TAM with no German player. |
-| 7 | **RentShield** - Mietspiegel enforcement | Housing fairness, Buena track | **4.8** | Track prize shot + every Berliner feels this + legal-grade output is unforgettable demo + proven business model (Conny). |
-| 1 | **HireSignal** - JD to adaptive skills interview | Hiring fairness, Ian's authority | 4.8 | Strongest personal story + voice + adaptive is a genuine technical flex. |
-| 11 | **AidMatch** - refugee credential recognition | Employment access, integration | 4.8 | Nationally strategic problem + multimodal + political tailwinds + direct government buyer. |
-| 5 | **TriageLine** - multilingual WhatsApp triage | Healthcare access | 4.6 | Safety-critical health tech; multilingual is killer in Berlin; Ada/Babylon precedent. |
-| 9 | **WageRadar** - negotiation coach | Income fairness, Ian's authority | 4.6 | Voice role-play is a jury-pleaser; Levels.fyi precedent; Ian's authority. |
-| 4 | **MedStockNow** - medicine + pharmacy routing | Medicine access | 4.4 | Dramatic live-call demo; strong B2B2C model. |
-| 6 | **BenefitRecovery** - unclaimed welfare | Income fairness | 4.4 | Billy/Entitledto precedent; "we found you EUR 2,860" line is unbeatable. |
-| 8 | **CareCall** - elderly chronic-illness check-ins | Disease / elder care | 4.4 | telli's core use case; Papa/Honor precedent; Krankenkassen ready to pay. |
-| 10 | **FoodRescue** - restaurant surplus routing | Food access | 4.4 | Two-sided dispatch demo is visible impact; Too Good To Go precedent. |
-| 2 | **StandUpAgent** - async voice standup | Universal dev pain | 4.2 | Universal relatability; weaker jury differentiation. |
-| 12 | **AquaAlert** - drought early warning | Water / food security | 4.2 | Strong problem, less Berlin-immediate; vision-on-satellite is a technical flex. |
+| 3 | **JobMatch Reverse** - candidate-first job platform | Employment access, Ian's authority | **5.0** | Max first-person authority for Ian; multimodal credential reasoning is a genuine 2026-capability demo. |
+| 1 | **HireSignal** - JD to adaptive skills interview | Hiring fairness, Ian's authority | 4.8 | Strongest personal story + voice + adaptive reasoning is a real technical flex. |
+| 4 | **TriageLine** - multilingual WhatsApp triage | Healthcare access | 4.6 | Safety-critical multilingual health reasoning; Berlin's underserved non-German-speaking population is enormous. |
+| 6 | **FirstFour** - live CPR coaching during 112 call | Cardiac arrest survival | 4.6 | Directly life-saving, visible on-stage demo, and the vision-on-hands coaching is a flag-planting 2026 capability. |
+| 9 | **MindBridge** - psychiatric help tonight matcher | Mental health crisis | 4.6 | Safety-critical; addresses a well-documented Berlin crisis-care gap; emotional-narrative pitch lands hard. |
+| 5 | **BreathRoute** - personalized air-quality routing | Environmental health | 4.4 | Affects hundreds of thousands of Berliners with respiratory conditions; personalization is the wedge existing apps miss. |
+| 7 | **SafeWord** - discreet domestic-abuse help | Personal safety | 4.4 | Dual-track conversation is a genuinely novel interaction pattern; solves a problem current systems structurally cannot. |
+| 10 | **PillPath** - polypharmacy interaction checker | Medication safety, elderly | 4.4 | Massive measurable impact on avoidable hospital admissions; multimodal extraction is the demo moment. |
+| 11 | **GoldenPath** - stroke/cardiac hospital routing | Therapeutic-window emergency | 4.4 | Routes patients to the RIGHT hospital, not the closest; jury's medical judge will immediately understand the impact. |
+| 2 | **StandUpAgent** - async voice standup | Universal dev pain | 4.2 | Kept for team-familiarity fallback; weaker jury differentiation. |
+| 8 | **HeatGuard** - heatwave check-in network | Climate health, elderly | 4.2 | Climate-adjacent angle appeals to younger jury members; telli's canonical use case. |
+| 12 | **FoundSafe** - missing vulnerable adult coordinator | Dementia, crisis response | 4.2 | Emotional narrative + multi-source orchestration; harder to scope for a clean 2-minute demo. |
 
 ### The meta-observation
 
-**Four ideas now sit in the top tier (5.0 / 4.8 / 4.8 / 4.8):** JobMatch Reverse, RentShield, HireSignal, AidMatch. All four have genuine first-person authority available (Ian as job-seeker, anyone living in Berlin for RentShield, Ian for HireSignal, and the city is full of people living AidMatch's problem who could be pitched to join the team on Saturday morning).
+**Every idea in the new top tier (5.0 / 4.8 / 4.6 / 4.6 / 4.6) passes the "does this save or materially improve Berlin lives?" test.** The framing for the 2-minute video should be a real Berlin scenario, told in first person when possible ("my grandmother lives in a top-floor flat in Wedding..." or "last August, I called 112 for a neighbor and the dispatcher was overwhelmed..."), not a product pitch.
 
-**Business-model quality is the new explicit filter.** Every top-tier idea names a credible customer who will pay. RentShield has Conny as a proven EUR-tens-of-millions reference. BenefitRecovery has Billy. FoodRescue has Too Good To Go. CareCall has Papa and Honor. WageRadar has Levels.fyi. Pitching against a known analog is strategic: the jury does not have to imagine the business, only the wedge.
+**The shift in this pass:** previous iterations leaned on existing business analogs for credibility. That framing is dropped. Every idea here is justified by the Berlin-specific problem it solves and by a 2026-AI capability (multimodal reasoning on photos/video/voice, parallel phone orchestration, real-time multi-source data synthesis) that would not have been possible 18 months ago. The jury will recognize this; it is exactly the flavor MedAccura won on in January.
 
-**Google DeepMind (primary sponsor) publicly backs "AI for good" initiatives** including the Norrsken / Nvidia / Lovable Fixathon. Humanitarian framing is unlikely to be penalized by this specific jury mix; it is plausibly rewarded.
+**Tiebreaker rule:** when scores are tied, prefer the idea where the team can credibly demonstrate the "wow moment" live on stage in under 2 minutes, with a visible before/after and a palpable human stake. By that rule the practical shortlist is:
 
-**Tiebreaker rule:** When creativity, complexity, and partner fit are tied at the top, pick the idea whose opening video line the team can tell truthfully in first person. Then: pick the one with the cleanest already-public business analog, so the pitch earns less imagination debt.
+- **FirstFour** (cardiac arrest coaching) - highest emotional stakes, hardest technical flex, visibility of multimodal vision+voice
+- **MindBridge** (mental health tonight) - safety-critical reasoning + live outbound coordination
+- **GoldenPath** (stroke/cardiac routing) - the doctor-judge test: would a physician immediately say "I need this in my ER"
+- **PillPath** (polypharmacy) - most tractable in 15h; huge measurable impact
 
-**Strong recommendation:** Lock the final call between **JobMatch Reverse** and **RentShield**. JobMatch Reverse if Ian wants the idea most-aligned with his current life and post-hackathon trajectory. RentShield if the team wants a track-prize double shot and a more politically charged pitch.
+If Ian's first-person authority angle carries weight for the team, **JobMatch Reverse** and **HireSignal** remain the personal-story choices.
+
+**Strong recommendation:** Lock the decision between **FirstFour**, **MindBridge**, and **JobMatch Reverse**. FirstFour for maximum jury impact and technical showcase. MindBridge for mission depth. JobMatch Reverse for execution reliability and Ian's first-person story.
 
 ---
 
