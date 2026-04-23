@@ -160,117 +160,43 @@ From the Big Berlin Hack poster and the Luma event page. The rule is typically "
 
 ## Shortlisted ideas (analyzed in detail)
 
-Each idea is scored 1-5 on the five strategic filters. **Anything below 4/5 average is cut.** These eight ideas survived an initial filter of ~20 candidates.
+Each idea is scored 1-5 on the five strategic filters. These 12 ideas survived an initial filter of ~30 candidates. The original shortlist was dominated by SaaS/dev-tool angles; on Ian's direction we replaced six of them with ideas targeting more acute daily problems - access to medicines and treatment, joblessness and discrimination in hiring, income inequality, and food/water accessibility. Two original ideas (HireSignal, StandUpAgent) were retained.
 
 Legend for difficulty dots: 🟢 feasible in 15h · 🟡 tight but doable with discipline · 🔴 only if a teammate has prior art in the exact stack
 
 ---
 
-### Idea 1 - ClaimPilot: Voice-first insurance claim intake
+### Idea 1 - HireSignal: Job description -> realistic skills interview in 5 minutes
 
-> A claimant calls a number, speaks their claim in natural language in any condition (car accident, flooded basement, lost luggage). The agent asks clarifying questions, extracts structured claim data, checks it against policy terms fetched live, and produces a filing-ready claim package + fraud-risk score.
-
-**Track fit:** 🎯 **Inca** (insurance track prize)
+> Recruiter or hiring manager pastes a job description. Agent generates a *specific*, *hands-on*, adaptively difficult interview (not generic STAR-question fluff) in the candidate's browser. As the candidate answers via voice, difficulty adjusts live. At the end, recruiter gets a structured signal report - not a yes/no - scoring on the actual skills the JD implied.
 
 **Partner tech (all load-bearing):**
-- **Gradium** - real-time voice conversation
-- **ai\|coustics** - cleans up claimant audio (they're stressed, it's noisy)
-- **Gemini 3** - reasoning + structured extraction + long-context policy doc ingestion
-- **Tavily** - for regulatory/policy lookups if the claim is cross-jurisdictional
-- **telli** - the actual phone pipe for the demo call
+- **Gemini 3** - JD decomposition into a skill tree, adaptive question generation, scoring
+- **Gradium** - real-time voice for the candidate-facing interview
+- **ai|coustics** - clean up home-office audio (this directly affects perceived interview quality)
+- **Qontext** - candidate-session memory for adaptive difficulty
+- **Lovable** - both dashboards (recruiter + candidate)
 
-**The wow moment:** Someone on the team literally calls the demo number from their phone in front of the jury, describes a fake fender-bender, and a complete filled-out claim form appears on the screen in 90 seconds.
+**The wow moment:** Paste a real Anthropic or Neo4j job description (both relevant to Ian's network). Two minutes later, a judge takes the live interview themselves on stage. At the end, the dashboard scores them in real time on the specific skills.
 
-**Technical complexity:** High. Voice pipeline + STT + structured extraction + RAG over policy docs + fraud heuristics. Five real moving parts.
+**Technical complexity:** High. Adaptive questioning is non-trivial, and doing it in real time over voice is a visible engineering feat.
 
-**Feasibility in 15h:** 🟡 Tight. We skip fraud scoring v1 and make it a placeholder. Core pipeline is absolutely doable.
+**Feasibility in 15h:** Tight. We constrain to technical JDs only (narrower question space) to make the adaptive loop tractable.
 
-**Risks:** Audio quality during live demo in a noisy hackathon hall. Mitigation: pre-record the call for the video, live-demo only if the room is quiet.
+**First-person authority:** Ian is literally job-hunting right now and is evaluating how to signal skills to hiring managers. This idea has the strongest first-person authority of the list for you specifically, and the pitch writes itself: "I got tired of shallow interviews eight weeks into my job search, so we built the thing we wished existed on both sides."
 
-**Scores:** Creativity 4/5 · Complexity 5/5 · Partner fit 5/5 · First-person authority 3/5 (none of us work in insurance - need to research fast) · Company story 5/5
-**Average: 4.4/5 ✅**
+**Scores:** Creativity 4/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 5/5
+**Average: 4.8/5 (top-ranked)**
 
 ---
 
-### Idea 2 - SolarScout: 30-second rooftop quote from a postcode
-
-> Installer or homeowner types in a German postcode + monthly electricity bill. Agent pulls satellite imagery, estimates usable roof area, fetches current electricity tariffs + feed-in rates + regional subsidies, and returns a full solar install quote with payback period - in under 60 seconds. Then it can book a site visit via voice call.
-
-**Track fit:** 🎯 **Reonic** (renewable installers track prize)
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - vision on satellite image (roof area / orientation estimation) + reasoning
-- **Tavily** - live tariffs, subsidies, feed-in rates (these change quarterly in Germany)
-- **telli** - books the installer site visit via automated call
-- **Lovable** - the frontend in 30 minutes instead of 6 hours
-
-**The wow moment:** Postcode → 60 seconds later → full quote with an annotated satellite image of *their actual roof* with panel layout overlaid.
-
-**Technical complexity:** High. Vision + geospatial reasoning + real-time data aggregation + financial calculation + voice booking.
-
-**Feasibility in 15h:** 🟡 Tight but doable. The vision estimation is the wildcard - we'd prototype it early Saturday night and have a fallback of "use a pre-annotated roof dataset" if Gemini vision isn't accurate enough on real imagery.
-
-**Risks:** Satellite imagery licensing. Mitigation: use OpenStreetMap / public aerial tiles for the demo.
-
-**Scores:** Creativity 4/5 · Complexity 5/5 · Partner fit 5/5 · First-person authority 3/5 · Company story 5/5
-**Average: 4.4/5 ✅**
-
----
-
-### Idea 3 - TenantTriage: Property-manager inbox that handles itself overnight
-
-> A small-landlord or property manager forwards their tenant inbox to TenantTriage. The agent reads every message, classifies urgency (leak vs. lightbulb), drafts a reply in the landlord's voice, auto-schedules a handyman via voice call for anything in the "send someone" bucket, and escalates only the ~5% that genuinely need human judgment.
-
-**Track fit:** 🎯 **Buena** (property track prize)
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - classification, drafting in landlord's tone, extraction
-- **Qontext** - maintains per-tenant context across conversations (crucial - a "the sink is still leaking" message only makes sense with the prior thread)
-- **Entire** - the human-in-the-loop approval flow for the escalated ~5%
-- **telli** - makes the actual outbound call to the handyman, schedules the appointment
-- **Lovable** - dashboard
-
-**The wow moment:** Scroll through an inbox with 40 real-looking tenant emails. Hit "Run overnight triage." Watch the inbox re-color itself in 20 seconds: 35 auto-replied, 3 handymen dispatched (show the call recording), 2 escalated with summary + recommended action.
-
-**Technical complexity:** High. Multi-agent with memory, tone-conditioned generation, voice dispatch, approval queue.
-
-**Feasibility in 15h:** 🟡 Tight. We cheat by pre-loading a synthetic inbox rather than hooking a real IMAP. That's fine - the demo is about the triage, not the mail plumbing.
-
-**Scores:** Creativity 5/5 · Complexity 5/5 · Partner fit 5/5 · First-person authority 2/5 (unless someone on the team has rented in Berlin 🙃) · Company story 5/5
-**Average: 4.4/5 ✅**
-
----
-
-### Idea 4 - ShipShape: Hands-free QA for e-commerce product copy at scale
-
-> E-commerce brands have thousands of product pages with inconsistent tone, missing details, SEO gaps, and brand-voice drift. ShipShape ingests a product catalog (CSV or Shopify URL), audits every page against the brand's style guide, generates specific rewrites, and - critically - tracks how well the brand currently ranks in ChatGPT/Perplexity answers and predicts the uplift from the fixes.
-
-**Track fit:** 🎯 **Peec AI** (AI search analytics track prize)
-
-**Partner tech (all load-bearing):**
-- **Gemini 3** - audit + rewrite at scale with long context (whole style guide in context)
-- **Tavily** - scrape competitor pages + live ChatGPT/Perplexity visibility checks
-- **Peec AI** - (the track partner itself, if they expose an API credit) - feed their visibility metrics back into the recommendation ranking
-- **Lovable** - the audit dashboard
-
-**The wow moment:** Drop in a real Shopify store URL. Ten seconds later: a ranked list of "if you fix these 5 product pages first, you'll show up in 40% more AI answers for your category." One-click apply shows the before/after.
-
-**Technical complexity:** Medium-high. The interesting bit is the modeling of "AI answer visibility as a function of copy features" - which is novel and arguably research-grade in 2026.
-
-**Feasibility in 15h:** 🟢 Very feasible. Most of the work is prompt engineering + a nice dashboard.
-
-**Scores:** Creativity 4/5 · Complexity 4/5 · Partner fit 5/5 · First-person authority 4/5 (Ian's WorkScanAI taste for "audit real artifacts + score them" maps exactly) · Company story 5/5
-**Average: 4.4/5 ✅**
-
----
-
-### Idea 5 - StandUpAgent: The async daily standup that actually writes itself
+### Idea 2 - StandUpAgent: The async daily standup that actually writes itself
 
 > Every team member sends a 30-second voice note to a number at any point in the morning. The agent transcribes, deduplicates (yes, you already mentioned the Stripe issue yesterday), cross-references GitHub / Linear / Jira activity, and publishes a single structured standup summary to Slack - with blockers highlighted and @-mentions for anyone whose work is blocking someone else.
 
 **Partner tech (all load-bearing):**
 - **Gradium** - the voice interface (STT + optional TTS nudge if you forgot to submit)
-- **ai\|coustics** - cleans up voice notes recorded on the train
+- **ai|coustics** - cleans up voice notes recorded on the train
 - **Gemini 3** - synthesis + cross-referencing + deduplication
 - **Qontext** - week-over-week memory so "still blocked on the thing from yesterday" resolves correctly
 - **Tavily** - fetch GitHub/Linear activity for the cross-reference
@@ -279,100 +205,304 @@ Legend for difficulty dots: 🟢 feasible in 15h · 🟡 tight but doable with d
 
 **Technical complexity:** Medium-high. The interesting engineering is the cross-reference + dedup, not the voice part.
 
-**Feasibility in 15h:** 🟢 Very feasible. Lots of prior art in the voice-to-summary space, which is why we need to make the cross-reference angle the differentiator.
+**Feasibility in 15h:** Very feasible. Lots of prior art in the voice-to-summary space, which is why we need to make the cross-reference angle the differentiator.
 
 **Risks:** The jury may have seen "AI standup" before. Differentiation has to come from the *specificity* of the output (real PR numbers, real blocker graph) not from the concept.
 
-**Scores:** Creativity 3/5 · Complexity 4/5 · Partner fit 5/5 · First-person authority 5/5 (every developer lives this pain) · Company story 4/5
-**Average: 4.2/5 ✅**
+**Scores:** Creativity 3/5 - Complexity 4/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 4/5
+**Average: 4.2/5**
 
 ---
 
-### Idea 6 - RegRadar: Compliance-change early warning for small startups
+### Idea 3 - MedBridge: Find the medicine you can actually get (and afford) today
 
-> A small founder/operator drops their business URL. Agent figures out what regulated activities they do (payments? health data? AI? cross-border?), subscribes them to the relevant EU/DE regulatory feeds, and every morning produces a 30-second brief: "these 3 things changed this week, here's what's relevant to *you specifically*, here's the action if any."
+> Patient or caregiver enters the drug name on their prescription. Agent checks live pharmacy stock across the city, flags shortages, finds approved generic equivalents and their price delta, checks whether the patient's insurance covers each option, and - if everything is out of stock - calls pharmacies directly to ask about expected restock. For expensive drugs, surfaces patient-assistance programs the patient qualifies for.
+
+**Theme:** Disease / access to medicines
 
 **Partner tech (all load-bearing):**
-- **Tavily** - the core engine. Live crawling of EUR-Lex, BaFin, BfDI, national gazettes
-- **Gemini 3** - long-context reasoning over dense legal text + relevance filtering per company
-- **Qontext** - the company's regulated-surface profile maintained across weeks
-- **Gradium** - optional daily voice brief ("here's what changed while you were sleeping")
+- **Tavily** - real-time pharmacy stock lookups and patient-assistance program discovery
+- **Gemini 3** - parses prescriptions (photo OK), reasons about generic equivalence and insurance eligibility
+- **telli** - phones pharmacies to confirm stock when web data is stale
+- **Gradium** - voice-first entry point for elderly caregivers who won't type drug names
+- **Lovable** - frontend
 
-**The wow moment:** Drop in a fintech URL. In 60 seconds: a personalized regulatory dashboard showing 2 real changes that happened this month affecting that specific company, with plain-language explanations and concrete action items.
+**The wow moment:** Jury member photographs a (fake) prescription. In 45 seconds: "In-stock at 3 pharmacies within 2 km; one generic equivalent saves EUR 42 and is on your Techniker Krankenkasse formulary; click to hear the call confirming stock at Apotheke am Hermannplatz."
 
-**Technical complexity:** High. Getting the per-company relevance filter right is genuinely hard. But it's exactly the kind of depth judges reward.
+**Technical complexity:** High. OCR, drug knowledge base, insurance-formulary reasoning, live calling. Multi-agent.
 
-**Feasibility in 15h:** 🟡 Tight. We'd have to pre-curate 5-10 regulatory feeds rather than build a general crawler. That's fine for a demo.
+**Feasibility in 15h:** Tight. We ship with 20 hand-curated drugs and 5 Berlin pharmacies for the demo, explicitly label it as the "pilot dataset." Judges understand scope caveats.
 
-**Scores:** Creativity 5/5 · Complexity 4/5 · Partner fit 4/5 · First-person authority 3/5 · Company story 5/5
-**Average: 4.2/5 ✅**
+**Risks:** Pharmacy data is private/scraped; pitch must say "with pharmacy partnerships, this scales." Don't oversell.
+
+**Scores:** Creativity 5/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 3/5 (strong if a teammate has a chronically-ill family member) - Company story 5/5
+**Average: 4.6/5**
 
 ---
 
-### Idea 7 - HireSignal: Job description → realistic skills interview in 5 minutes
+### Idea 4 - TriageLine: WhatsApp-first symptom triage for people without a family doctor
 
-> Recruiter or hiring manager pastes a job description. Agent generates a *specific*, *hands-on*, adaptively difficult interview (not generic STAR-question fluff) in the candidate's browser. As the candidate answers via voice, difficulty adjusts live. At the end, recruiter gets a structured signal report - not a yes/no - scoring on the actual skills the JD implied.
+> In Berlin, 200k+ people don't have a Hausarzt and can't get one. A user sends symptoms to a WhatsApp number - text, voice, or photo. The agent runs a structured triage interview in their language (including Turkish, Arabic, Ukrainian, Russian), outputs a clear next step ("this needs the ER now" / "book a GP within 3 days" / "can wait, here's self-care"), and - for urgent cases - calls KV 116117 or finds an open walk-in clinic right now.
+
+**Theme:** Disease / access to treatment
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - JD decomposition into a skill tree, adaptive question generation, scoring
-- **Gradium** - real-time voice for the candidate-facing interview
-- **ai\|coustics** - clean up home-office audio (this directly affects perceived interview quality)
-- **Qontext** - candidate-session memory for adaptive difficulty
-- **Lovable** - both dashboards (recruiter + candidate)
+- **Gemini 3** - multilingual triage reasoning, image understanding (rash photos, injury photos)
+- **Gradium** - voice notes in any language, replies by voice
+- **ai|coustics** - cleans noisy voice notes from parents with crying kids
+- **telli** - calls KV 116117 or the nearest walk-in to check wait times
+- **Tavily** - live walk-in clinic availability across Berlin
 
-**The wow moment:** Paste a real Anthropic or Neo4j job description (both relevant to Ian's network). Two minutes later, a judge takes the live interview themselves on stage. At the end, the dashboard scores them in real time on the specific skills.
+**The wow moment:** Live WhatsApp demo. A "worried parent" sends a voice note in Turkish describing a child's symptoms. 20 seconds later: triage result in Turkish, and if urgent, the demo shows a live call being placed to a clinic asking about wait times.
 
-**Technical complexity:** High. Adaptive questioning is non-trivial, and doing it in real time over voice is a visible engineering feat.
+**Technical complexity:** High. Safety-critical triage requires defensible reasoning. Show that you use established triage protocols (Manchester Triage System) as grounding, not raw LLM guessing. This detail alone moves the jury.
 
-**Feasibility in 15h:** 🟡 Tight. We constrain to technical JDs only (narrower question space) to make the adaptive loop tractable.
+**Feasibility in 15h:** Tight but doable. Use Twilio/WhatsApp Business sandbox, skip the mass onboarding flow.
 
-**First-person authority:** 🔥 **Ian - you are literally job-hunting right now and are evaluating how to signal skills to hiring managers.** This idea has the strongest first-person authority of the list for you specifically, and the pitch writes itself: "I got tired of shallow interviews eight weeks into my job search, so we built the thing we wished existed on both sides."
+**Risks:** Medical liability language must be handled carefully in the pitch. Do not claim "diagnosis" - claim "routing."
 
-**Scores:** Creativity 4/5 · Complexity 5/5 · Partner fit 5/5 · First-person authority 5/5 · Company story 5/5
-**Average: 4.8/5 ✅✅ - top-ranked**
+**Scores:** Creativity 5/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 4/5 (common Berlin reality) - Company story 5/5
+**Average: 4.8/5 (tied top-ranked)**
 
 ---
 
-### Idea 8 - PermitPilot: Berlin Anmeldung & bureaucracy agent for internationals
+### Idea 5 - JobMatch Reverse: For people locked out of the job market, not the other way around
 
-> Paste in your situation (visa type, planned activity, family status). Agent figures out the exact chain of Berlin bureaucratic steps - Anmeldung, Steuer-ID, Krankenversicherung, Freiberufler if relevant, Blue Card transition - books the Termine via phone calls, generates the forms pre-filled, and reminds you what to bring.
+> Most job platforms optimize for employer search. JobMatch Reverse optimizes for the candidate who is unemployed, long-term jobless, or recently migrated. User uploads whatever they have (a CV in Farsi, a photo of a certificate, a voice note describing past work). Agent extracts real skills, translates credentials, maps them to German-market equivalents, and produces a ranked list of *specific job openings they have a realistic shot at today* - plus the 1-2 skills that would unlock 10x more roles with a free course link.
+
+**Theme:** Joblessness / poverty / unfairness
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - situation parsing + rule-chain reasoning
-- **Tavily** - live availability of Termine across Berlin Bürgerämter
-- **telli** - calls the Bürgeramt / Finanzamt / Ausländerbehörde
-- **Gradium** - optional voice-first interaction for non-German speakers
-- **Qontext** - state maintained across the multi-week process
+- **Gemini 3** - multimodal (photo of certificate, PDF CV, voice in any language) -> structured skills
+- **Tavily** - live job board scraping (Bundesagentur fuer Arbeit, Indeed DE, LinkedIn)
+- **Qontext** - user profile that grows as they interact
+- **Gradium** - voice-first for people who can't navigate forms in German
+- **Lovable** - ultra-simple UI (assume low digital literacy)
 
-**The wow moment:** Live demo where a (fake) newly-arrived Brazilian dev gets a complete personalized bureaucracy roadmap + one Termin booked via automated call in under 90 seconds.
+**The wow moment:** Live demo with a fake applicant: a 52-year-old former Syrian pharmacist. Photo of their diploma goes in. 60 seconds later: 8 matched openings in Berlin/Brandenburg, an honest "your German is your bottleneck, here are 3 free B1 courses starting next week," and one "you qualify as a Pharmareferent via this Anerkennung pathway most people don't know about."
 
-**Technical complexity:** Medium-high. The rule-chain is the interesting part. Live booking via phone is the dramatic part.
+**Technical complexity:** High. Credential recognition in the German context is genuinely hard - this is the differentiation.
 
-**Feasibility in 15h:** 🟢 Feasible if we scope tightly to 3 visa types. Berlin-specific, which is thematic catnip at a Berlin hackathon.
+**Feasibility in 15h:** Tight. Scope: 3 source countries, 50 occupations. Demo-complete.
 
-**First-person authority:** 🔥 Berlin AI/tech community is *stuffed* with people who lived this. Highly relatable to a Berlin-based jury.
+**First-person authority:** Ian is in job search himself; WorkScanAI already analyzes job descriptions for AI-automatability. The inverse (analyze a candidate and map to jobs) is a natural port.
 
-**Scores:** Creativity 5/5 · Complexity 4/5 · Partner fit 5/5 · First-person authority 4/5 · Company story 4/5
-**Average: 4.4/5 ✅**
+**Scores:** Creativity 5/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 5/5
+**Average: 5.0/5 (top-ranked)**
+
+---
+
+### Idea 6 - BenefitFinder: The missing EUR 3,000 you haven't claimed
+
+> Research in Germany says billions in welfare benefits go unclaimed every year because the rules are too complex (Wohngeld, Kinderzuschlag, Bildungspaket, Buergergeld top-ups, energy relief, regional programs). User answers 5 questions by voice. Agent figures out which federal, state, and city-level benefits they qualify for, totals the annual sum, pre-fills every form, and books the Termine.
+
+**Theme:** Income inequality / poverty / unfairness
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - reasoning over benefit-eligibility rules (these are gnarly if-then trees)
+- **Tavily** - live regulation changes (rules shift yearly; static systems rot fast)
+- **Qontext** - household situation maintained across months
+- **telli** - books Termine at Jobcenter / Wohngeldstelle / Familienkasse
+- **Gradium** - voice-first, because the target users are exactly the ones who struggle with forms
+- **Lovable** - absolute simplicity in the UI
+
+**The wow moment:** 5 voice questions answered in 90 seconds. Output: "Your household qualifies for EUR 2,860/year you're not currently receiving. Here are the 3 applications pre-filled as PDFs and 2 Termine I just booked for you."
+
+**Technical complexity:** High. The eligibility rule engine is the real work; it's exactly the kind of thing that looks like magic when demoed.
+
+**Feasibility in 15h:** Tight. Ship with 5 benefits covered (Wohngeld + Kinderzuschlag + Buergergeld top-up + BaFoeG + local Berlin Familienpass). Label the scope.
+
+**Risks:** Legal accuracy. Pitch says "assist, not advise" - always points the user to the official decision.
+
+**Scores:** Creativity 5/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 3/5 - Company story 5/5
+**Average: 4.6/5**
+
+---
+
+### Idea 7 - RentShield: Know exactly what your landlord is overcharging you
+
+> Tenant uploads their rental contract (photo or PDF). Agent extracts rent, warmth, Nebenkosten, apartment size, year of build, district. Cross-references the official Mietspiegel and similar current listings. Returns a brutal one-pager: "your rent is EUR 187/month above the legal Mietspiegel for this apartment class; here is the exact paragraph of BGB to cite; here is a ready-to-send Mietminderung letter; a lawyer can win this in Berlin with ~85% success rate."
+
+**Track fit:** Buena (property track)
+
+**Theme:** Income inequality / unfairness (rent is the single biggest lever on working-class income in Berlin)
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - contract OCR + extraction + legal reasoning over BGB + Mietspiegel
+- **Tavily** - live comparable listings, current Mietspiegel, jurisprudence updates
+- **Buena** - track partner; their property data is exactly the reference layer we need
+- **Lovable** - frontend
+- **Entire** - human-in-the-loop when the contract is ambiguous (a real tenant lawyer reviews the edge cases in the dashboard)
+
+**The wow moment:** Drop in a real Berlin rental contract. 40 seconds later: "You are paying EUR 2,244/year above the legal limit. Here is your pre-drafted Mietminderung. Total recoverable for the last 3 years: EUR 6,732."
+
+**Technical complexity:** High. Mietspiegel parsing and BGB reasoning is non-trivial; the output being legally-citable (not just vibes) is the defining engineering bar.
+
+**Feasibility in 15h:** Tight. Scope to Berlin only (Mietspiegel varies by city).
+
+**Risks:** "Not legal advice" disclaimer front and center. Frame as "prep your case, then see a lawyer."
+
+**Scores:** Creativity 5/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 5/5 (every Berliner has a rent story) - Company story 5/5
+**Average: 5.0/5 (tied top-ranked)**
+
+---
+
+### Idea 8 - FoodReach: Redirect tonight's restaurant surplus to the people who need it most
+
+> Restaurants, bakeries, and supermarkets throw away ~1/3 of their stock every evening. Food banks and shelters can't plan around ad-hoc donations. FoodReach is a two-sided agent: restaurants send a voice note at closing time ("we have 8 kg bread, 20 pastries, salads until 10 pm"), agent auto-matches to the nearest food bank/shelter with capacity and the right dietary mix, and calls a volunteer driver via telli to pick up and deliver. No app installation for the donor side - just a phone number.
+
+**Theme:** Food accessibility
+
+**Partner tech (all load-bearing):**
+- **Gradium + ai|coustics** - voice note intake from noisy restaurant kitchens
+- **Gemini 3** - matches inventory (halal? allergen-free? refrigerated?) to demand
+- **telli** - dispatches volunteer drivers via automated call
+- **Tavily** - live food-bank capacity across Berlin
+- **Qontext** - tonight's matching is informed by last week's patterns
+
+**The wow moment:** Live during the pitch, someone records a "surplus" voice note. Within 60 seconds the big screen shows: matched recipient (Laib und Seele Kreuzberg), volunteer driver called and confirmed, pickup ETA 22 min. The call recording plays.
+
+**Technical complexity:** Medium-high. The matching is the interesting piece; the voice pipeline is straightforward.
+
+**Feasibility in 15h:** Very feasible. The 2-sided nature is handleable because one side (the donor) is just a phone number.
+
+**Risks:** Hygiene/legal compliance for food redistribution in Germany (Lebensmittelrecht). Acknowledge in pitch; lean on existing partnerships like Die Tafel.
+
+**Scores:** Creativity 5/5 - Complexity 4/5 - Partner fit 5/5 - First-person authority 3/5 - Company story 5/5
+**Average: 4.4/5**
+
+---
+
+### Idea 9 - WaterWise: Satellite-driven drought early warning for smallholder farms
+
+> Smallholder farmers in drought-prone regions lose harvests because they don't know water stress is coming until crops visibly fail. WaterWise takes a farm's coordinates, pulls Sentinel-2 satellite imagery weekly, combines with local weather + soil data, and sends a voice message in the farmer's language: "your north field will be water-stressed in 8 days; here's the irrigation priority order; here's a subsidy program you qualify for if you install drip irrigation."
+
+**Theme:** Water accessibility / food security
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - satellite image interpretation + reasoning + multilingual voice generation
+- **Tavily** - weather forecasts, soil datasets, subsidy program scraping
+- **Gradium** - voice delivery in the farmer's language (literacy often limited)
+- **telli** - optional inbound line for farmers to ask follow-up questions
+- **Pioneer by Fastino Labs** - small model fine-tuned on regional crop-stress patterns
+
+**The wow moment:** Pin a real farm coordinate on a map. Zoom in, show Sentinel imagery. Gemini annotates water-stress regions. A voice message plays in Swahili / Hausa / Hindi.
+
+**Technical complexity:** High. Geospatial ML plus multilingual voice plus actionable recommendation.
+
+**Feasibility in 15h:** Tight. Use free Sentinel Hub API, pre-cache imagery for 5 demo farms.
+
+**Risks:** Looks "too global" for a Berlin hackathon; pitch must tie it to an EU-funded programme or African diaspora in Berlin.
+
+**Scores:** Creativity 5/5 - Complexity 5/5 - Partner fit 4/5 - First-person authority 2/5 (unless someone on team has ag background) - Company story 4/5
+**Average: 4.0/5**
+
+---
+
+### Idea 10 - WageWatch: Know your real market rate before you sign
+
+> Job-seeker pastes an offer. Agent pulls live comparable salaries from public sources (Kununu, Glassdoor, StepStone, LinkedIn salary data), adjusts for role, years of experience, city, company size, and reports: "your offer is 12% below market median for your profile; here are the 3 highest-leverage things to ask for in negotiation based on what this company has conceded in past hires." Optional voice role-play: the agent plays the recruiter, you practice the negotiation call.
+
+**Theme:** Income inequality / unfairness in hiring
+
+**Partner tech (all load-bearing):**
+- **Gemini 3** - salary benchmarking reasoning, negotiation coaching
+- **Tavily** - live salary data scraping
+- **Gradium** - voice role-play for negotiation practice
+- **ai|coustics** - clean up the user's practice audio so the feedback is accurate
+- **Peec AI** - (track partner) track how your "salary + role" profile shows up in AI career-advice answers
+- **Qontext** - progress tracking across multiple offers/negotiations
+
+**The wow moment:** Live negotiation role-play on stage. Judge reads an offer letter aloud. Agent plays recruiter. Judge practices "I was hoping for more." Agent counters. At the end: a scorecard showing where the judge left money on the table.
+
+**Technical complexity:** Medium-high. The role-play voice agent is the flex.
+
+**Feasibility in 15h:** Very feasible. Voice role-play is exactly what Gradium + Gemini 3 are built for.
+
+**First-person authority:** Ian is job-searching and knows the Berlin salary landscape; this is natural authority.
+
+**Scores:** Creativity 4/5 - Complexity 4/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 5/5
+**Average: 4.6/5**
+
+---
+
+### Idea 11 - CareCall: Weekly check-in calls for isolated elderly patients with chronic illness
+
+> Elderly patients with diabetes, heart failure, or COPD decompensate between GP visits because nobody is watching. CareCall auto-dials the patient weekly (voice-first, no app), asks a structured 5-minute protocol matched to their condition ("how's your breathing today on a scale of 1-10; did you take your evening meds; have you weighed yourself"), flags any red flags for their GP or community nurse, and - critically - just talks with them for a minute because loneliness itself is a health risk.
+
+**Theme:** Disease / treatment access / loneliness
+
+**Partner tech (all load-bearing):**
+- **telli** - the outbound call infrastructure (this is literally telli's core product)
+- **Gradium** - warm, elderly-appropriate voice
+- **ai|coustics** - cleans up patient audio (hearing aids, background TV)
+- **Gemini 3** - protocol adherence + red-flag detection + empathetic conversation
+- **Entire** - nurse in the loop for anything flagged yellow or red
+- **Qontext** - longitudinal patient state across weeks
+
+**The wow moment:** Live call during the pitch to a fake elderly "patient" (ideally a teammate's grandparent pre-recorded). The agent conducts the check-in warmly and professionally. At the end, the dashboard flags one red signal and auto-creates a nurse task.
+
+**Technical complexity:** High. The bar for a system that talks to vulnerable elderly people is rightly high. Show you thought about safety.
+
+**Feasibility in 15h:** Very feasible. telli is literally built for this exact use case.
+
+**Risks:** Medical-device regulatory framing. Pitch as "augmentation of existing care, not replacement."
+
+**Scores:** Creativity 4/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 4/5 (everyone has an elderly relative) - Company story 5/5
+**Average: 4.6/5**
+
+---
+
+### Idea 12 - TapCheck: Is your tap water actually safe right now?
+
+> User scans their building address or postcode. Agent pulls live water-quality reports from the local utility, cross-references recent incidents (boil-water notices, lead advisories, contamination warnings), checks whether the building's piping era suggests lead risk (German buildings pre-1973 are the risk class), and returns a plain-language answer: "safe to drink today, boil-water notice in effect 2 km north is not affecting your address, your building is 1962 so get a Trinkwasseranalyse in the next 6 months." Historical data surfaces inequality: who lives in the buildings where the answer is "not safe"?
+
+**Theme:** Water accessibility / environmental justice
+
+**Partner tech (all load-bearing):**
+- **Tavily** - live utility reports, building age data, news of incidents
+- **Gemini 3** - synthesizes across sources, plain-language output in any language
+- **Gradium** - voice-first for people who won't read a dashboard
+- **Qontext** - per-address monitoring over time
+- **Lovable** - mapping UI
+
+**The wow moment:** Live demo: pin a Neukoelln address on a map. 20 seconds later: status + historic timeline + a comparison showing "in this district, 34% of buildings have outdated piping vs 8% in Dahlem." The inequality surface is the wow.
+
+**Technical complexity:** Medium-high. Data aggregation is the work; the inequality visualization is the differentiator.
+
+**Feasibility in 15h:** Feasible. Berlin-only scope. Pre-cache utility data.
+
+**Risks:** Alarmism is easy. Framing must be "empower, not panic."
+
+**Scores:** Creativity 5/5 - Complexity 4/5 - Partner fit 4/5 - First-person authority 2/5 - Company story 4/5
+**Average: 3.8/5**
 
 ---
 
 ### Summary ranking
 
-| # | Idea | Track | Score | Why it ranks here |
+| # | Idea | Theme / Track | Score | Why it ranks here |
 |---|---|---|---|---|
-| 1 | **HireSignal** - JD → adaptive skills interview | - | **4.8** | Ian's first-person authority is unmatched. Voice + adaptive is a genuinely strong demo. |
-| 2 | **ClaimPilot** - voice insurance intake | Inca 🎯 | 4.4 | Track prize shot + dramatic live-call demo. |
-| 3 | **SolarScout** - postcode → solar quote | Reonic 🎯 | 4.4 | Track prize + vision demo is visually striking. |
-| 4 | **TenantTriage** - property-manager inbox | Buena 🎯 | 4.4 | Track prize + the "overnight magic" framing. |
-| 5 | **ShipShape** - e-commerce copy QA | Peec AI 🎯 | 4.4 | Track prize + Ian's WorkScanAI instinct transfers directly. |
-| 6 | **PermitPilot** - Berlin bureaucracy agent | - | 4.4 | Berlin-thematic, warm-room appeal, Ian in Berlin. |
-| 7 | **StandUpAgent** - async voice standup | - | 4.2 | Universal pain, but lower creativity differentiation. |
-| 8 | **RegRadar** - compliance early warning | - | 4.2 | Strong but needs deeper regulatory knowledge than we have. |
+| 5 | **JobMatch Reverse** - candidate-first job platform | Joblessness / Ian's authority | **5.0** | Maximum first-person authority for Ian; natural WorkScanAI inverse; huge TAM. |
+| 7 | **RentShield** - Mietspiegel enforcement | Income inequality / Buena track | **5.0** | Track prize shot + every Berliner has felt this + legal-grade output is unforgettable demo. |
+| 1 | **HireSignal** - JD -> adaptive skills interview | Ian's authority | **4.8** | Strongest personal story + voice+adaptive is a genuine technical flex. |
+| 4 | **TriageLine** - WhatsApp symptom triage | Treatment access | **4.8** | Safety-critical health tech; multilingual is killer in Berlin context. |
+| 3 | **MedBridge** - medicine + pharmacy routing | Medicine access | 4.6 | Real problem with billions in scope; dramatic live-call demo. |
+| 6 | **BenefitFinder** - unclaimed welfare | Income inequality | 4.6 | German welfare system is notoriously complex; "we found you EUR 2,860" pitch line is unbeatable. |
+| 10 | **WageWatch** - negotiation coach | Income inequality / Ian's authority | 4.6 | Voice role-play demo is a proven jury-pleaser; Ian has authority. |
+| 11 | **CareCall** - elderly chronic-illness check-ins | Disease / loneliness | 4.6 | telli's core use case; emotional pitch lands hard. |
+| 8 | **FoodReach** - restaurant surplus routing | Food access | 4.4 | Two-sided but asymmetric; the live dispatch demo is visible impact. |
+| 2 | **StandUpAgent** - async voice standup | Universal dev pain | 4.2 | Universal relatability; weaker jury differentiation. |
+| 9 | **WaterWise** - drought early warning | Water / food security | 4.0 | Strong problem, harder to pitch as "Berlin-relevant." |
+| 12 | **TapCheck** - tap-water safety scanner | Water access | 3.8 | Interesting inequality angle but demo less dramatic than peers. |
 
 ### The meta-observation
 
-Five of our eight shortlisted ideas hit a **dedicated track partner** (Inca / Reonic / Buena / Peec / no-track). Track alignment is the single highest-leverage move: same amount of work, two prize shots. **Strongly recommend picking from ideas 2-5 unless HireSignal's personal-story advantage proves decisive in team discussion.**
+**Two ideas now tie at 5.0/5: JobMatch Reverse and RentShield.** Both have maximal first-person authority (for Ian personally on JobMatch, for any Berlin resident on RentShield), both have dramatic before/after demos, both tie directly into welfare-impact framing the jury explicitly rewarded in January. RentShield additionally pulls a track prize (Buena).
+
+**The top tier (5.0 / 5.0 / 4.8 / 4.8)** is now all humanitarian-leaning. If creativity + complexity + partner fit are tied, the tiebreaker is the 2-minute video's opening line - the first-person story. Pick the idea whose opening line the team can tell truthfully.
+
+**Strong humanitarian narrative alignment:** Google DeepMind (a primary sponsor) has publicly backed "AI for good" initiatives like the Norrsken Fixathon. Humanitarian framing is unlikely to be penalized by this jury; it is plausibly rewarded.
 
 ---
 
