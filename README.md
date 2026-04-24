@@ -89,6 +89,10 @@ A doctor on stage saying "I face this problem every week in the ER" is unbeatabl
 
 **Takeaway for us:** Whoever pitches must have or convincingly borrow **first-person authority** over the problem. If nobody on the team lives the pain, don't pick that problem.
 
+### Post-hackathon outreach
+
+Tim Schwarz is now at [Tandem Health](https://tandemhealth.ai/) (clinical AI scribe, $50M Series A, 100+ EHR integrations, ISO 13485 medical-device posture), still affiliated with Universitätsklinikum Heidelberg. A cold-outreach collaboration proposal has been drafted separately — see [**medaccura-collaboration-proposal.md**](medaccura-collaboration-proposal.md). The thesis: MedAccura/Tandem own clinician-facing RAG over unstructured documents; the [EHDS Integration Hub](https://github.com/ma3u/MinimumViableHealthDataspacev2) (live at [ehds.mabu.red](https://ehds.mabu.red)) is the federated GraphRAG peer system at a different layer of the data stack, with NL-to-Cypher traversal across multiple participant graph DBs and live EEHRxF compliance checks. Composed, they form an EHDS-native clinical decision-support layer that doesn't exist in running software anywhere in Europe today. Not a hackathon-weekend task — a post-event reach-out.
+
 ---
 
 ## Our strategic filter: the 15-hour rule
