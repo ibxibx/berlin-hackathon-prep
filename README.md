@@ -161,7 +161,23 @@ Why we keep it in scope: for ideas where the Berlin-relevant, life-improving fra
 
 The jury scores on **creativity, technical complexity, and effective use of partner tech**. Since only one team per track wins, every idea below declares explicitly which track it is pitching into. Tags: **[Wildcard]** | **[Buena]** | **[Qontext]** | **[Buena+Qontext]** | **[Peec AI]**.
 
-Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first-person authority, and track-fit. Anything below 4/5 average is cut. Legend for feasibility dots: green = feasible in 15-18h, yellow = tight but doable, red = only if a teammate has prior art in the exact stack.
+### Scoring rubric (8 criteria)
+
+Each idea is scored **1-5 on eight criteria**, then averaged. Five come from the jury's stated rubric + the hidden fourth criterion visible in the MedAccura case study; three are **execution-weight criteria we added** to reflect the 15-hour build window and the post-event company story. Anything below 4.0 average is cut. Ranking is by average; ties break on **Prize EV → First-person Authority → Feasibility** in that order.
+
+**Jury-rubric criteria (five, mirror what the judges score):**
+
+- **C — Creativity.** 1 = generic chatbot. 3 = fresh problem framing. 5 = the jury hasn't heard this eight times today.
+- **T — Technical complexity.** 1 = one API call + UI. 3 = a solved pattern executed well (RAG, agent loop). 5 = five-plus non-trivial engineering decisions, each of which can fail visibly in the demo.
+- **P — Partner fit.** 1 = one decorative sponsor tool. 3 = three tools load-bearing. 5 = three-plus tools where removing any one breaks the demo.
+- **A — First-person authority** (the MedAccura pattern — the hidden fourth criterion). 1 = no team connection. 3 = relatable pain most founders face. 5 = a team member lives the problem weekly OR a **real pre-revenue client is already on the team** (the MedAccura-doctor / twobreath-founder configuration).
+- **Fit — Track fit.** 1 = Wildcard / tangential to any brief. 3 = indirectly related to a sponsor brief. 5 = solves the sponsor's brief text verbatim.
+
+**Execution-weight criteria (three, added by us):**
+
+- **F — Feasibility in 15h.** 1 = red (requires prior art in the exact stack on the team). 3 = yellow (tight but doable with pre-work on Saturday evening). 5 = green (mostly prompt engineering + a sharp dashboard, no novel plumbing).
+- **W — Demo wow factor.** Does the 2-minute submission video have ONE shot where the jury audibly reacts? 1 = slide-like output. 3 = clear before/after. 5 = a single continuous shot where a jury member leans forward. MedAccura's "right protocol in 4 seconds instead of 20 minutes" was a 5.
+- **EV — Prize expected value** = reward pool × realistic win probability. 5 = dual-track submission (two shots at a finalist slot from one codebase) or gold-bar-class reward. 4 = Qontext single (highest per-prize reward). 3 = Buena or Peec single (€2,500). 2 = Wildcard (largest-competition pool, one slot).
 
 ### Idea 1 - HireSignal: Job description -> realistic skills interview in 5 minutes
 
@@ -184,8 +200,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **First-person authority:** Ian is literally job-hunting right now and is evaluating how to signal skills to hiring managers. This idea has the strongest first-person authority of the list for you specifically, and the pitch writes itself: "I got tired of shallow interviews eight weeks into my job search, so we built the thing we wished existed on both sides."
 
-**Scores:** Creativity 4/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 5/5
-**Average: 4.8/5 (top-ranked)**
+**Scores:** C 4 · T 5 · P 5 · A 5 · Fit 3 · F 3 · W 5 · EV 2
+**Average: 4.00/5**
 
 **Bonus use-case - post-interview feedback loop (complementary mode):** After any interview, the candidate forwards their rejection email (or the silence that followed) to the agent. HireSignal reconstructs the probable gap - not by speculation, but by simulating what a great candidate for that exact JD would have said, then diffing against what the real candidate actually said. Candidate learns specifically what they missed and fixes it before the next interview. Pitch line: **"Every rejection is a training signal you're not allowed to see. We give it back."**
 
@@ -212,8 +228,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Risks:** The jury may have seen "AI standup" before. Differentiation has to come from the *specificity* of the output (real PR numbers, real blocker graph) not from the concept.
 
-**Scores:** Creativity 3/5 - Complexity 4/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 4/5
-**Average: 4.2/5**
+**Scores:** C 3 · T 3 · P 5 · A 5 · Fit 3 · F 4 · W 3 · EV 2
+**Average: 3.50/5**
 
 ---
 
@@ -242,8 +258,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **First-person authority:** Maximum for Ian. Currently job-hunting in Berlin, has lived the "my skills don't map cleanly to German job posts" frustration, and WorkScanAI is literally the employer-side inverse of this.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 5/5, Business story 5/5
-**Average: 5.0/5**
+**Scores:** C 5 · T 5 · P 5 · A 5 · Fit 3 · F 3 · W 5 · EV 2
+**Average: 4.13/5**
 
 ---
 
@@ -268,8 +284,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Why we can win this track:** The brief specifically calls for "sourced from ERPs, email, Slack, PDFs, and more." Teams that ship 2 of those 5 sources lose to a team that ships all 5 with visible quality. Breadth of ingestion is the differentiator.
 
-**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
-**Average: 4.4/5**
+**Scores:** C 4 · T 5 · P 5 · A 3 · Fit 5 · F 3 · W 4 · EV 3
+**Average: 4.00/5**
 
 **Bonus use-case - building-twin mode (complementary mode):** Instead of per-apartment, per-building. CasaContext expands into the digital twin of a whole Berlin building - every flat, every tenant, every dispute, every maintenance cycle, every Hausmeister task, every Betriebskosten line item - held as one living document. For owners of 10+ building portfolios, this is the first time anyone has seen the full operational picture of a building in one place. The per-apartment brief becomes one section of a larger building brief that can be queried, summarized, and delegated to downstream agents. Pitch line: **"Property is the last industry running on spreadsheets and memory. We gave it a brain."**
 
@@ -299,8 +315,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Future-ready framing:** In 5 years, every building over a certain size will have an operating dashboard the way every company over a certain size has a CRM. Today nobody has built the canonical one. The 2026 hackathon is a plausible Year Zero for this category. Pitch line: **"Your building has been sending you distress signals for years. You just could not read them. Now you can."**
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
-**Average: 4.6/5**
+**Scores:** C 5 · T 5 · P 5 · A 3 · Fit 5 · F 3 · W 5 · EV 3
+**Average: 4.25/5**
 
 ---
 
@@ -329,8 +345,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Risk:** Dual submission can become a scope trap. Mitigation: lock the core engine by Sunday 02:00; the "second demo" is 90 minutes of Lovable work on Sunday morning.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5 (double)
-**Average: 4.6/5**
+**Scores:** C 5 · T 5 · P 5 · A 3 · Fit 5 · F 3 · W 4 · EV 5
+**Average: 4.38/5**
 
 ---
 
@@ -355,8 +371,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Why we can win this track:** Incidents are Buena's high-value moment - when the property manager desperately needs structured context RIGHT NOW. A demo that compresses 4 hours of first-response work into 60 seconds of AI-orchestrated output is exactly the "living document every AI agent can use" thesis made dramatic.
 
-**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
-**Average: 4.6/5**
+**Scores:** C 5 · T 5 · P 5 · A 3 · Fit 5 · F 3 · W 5 · EV 3
+**Average: 4.25/5**
 
 ---
 
@@ -381,8 +397,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Why we can win this track:** B2B sales is a problem 90 percent of the jury understands intimately (every sponsor has salespeople; several are growth-stage companies who have lost reps). The emotional pitch writes itself: "we all know what it feels like when a rep leaves with your best account in their head."
 
-**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
-**Average: 4.6/5**
+**Scores:** C 4 · T 5 · P 5 · A 4 · Fit 5 · F 3 · W 4 · EV 4
+**Average: 4.25/5**
 
 ---
 
@@ -407,8 +423,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Why we can win this track:** The demo explicitly shows the failure mode Qontext describes in their brief ("reconstruct reality at runtime, hope the prompt is good enough"). A team that LITERALLY SHOWS the problem happening and THEIR solution preventing it is the most on-brief possible submission.
 
-**Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
-**Average: 4.4/5**
+**Scores:** C 4 · T 5 · P 5 · A 3 · Fit 5 · F 3 · W 5 · EV 4
+**Average: 4.25/5**
 
 ---
 
@@ -435,8 +451,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Future-ready framing:** Websites built between 2000 and 2015 were designed for Google. Websites built between 2015 and 2022 were designed for Instagram. Companies starting in 2026 are designed for ChatGPT answers. AnsweredFromZero is the first purpose-built tool for founders who accept this. Pitch line: **"Your website is becoming legacy. Your ChatGPT answer is your new homepage. We design it."**
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
-**Average: 4.6/5**
+**Scores:** C 5 · T 4 · P 5 · A 4 · Fit 5 · F 4 · W 4 · EV 3
+**Average: 4.25/5**
 
 ---
 
@@ -461,8 +477,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Why we can win this track:** Peec's existing product tells you your visibility. The next step - what do I actually do about it - is explicitly where they are directing teams ("help startups OWN opportunities"). Turning their data into outreach is the natural extension they have not built themselves.
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
-**Average: 4.6/5**
+**Scores:** C 5 · T 4 · P 5 · A 4 · Fit 5 · F 4 · W 4 · EV 3
+**Average: 4.25/5**
 
 ---
 
@@ -487,29 +503,80 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Why we can win this track:** Strategic sequencing of limited marketing resources is exactly what a resource-constrained early-stage startup needs and exactly what Peec's existing dashboards do not deliver. The "claim this territory first, that one in month 3" framing is visually memorable in a way generic visibility dashboards are not.
 
-**Scores:** Creativity 4/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
-**Average: 4.4/5**
+**Scores:** C 4 · T 4 · P 5 · A 4 · Fit 5 · F 5 · W 3 · EV 3
+**Average: 4.13/5**
+
+---
+
+### Idea 13 - AnswerAtlas: the multi-market AI-answer launch matrix for apps going live in 3 locales × 4 Apple device classes from zero
+
+> A real pre-revenue wellness app, [twobreath.com](https://www.twobreath.com), is launching simultaneously on iPhone, iPad, Apple Watch, and the rest of the Apple ecosystem (Vision Pro, Mac) in Germany, the US, and Japan. Today, twobreath is invisible when a user in Tokyo asks *"iPhoneで使える最高の呼吸アプリは？"*, when a Berliner asks *"Beste Atem-App für die Apple Watch?"*, and when a New Yorker asks *"best breathing app for Apple Watch"*. Three locales × four device classes = twelve distinct prompt territories, each with its own language, cultural wellness idiom, and citation-source landscape. AnswerAtlas turns that 12-cell grid into a living 90-day launch plan: per cell, the exact prompts to win, the locale-native content drafts that can actually be cited by ChatGPT/Perplexity/Gemini in that language, and the specific third-party sources models trust *in that country* (5ch and Note in Japan, heise and t3n in Germany, Reddit and The Verge in the US).
+
+**Track:** Peec AI - direct hit on the sponsor's own brief verbatim: *"help early-stage startups find and own organic search & AI answer opportunities from zero,"* applied to a real live launch in the three exact markets the brief calls out. This is the only shortlisted idea with a real, named pre-revenue client we can point to on stage.
+
+**Partner tech (all load-bearing):**
+- **Peec AI** - the multi-market competitive visibility core: which prompts mention twobreath in each locale (spoiler: none), which mention Apple's built-in Breathe app and Calm/Headspace (almost all of them), and crucially the source URLs each model cites *per locale* for wellness queries
+- **Gemini 3** - multilingual prompt-tree generation across DE/US/JP; drafts citable content tuned to each locale's wellness vocabulary (German precision, Japanese kuuki-aware politeness, US benefit-forward); device-class-specific content branches (Apple Watch haptics language differs from iPad long-session language)
+- **Tavily** - enriches per-locale citation landscape: fetches the actual Note articles, heise comparison pieces, Reddit threads, and identifies contribution-worthy gaps that map to twobreath's real differentiators
+- **ai|coustics** - live in-app breathing-session audio cleanup becomes part of the story ("we use ai|coustics in our app, which is how our breathing prompts sound this clean on a train commute") - turns a partner tool into a concrete product feature the founder demos, not just a citation
+- **Lovable** - the founder-facing atlas dashboard: 3×4 grid with live visibility heatmap, drill-down per cell, 90-day Gantt of content + outreach actions
+- **Entire** - founder approves every drafted content piece and every outreach email before publication; critical because bad multilingual outreach (machine-translated Japanese pitched to a Note editor) burns the channel for the entire category
+
+**The wow moment:** On stage, the founder of twobreath (or a teammate playing that role) types `twobreath.com` into AnswerAtlas. Ninety seconds later the 3×4 matrix renders: every cell red (near-zero visibility today). Click the US/Apple Watch cell - the detail panel shows the 12 prompts that matter, Apple's own Breathe app winning 9 of them, three drafted content pieces with the exact section a Reddit r/AppleWatch thread is missing, and a projected visibility curve reaching top-3 in ChatGPT within 45 days. Click the Japan/iPhone cell - now it is all in Japanese, the citation sources are completely different (Note, 5ch, Japanese app-review Substacks), and the drafted content reads like a native Japanese wellness writer wrote it, not a translation. The judge from Peec AI sees their own data rendered in a way they have not yet built themselves: multi-locale, device-stratified, and tied to a real live launch.
+
+**Technical complexity:** High. The genuine craft is (1) multilingual "citability" - content that reads natively in Japanese and is structurally legible to an LLM as a citable reference, not just a translation; (2) device-class prompt stratification (Apple Watch queries cluster around "haptic," "battery," "during a run"; iPad queries cluster around "long session," "visual focus," "meditation background") which requires real prompt-tree engineering, not a flat list; (3) locale-specific source graph traversal - knowing that a Note citation in Japan feeds Gemini more than a New York Times citation does for JP queries. This is genuinely new product work, not a skin on Peec's existing dashboard.
+
+**Feasibility in 15-18h:** Green. The twobreath team (or the user's own connection to it) can pre-export Peec data for wellness-app queries across DE/US/JP on Saturday evening. Most of the sprint is prompt engineering and dashboard polish. One real customer + three languages + four device classes is enough surface area for a jaw-dropping demo without being a scope trap.
+
+**First-person authority:** Maximum. "We are launching twobreath in three countries across all Apple devices starting this month. Every problem AnswerAtlas solves is a problem we hit last Tuesday." This is exactly the MedAccura pattern the case study above describes - a live practitioner on the team, pitching a tool born of real pain. No other Peec-track idea has this.
+
+**Why we can win this track:** The Peec brief specifically names "organic search AND AI answer opportunities" plural, "from zero," for "early-stage startups." Most competing teams will build single-locale, single-device-category tools for hypothetical customers. We arrive with a real pre-revenue startup, three real markets, four real device classes, and a 90-day plan that starts executing on Monday. The jury watches a real founder touch the tool on stage. The Peec team sees their data used across locales they instrument but have not yet productized.
+
+**Future-ready framing:** By 2028, every early-stage consumer-app launch will start with an AI-answer matrix before the founder writes a single line of marketing copy. The old playbook (build website → do SEO → wait for Google) is already 30% obsolete in 2026; in three years it is gone. AnswerAtlas is the first tool built for founders who accept that the AI answer in each locale is the product's actual first impression. Pitch line: **"Your app's first impression is not the App Store screenshot. It is what ChatGPT says about it in Tokyo at 2am. We design that sentence - in every language, on every device, from zero."**
+
+**Risk & mitigation:** The multilingual-citability claim is the piece most at risk of under-delivering in the demo. Mitigation: pre-draft one killer piece of Japanese content with a native speaker (or a trusted native-level prompt) on Saturday evening so the JP cell is demo-ready regardless of what the agent produces live. If the JP cell looks weaker than DE/US in rehearsal, we narrate *why* JP is harder and turn that candor into credibility instead of hiding it.
+
+**Scores:** C 5 · T 4 · P 5 · A 5 · Fit 5 · F 5 · W 5 · EV 3
+**Average: 4.63/5**
 
 ---
 
 ### Summary ranking
 
-| # | Idea | Track | Score | Why it ranks here |
-|---|---|---|---|---|
-| 6 | **BriefCraft** - the ambient memory layer every AI will need by 2028 | Buena + Qontext (dual) | **4.6** | Dual prize shot; category-defining 2028 framing; Qontext prize is highest EV. |
-| 5 | **BuildingPulse** - predictive building-health dashboard | Buena | **4.6** | Reframes "living document" as "predicts the future"; on-stage score-and-flag demo is visceral. |
-| 7 | **IncidentFile** - property incident in 60 seconds | Buena | **4.6** | Most dramatic single demo moment; hits Buena's highest-value operational moment. |
-| 8 | **DealMemory** - B2B sales context layer | Qontext | **4.6** | Every sponsor feels the "rep quit, knowledge left with them" pain; emotional pitch lands. |
-| 10 | **AnsweredFromZero** - your ChatGPT answer IS your homepage | Peec AI | **4.6** | Provocative one-line reframe the jury will remember 20 minutes later. |
-| 11 | **CitationForge** - third-party citation outreach | Peec AI | **4.6** | Turns Peec's data into action Peec itself has not built; judges see their own data used novel-ly. |
-| 4 | **CasaContext** - living property Markdown brief + building-twin mode | Buena | 4.4 | Breadth of ingestion (5+ source types) is the differentiator; building-twin bonus adds portfolio upside. |
-| 9 | **SupportCore** - customer support context layer | Qontext | 4.4 | "Two agents side by side, one hallucinates" is a memorable demo; on-brief verbatim. |
-| 12 | **PromptTerritory** - prompt-claiming roadmap | Peec AI | 4.4 | Sequencing is strategic, but demo is more chart than narrative. |
-| 1 | **HireSignal** - JD to adaptive skills interview | Wildcard | 4.8 | Ian's strongest personal story; but Wildcard is one finalist slot against all other Wildcards. |
-| 3 | **JobMatch Reverse** - candidate-first platform | Wildcard | 5.0 | Max first-person authority for Ian; multimodal credential reasoning is a 2026-capability flex. |
-| 2 | **StandUpAgent** - async voice standup | Wildcard | 4.2 | Kept for safety; lower jury differentiation. |
+Strict descending sort by **Σ** (average across the 8 rubric criteria). Top 3 medaled. Ties resolve on **EV → A → F**. Table columns are the 8 criteria defined in the rubric above, so you can see exactly where each idea earns or loses.
 
-Note: Wildcard ideas have higher raw averages but lower effective probability of winning, because Wildcard has one finalist slot against all other Wildcard submissions (probably the biggest pool). The track ideas have lower raw averages but compete against a smaller, more specific pool per track.
+#### Top 3 at a glance
+
+🥇 **#13 AnswerAtlas — 4.63** · The only idea with a **real named pre-revenue client on the team**: [twobreath.com](https://www.twobreath.com) is already launching in DE/US/JP across iPhone, iPad, Apple Watch and the rest of the Apple ecosystem. That's the MedAccura pattern exactly (A=5). Green feasibility (F=5), verbatim Peec brief fit (Fit=5), max-intensity demo (W=5). Highest raw Σ and lowest execution risk in the shortlist simultaneously.
+
+🥈 **#6 BriefCraft — 4.38** · Highest **Prize EV** in the table (EV=5). **Dual submission** (Buena + Qontext) gives two shots at a finalist slot from one codebase, and Qontext's gold bar + private dinner is the highest per-prize reward in the room. Right pick if we have 4 people and high confidence by Saturday afternoon.
+
+🥉 **#8 DealMemory — 4.25** · Tiebreaker winner in the 4.25 bucket (EV=4, A=4). Qontext gold-bar track + the universally-felt "rep quit, knowledge left with them" pain → emotional pitch lands in the first 30 seconds.
+
+#### Full ranking
+
+| # | Idea | Track | Creativity | Tech | Partner | Authority | Fit | Feasibility | Wow | Prize EV | **Σ** | Why it ranks here |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| 13 | 🥇 **AnswerAtlas** — AI-answer launch matrix for live client **[twobreath.com](https://www.twobreath.com)** (DE/US/JP × iPhone/iPad/Apple Watch/Apple ecosystem) from zero | Peec AI | 5 | 4 | 5 | **5** | 5 | **5** | **5** | 3 | **4.63** | Real named pre-revenue client on the team = MedAccura pattern exact; green feasibility + max wow; verbatim brief fit. |
+| 6 | 🥈 **BriefCraft** — the ambient memory layer every AI will need by 2028 | Buena + Qontext (dual) | 5 | 5 | 5 | 3 | 5 | 3 | 4 | **5** | **4.38** | Highest EV via dual-track submission. Qontext gold + dinner is the highest per-prize reward in the room. |
+| 8 | 🥉 **DealMemory** — B2B sales context layer that survives rep turnover | Qontext | 4 | 5 | 5 | **4** | 5 | 3 | 4 | **4** | **4.25** | Tiebreaker winner (EV 4 + A 4) in the 4.25 bucket. Rep-turnover pain is universal among sponsors. |
+| 9 | **SupportCore** — customer support context layer | Qontext | 4 | 5 | 5 | 3 | 5 | 3 | 5 | **4** | 4.25 | Gold-bar track; live-hallucination demo is max W, but both agents must behave distinctly on stage. |
+| 10 | **AnsweredFromZero** — your ChatGPT answer IS your homepage | Peec AI | 5 | 4 | 5 | 4 | 5 | 4 | 4 | 3 | 4.25 | Provocative one-liner the jury remembers; green feasibility. Outranked by AnswerAtlas because AnswerAtlas has a real live client. |
+| 11 | **CitationForge** — third-party citation outreach | Peec AI | 5 | 4 | 5 | 4 | 5 | 4 | 4 | 3 | 4.25 | Novel use of Peec's own data; green feasibility; judges see their product used in a way they haven't built themselves. |
+| 5 | **BuildingPulse** — predictive building-health dashboard | Buena | 5 | 5 | 5 | 3 | 5 | 3 | 5 | 3 | 4.25 | "Predicts the future" reframe of Buena's brief; visceral demo; yellow feasibility. |
+| 7 | **IncidentFile** — property incident in 60 seconds | Buena | 5 | 5 | 5 | 3 | 5 | 3 | 5 | 3 | 4.25 | Most dramatic 60-second single-shot demo; Buena single-track, narrower upside than BriefCraft. |
+| 3 | **JobMatch Reverse** — candidate-first platform | Wildcard | 5 | 5 | 5 | 5 | 3 | 3 | 5 | 2 | 4.13 | Max A for Ian + 2026-capability flex; Wildcard's one-slot pool cuts effective win probability. |
+| 12 | **PromptTerritory** — prompt-claiming roadmap | Peec AI | 4 | 4 | 5 | 4 | 5 | 5 | 3 | 3 | 4.13 | Greenest feasibility in the shortlist, but chart-heavy demo lowers W. |
+| 1 | **HireSignal** — JD to adaptive skills interview | Wildcard | 4 | 5 | 5 | 5 | 3 | 3 | 5 | 2 | 4.00 | Ian's strongest personal story + live-interview-on-stage moment; same Wildcard-pool caveat. |
+| 4 | **CasaContext** — living property Markdown brief + building-twin mode | Buena | 4 | 5 | 5 | 3 | 5 | 3 | 4 | 3 | 4.00 | Verbatim Buena answer with breadth of ingestion as differentiator; no team member lives property-management pain. |
+| 2 | **StandUpAgent** — async voice standup | Wildcard | 3 | 3 | 5 | 5 | 3 | 4 | 3 | 2 | 3.50 | Kept for safety; AI-standup is common ground — judges have seen variants before. |
+
+**Notes:**
+
+- **Ties at 4.25 resolve on EV → A → F.** DealMemory (4, 4, 3) beats SupportCore (4, 3, 3) beats AnsweredFromZero / CitationForge (3, 4, 4) beats BuildingPulse / IncidentFile (3, 3, 3).
+- **Wildcards score high on A + W but low on Fit + EV.** Raw score is inflated by the lived-pain dimension; effective win probability is cut by the one-slot pool against all other Wildcard submissions (the largest).
+- **Feasibility (F) is the 15-hour filter.** Green ideas (AnswerAtlas, AnsweredFromZero, CitationForge, PromptTerritory) are dashboards + prompt engineering on top of Peec/Gemini. Yellow ideas have one or more non-trivial plumbing decisions that could eat 4 hours.
+- **Prize EV is where strategy lives.** BriefCraft's EV=5 = two shots, one of which is a gold bar. Qontext singles are 4. Buena and Peec singles are 3. Wildcards are 2.
 
 ### The meta-observation
 
@@ -523,17 +590,17 @@ Note: Wildcard ideas have higher raw averages but lower effective probability of
 
 ### Strong recommendation
 
-Lock the decision among these four options:
+Lock the decision among these four options. The ranking here mirrors the 8-criterion Σ score; ties break on **Prize EV → Authority → Feasibility**.
 
-1. **BriefCraft (idea 6)** - highest strategic EV. Dual submission (Buena + Qontext) framed as the "ambient memory layer by 2028"; category-defining pitch. Qontext prize is the most valuable; Buena prize is a backup. Execution risk is highest because of ambition, but the team composition can handle it if we have 3-4 people.
+1. 🥇 **AnswerAtlas (idea 13) — Σ 4.63**: highest score, lowest execution risk. The only idea with a **real named pre-revenue client on the team** — [twobreath.com](https://www.twobreath.com) is already launching in DE/US/JP across iPhone, iPad, Apple Watch and the rest of the Apple ecosystem. This is the MedAccura pattern the entire case study above builds on: a live practitioner pitching a tool born of their own pain ("we hit this problem last Tuesday"). Green feasibility (F=5) + verbatim Peec brief fit (Fit=5) + max-wow demo (W=5, the 3×4 matrix rendering in Japanese / German / English with locale-specific citation sources). Our default pick unless the Qontext booth gives us a clear signal on Saturday morning.
 
-2. **BuildingPulse (idea 5)** - Buena single-track, predictive reframe. The "your building has been sending distress signals for years, you just could not read them" pitch is visceral and future-ready. Technical complexity is real (multimodal signal fusion + predictive scoring) which plays well to judges looking for depth.
+2. 🥈 **BriefCraft (idea 6) — Σ 4.38**: highest **Prize EV** (EV=5). Dual submission (Buena + Qontext) gives two shots at a finalist slot from one codebase, and Qontext's gold bar + private dinner is the highest per-prize reward in the room. Execution risk is the highest of the four options because of ambition; this is the right pick if we have a 4-person team and high confidence on Saturday afternoon.
 
-3. **IncidentFile (idea 7)** - Buena single-track with the most dramatic 60-second demo moment. Easier to execute well than BriefCraft; narrower upside (one prize pool).
+3. 🥉 **DealMemory (idea 8) — Σ 4.25**: Qontext single-track backup if the BriefCraft dual scope collapses mid-build. Every sponsor has felt the "rep quit, knowledge left with them" pain; the emotional pitch lands in the first 30 seconds. Strong tiebreaker winner in the 4.25 bucket thanks to the gold-bar reward (EV=4) and universal-authority problem (A=4).
 
-4. **AnsweredFromZero (idea 10)** - Peec AI-only, lowest execution risk, with the strongest provocative one-liner in the whole shortlist ("your ChatGPT answer is your new homepage"). Good choice if the team wants one clean win over a strategic gamble.
+4. **SupportCore (idea 9) — Σ 4.25**: second Qontext fallback with a more visceral on-stage demo (two agents side by side, one hallucinates live, the SupportCore-backed agent answers correctly). Slightly higher demo risk than DealMemory because BOTH agents have to behave distinctly on stage; reserve as option if we have strong QA bandwidth.
 
-**Tactical playbook for Saturday morning:** in the first 90 minutes at the venue, we walk the Qontext and Buena sponsor booths. If both sponsors say "we want to see integrations with X and Y real source types" in a way that is compatible, lock BriefCraft. If the briefs drift apart in conversation, commit to IncidentFile (Buena only) and do not look back.
+**Tactical playbook for Saturday morning:** walk three booths in order — **Peec AI, Qontext, Buena** — inside the first 90 minutes. (a) If the Peec booth says "we love the twobreath angle, show us DE/US/JP citation sources live," lock **AnswerAtlas** (our highest-score default). (b) If Peec is lukewarm but Qontext + Buena describe compatible source-integration expectations, pivot to **BriefCraft** for the dual shot at gold. (c) If only Qontext lights up, lock **DealMemory** (or **SupportCore** if the team has QA bandwidth for the two-agent demo). Decide by 11:30; idea-lock hard deadline remains 20:00.
 
 ---
 
