@@ -183,6 +183,8 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 **Scores:** Creativity 4/5 - Complexity 5/5 - Partner fit 5/5 - First-person authority 5/5 - Company story 5/5
 **Average: 4.8/5 (top-ranked)**
 
+**Bonus use-case - post-interview feedback loop (complementary mode):** After any interview, the candidate forwards their rejection email (or the silence that followed) to the agent. HireSignal reconstructs the probable gap - not by speculation, but by simulating what a great candidate for that exact JD would have said, then diffing against what the real candidate actually said. Candidate learns specifically what they missed and fixes it before the next interview. Pitch line: **"Every rejection is a training signal you're not allowed to see. We give it back."**
+
 ---
 
 ### Idea 2 - StandUpAgent: The async daily standup that actually writes itself
@@ -265,39 +267,44 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 **Scores:** Creativity 4/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
 **Average: 4.4/5**
 
+**Bonus use-case - building-twin mode (complementary mode):** Instead of per-apartment, per-building. CasaContext expands into the digital twin of a whole Berlin building - every flat, every tenant, every dispute, every maintenance cycle, every Hausmeister task, every Betriebskosten line item - held as one living document. For owners of 10+ building portfolios, this is the first time anyone has seen the full operational picture of a building in one place. The per-apartment brief becomes one section of a larger building brief that can be queried, summarized, and delegated to downstream agents. Pitch line: **"Property is the last industry running on spreadsheets and memory. We gave it a brain."**
+
 ---
 
-### Idea 5 - TurnoverBrief: the 10-minute tenant handover that used to take 3 days
+### Idea 5 - BuildingPulse: the predictive operating dashboard every Berlin building is missing
 
-> When a tenant moves out and a new one moves in, the property manager has to rebuild the entire knowledge package: what's broken, what was fixed, which neighbor complains about noise, which boiler quirk nobody wrote down, which key opens which back gate. Currently it takes days of email archaeology. TurnoverBrief auto-generates a complete structured handover document between tenancies: outgoing tenant's known issues extracted from their communications, unresolved maintenance items, neighbor dynamics, "things to tell the new tenant on day one," and a week-1 follow-up checklist for the property manager.
+> Property owners discover problems 30 days after they start. A mold bloom in flat 2B becomes a health-department complaint. A broken lobby light becomes a trust collapse across 40 tenants. A tenant who quietly got tired of the neighbor's noise becomes a surprise Kuendigung. BuildingPulse inverts this: it ingests ambient signals no human is currently reading - smart-meter anomalies, delivery-density patterns, Hausverwaltung email sentiment, elevator ticket frequency, trash-collection cadence, tenant-WhatsApp-group tone, even photo uploads of the staircase - and produces a live Building Health Score. The score catches problems 30 days BEFORE they become complaints, and predicts which tenants are on a path to moving out based on sentiment drift in their communications.
 
-**Track:** Buena - same Context Markdown File thesis, but focused on the turnover moment where the context problem is most acute.
+**Track:** Buena (primary) - goes beyond the static Context Markdown File into a predictive, continuously-updating operating layer for a property portfolio.
 
 **Partner tech (all load-bearing):**
-- **Gemini 3** - long-context summarization of an entire tenancy's worth of email + maintenance records into a 2-page brief with no lost facts
-- **Tavily** - fetches current market rent comparisons so the handover brief includes a price recommendation for the next tenancy
-- **Qontext** - the structured context that feeds into the document, so updates to one field propagate
-- **telli** - places the optional outgoing-tenant exit interview as a 5-minute voice call, transcribes the gold nuggets straight into the brief
-- **Lovable** - the property-manager-facing app
+- **Gemini 3** - multimodal ingestion: reads sensor streams, emails, Slack, photos of the building interior, and fuses them into signal categories
+- **Qontext** - the context layer that holds the building's evolving state; every new signal updates the relevant dimension without re-processing everything
+- **Tavily** - enriches with external signals (local construction starting next week will spike noise complaints; weather forecast predicts elevator-heavy days; district Mietspiegel just updated)
+- **telli** - places proactive outbound calls to tenants when the system predicts dissatisfaction ("hi, we noticed your maintenance ticket is 4 days old - we have someone coming tomorrow at 10")
+- **Lovable** - the building-health dashboard with the live score and the prediction timeline
+- **Entire** - the owner reviews and approves flagged predictions before the system acts on them
 
-**The wow moment:** On stage, feed in a full tenancy's email thread (messy, 2 years worth) plus a 90-second voice clip of the outgoing tenant saying "oh and the boiler makes a weird noise on cold mornings, but if you press reset twice it's fine." The brief assembles in real time: a cleanly-sectioned Markdown document that explicitly captures the boiler quirk as a "unwritten knowledge" section the new tenant will thank the landlord for.
+**The wow moment:** Live on stage, show a building's dashboard. Score is 82/100. Click one flag: "Unit 3B - mold risk rising - humidity readings up 18% over 14 days, combined with a tenant email mentioning 'condensation on the window' last Tuesday. Recommended action: schedule ventilation check within 5 days. Projected cost if acted on now: EUR 180. Projected cost if a complaint is filed in 30 days: EUR 2,400 plus one-star online review risk." The judge immediately understands what they just saw.
 
-**Technical complexity:** High. Long-context reasoning + voice interview integration + structured extraction with zero hallucination on factual claims is the core engineering.
+**Technical complexity:** Very high. The core engineering is multimodal signal fusion plus predictive scoring plus a trust-calibrated recommendation layer. The grounding challenge (every prediction must point to the evidence that triggered it) is the real craft.
 
-**Feasibility in 15-18h:** Green. Narrower scope than CasaContext; the telli voice-exit-interview is a dramatic demo centerpiece.
+**Feasibility in 15-18h:** Yellow. Scope tightly to 3 signal categories for the demo (meter data, tenant emails, photos) with a synthetic Berlin building dataset. The other signal categories are roadmap slides.
 
-**Why we can win this track:** Turnover is a crisp, well-defined moment where the pain is maximum. A demo that compresses "3 days of email archaeology" into "10 minutes of AI-generated clarity" with a voice-call integration is memorable where generic context engines are forgettable.
+**Why we can win this track:** Buena's brief is "a living document every AI agent can use." Most teams will interpret "living" as "updated when something changes." BuildingPulse reinterprets "living" as "predicting what will change next." That reframing is the difference between a good submission and a category-defining one.
 
-**Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
-**Average: 4.4/5**
+**Future-ready framing:** In 5 years, every building over a certain size will have an operating dashboard the way every company over a certain size has a CRM. Today nobody has built the canonical one. The 2026 hackathon is a plausible Year Zero for this category. Pitch line: **"Your building has been sending you distress signals for years. You just could not read them. Now you can."**
+
+**Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5
+**Average: 4.6/5**
 
 ---
 
-### Idea 6 - BriefCraft: one context engine, two submissions (Buena AND Qontext)
+### Idea 6 - BriefCraft: the ambient memory layer every AI will need by 2028
 
-> BriefCraft is deliberately designed to submit to both tracks. The core engine is domain-agnostic: point it at any company's scattered sources (mail, Slack, Drive, CRM, PDFs, ticketing system) and it produces a living Markdown "operating manual" any AI agent can read as its starting context. For the Buena submission, we demo it on property management. For the Qontext submission, we demo it on a B2B SaaS company's sales operation. Same engine, two tailored demos.
+> Today, GPT forgets your company every session. Claude forgets your codebase the moment the context window fills. Gemini forgets your customer the instant the conversation ends. By 2028, every company running more than five AI agents will need a single layer that remembers - across agents, across sessions, across departments. That layer does not exist yet. BriefCraft is the first serious attempt: point it at any company's scattered sources (mail, Slack, Drive, CRM, PDFs, tickets) and it produces a living Markdown "operating manual" that every AI agent in that company reads as its starting context. No more re-discovering reality per session. No more prompt stuffing. No more AI agents that disagree with each other because they built different mental models of the same company.
 
-**Track:** Buena + Qontext (dual submission) - the richest strategic bet. Qontext prize is 1g gold per member + private dinner; Buena is EUR 2,500. Both achievable with one codebase.
+**Track:** Buena + Qontext (dual submission). The same engine produces a property-flavored brief for Buena and a company-operations-flavored brief for Qontext, off one codebase. Qontext prize (1g gold per member + private dinner) is the target; Buena (EUR 2,500) is the backup.
 
 **Partner tech (all load-bearing):**
 - **Qontext** - the context layer itself, obviously load-bearing for the Qontext track
@@ -310,11 +317,13 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 **Technical complexity:** Very high. The hard part is genuinely generalizing across domains - you cannot hardcode property-specific schemas. Pioneer's self-training angle is the elegant answer: the system learns each company's preferred context shape from a few examples.
 
-**Feasibility in 15-18h:** Yellow. More ambitious than CasaContext alone but the marginal cost of the second demo is small if the engine is genuinely domain-agnostic. The strategic upside is enormous: two prize shots from one build.
+**Feasibility in 15-18h:** Yellow. More ambitious than CasaContext alone but the marginal cost of the second demo is small if the engine is genuinely domain-agnostic. Dual submission means two finalist slots from one build.
 
-**Why we can win BOTH tracks:** Buena's brief is a specific instance of Qontext's brief. A team that builds the general solution can tailor a property demo for Buena and a B2B-sales demo for Qontext on the same engine. Most teams will build vertical-specific solutions that cannot cross over. We compete in both pools.
+**Why we can win BOTH tracks:** Buena's brief is a specific instance of Qontext's brief. Most teams will build vertical-specific solutions that cannot cross over. We compete in both pools.
 
-**Risk:** The dual-submission ambition could become a scope trap. Mitigation: lock the core engine by Sunday 02:00; the "second demo" is 90 minutes of Lovable work on Sunday morning.
+**Future-ready framing:** By 2028, every company will have one of these, the same way every company in 2005 got a CRM. We are building the winning category definition. Pitch line: **"The next bottleneck in AI is not better models. It is AI agents that actually know what other AI agents already figured out."**
+
+**Risk:** Dual submission can become a scope trap. Mitigation: lock the core engine by Sunday 02:00; the "second demo" is 90 minutes of Lovable work on Sunday morning.
 
 **Scores:** Creativity 5/5, Complexity 5/5, Partner fit 5/5, First-person authority 3/5, Track fit 5/5 (double)
 **Average: 4.6/5**
@@ -399,26 +408,28 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 ---
 
-### Idea 10 - AnsweredFromZero: the founder-solo AI-search growth agent
+### Idea 10 - AnsweredFromZero: design your ChatGPT answer, because your ChatGPT answer is your new homepage
 
-> A pre-revenue founder has a website, a product, and no idea which 50 ChatGPT/Perplexity prompts would send them their first 100 customers if they could win them. Existing AI-visibility tools (including Peec itself) are built for marketing teams with established content engines; they tell you your rank against competitors and what content to create. A founder alone does not have a content engine. AnsweredFromZero is a week-one agent: founder types in their product and ideal customer. Agent generates the 50 most commercially-valuable prompts to target, drafts the first piece of content for each (ranked by lowest-competition-first), queues the publishing schedule, and uses Peec's visibility data to check every 48 hours which ones are landing.
+> In 2026, half of buyer research already happens inside ChatGPT, Perplexity, Gemini and Google AI Overviews. By 2028, most B2B customers will never visit your website before making a shortlist. The answer an AI gives when someone asks "best X tool for Y" is the new homepage - and unlike the old homepage, you do not design it, you win it. AnsweredFromZero is for early-stage founders who understand this and want to design their ChatGPT answer from day one: the agent generates the 50 prompts that matter for their ICP, drafts the canonical AI-citable content for each, orchestrates the outreach that gets that content into the third-party sources models trust (Reddit threads, G2 listings, niche Substacks), and uses Peec's data to verify weekly which prompts are converting. Your website becomes an afterthought because your answer is everywhere.
 
-**Track:** Peec AI - direct hit on "help early-stage startups find and own organic search and AI answer opportunities FROM ZERO." The "from zero" framing in the brief is the strategic wedge.
+**Track:** Peec AI - direct hit on "help early-stage startups find and own organic search AND AI answer opportunities from zero." The "from zero" framing is the wedge; every existing tool (Peec, Otterly, AIclicks, Scrunch) is built for established marketing teams.
 
 **Partner tech (all load-bearing):**
-- **Peec AI** - the visibility data itself: which prompts mention this startup, which mention competitors, which are completely open territory
-- **Gemini 3** - generates the founder's ICP and product context into a prompt tree; drafts content tuned to be citable by ChatGPT/Perplexity
+- **Peec AI** - the visibility data itself: which prompts mention this startup, which mention competitors, which are completely open territory, which third-party sources feed the models
+- **Gemini 3** - converts the founder's ICP and product context into a structured prompt tree; drafts content tuned specifically to be citable (not just readable) by ChatGPT and Perplexity
 - **Tavily** - checks existing web results for each targeted prompt so the content is genuinely differentiated, not duplicate
 - **Lovable** - the founder-facing dashboard
-- **Entire** - founder approves each drafted piece before publishing
+- **Entire** - founder approves each drafted piece and each outreach email before anything is published
 
-**The wow moment:** A teammate plays a real pre-revenue founder. Enters product (say, "an AI tool for translating legal contracts into plain language for small business owners"). Ninety seconds later: 50 ranked prompts, first 5 content pieces drafted, a publish queue for the next 2 weeks, and the projected visibility curve based on Peec's data showing which prompts a founder can realistically win in 30 days versus which take 6+ months.
+**The wow moment:** A teammate plays a real pre-revenue founder. Enters their product (say, "an AI tool for translating legal contracts into plain language for small business owners"). Ninety seconds later the screen shows what their AI-answer-as-homepage looks like today (they are invisible) and what it could look like in 60 days if they follow the plan - with every step concretely specified: 50 ranked prompts, 5 canonical content drafts, a 14-day publishing queue, 20 specific Reddit threads to participate in with drafted contributions, and the projected visibility curve based on Peec's data.
 
-**Technical complexity:** High. The prompt-opportunity discovery + content-draft-that-is-actually-citable + sequencing-for-a-solo-founder is real product thinking, not generic SEO.
+**Technical complexity:** High. The prompt-opportunity discovery + content-draft-that-is-actually-citable + outreach-sequencing is real product thinking, not generic SEO. The "citability" distinction (what makes content get cited by an LLM versus just read by a human) is the 2026-specific craft.
 
-**Feasibility in 15-18h:** Green. Peec's data is accessible as the track partner; most of the work is prompt engineering + a sharp dashboard.
+**Feasibility in 15-18h:** Green. Peec's data is accessible as the track partner; most of the work is prompt engineering and a sharp dashboard.
 
-**Why we can win this track:** The brief says "from zero" and most teams will default to "improve visibility for an established brand" because that is what every existing tool does. Solving the cold-start specifically, with a concrete 50-prompt output and sequenced drafts, is the distinctive answer.
+**Why we can win this track:** The brief says "from zero" and most teams will default to "improve visibility for an established brand" because that is what every existing tool does. We invert it - we design the AI-answer BEFORE the founder has customers, content, or a website worth visiting. That is the jury-memorable reframe.
+
+**Future-ready framing:** Websites built between 2000 and 2015 were designed for Google. Websites built between 2015 and 2022 were designed for Instagram. Companies starting in 2026 are designed for ChatGPT answers. AnsweredFromZero is the first purpose-built tool for founders who accept this. Pitch line: **"Your website is becoming legacy. Your ChatGPT answer is your new homepage. We design it."**
 
 **Scores:** Creativity 5/5, Complexity 4/5, Partner fit 5/5, First-person authority 4/5, Track fit 5/5
 **Average: 4.6/5**
@@ -481,13 +492,13 @@ Each idea is scored 1-5 on: creativity, technical complexity, partner-fit, first
 
 | # | Idea | Track | Score | Why it ranks here |
 |---|---|---|---|---|
-| 6 | **BriefCraft** - domain-agnostic context engine | Buena + Qontext (dual) | **4.6** | Two prize shots from one build; Qontext is the richest prize; most strategic EV. |
+| 6 | **BriefCraft** - the ambient memory layer every AI will need by 2028 | Buena + Qontext (dual) | **4.6** | Dual prize shot; category-defining 2028 framing; Qontext prize is highest EV. |
+| 5 | **BuildingPulse** - predictive building-health dashboard | Buena | **4.6** | Reframes "living document" as "predicts the future"; on-stage score-and-flag demo is visceral. |
 | 7 | **IncidentFile** - property incident in 60 seconds | Buena | **4.6** | Most dramatic single demo moment; hits Buena's highest-value operational moment. |
 | 8 | **DealMemory** - B2B sales context layer | Qontext | **4.6** | Every sponsor feels the "rep quit, knowledge left with them" pain; emotional pitch lands. |
-| 10 | **AnsweredFromZero** - founder solo growth agent | Peec AI | **4.6** | Direct hit on "from zero" framing; most teams will default to established-brand angle. |
-| 11 | **CitationForge** - third-party citation outreach | Peec AI | **4.6** | Turns Peec's data into action Peec itself has not built; judges will see their own data used novel-ly. |
-| 4 | **CasaContext** - living property Markdown brief | Buena | 4.4 | Breadth of ingestion (5+ source types) is the differentiator; the purest read of the brief. |
-| 5 | **TurnoverBrief** - tenant handover auto-brief | Buena | 4.4 | Crisp demo with a voice-interview punchline; narrower scope than CasaContext. |
+| 10 | **AnsweredFromZero** - your ChatGPT answer IS your homepage | Peec AI | **4.6** | Provocative one-line reframe the jury will remember 20 minutes later. |
+| 11 | **CitationForge** - third-party citation outreach | Peec AI | **4.6** | Turns Peec's data into action Peec itself has not built; judges see their own data used novel-ly. |
+| 4 | **CasaContext** - living property Markdown brief + building-twin mode | Buena | 4.4 | Breadth of ingestion (5+ source types) is the differentiator; building-twin bonus adds portfolio upside. |
 | 9 | **SupportCore** - customer support context layer | Qontext | 4.4 | "Two agents side by side, one hallucinates" is a memorable demo; on-brief verbatim. |
 | 12 | **PromptTerritory** - prompt-claiming roadmap | Peec AI | 4.4 | Sequencing is strategic, but demo is more chart than narrative. |
 | 1 | **HireSignal** - JD to adaptive skills interview | Wildcard | 4.8 | Ian's strongest personal story; but Wildcard is one finalist slot against all other Wildcards. |
@@ -508,13 +519,15 @@ Note: Wildcard ideas have higher raw averages but lower effective probability of
 
 ### Strong recommendation
 
-Lock the decision among these three options:
+Lock the decision among these four options:
 
-1. **BriefCraft (idea 6)** - highest strategic EV. Dual submission; Qontext prize is the most valuable; Buena prize is a backup. Execution risk is highest because of ambition, but the team composition can handle it if we have 3-4 people.
+1. **BriefCraft (idea 6)** - highest strategic EV. Dual submission (Buena + Qontext) framed as the "ambient memory layer by 2028"; category-defining pitch. Qontext prize is the most valuable; Buena prize is a backup. Execution risk is highest because of ambition, but the team composition can handle it if we have 3-4 people.
 
-2. **IncidentFile (idea 7)** - single-track focus on Buena with the most dramatic demo moment. Easier to execute well; narrower upside (one prize pool).
+2. **BuildingPulse (idea 5)** - Buena single-track, predictive reframe. The "your building has been sending distress signals for years, you just could not read them" pitch is visceral and future-ready. Technical complexity is real (multimodal signal fusion + predictive scoring) which plays well to judges looking for depth.
 
-3. **AnsweredFromZero (idea 10)** - Peec AI-only, lowest execution risk, still hits a Euro 2,500 prize with a crisp demo. Good choice if the team wants one clean win over a strategic gamble.
+3. **IncidentFile (idea 7)** - Buena single-track with the most dramatic 60-second demo moment. Easier to execute well than BriefCraft; narrower upside (one prize pool).
+
+4. **AnsweredFromZero (idea 10)** - Peec AI-only, lowest execution risk, with the strongest provocative one-liner in the whole shortlist ("your ChatGPT answer is your new homepage"). Good choice if the team wants one clean win over a strategic gamble.
 
 **Tactical playbook for Saturday morning:** in the first 90 minutes at the venue, we walk the Qontext and Buena sponsor booths. If both sponsors say "we want to see integrations with X and Y real source types" in a way that is compatible, lock BriefCraft. If the briefs drift apart in conversation, commit to IncidentFile (Buena only) and do not look back.
 
