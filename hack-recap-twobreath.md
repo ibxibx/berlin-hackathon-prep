@@ -14,7 +14,7 @@ This file is the post-event recap of [Idea #13 in the prep README](README.md#ide
 We shipped a **single-codebase, dual-purpose system** in ~15 hours:
 
 1. **TwoBreath** — the couples breathing ritual app (the live pre-revenue client). Marketing site, voice-guided pitch, brand story, and seven generated practice audio tracks. Live at [twobreath.com](https://www.twobreath.com).
-2. **The AnswerAtlas execution layer** — the 3×4 multi-locale × multi-device AI-answer matrix from Idea #13, expressed as an actual 150-prompt grid running through Peec AI, plus three-rail social content (YouTube / Instagram / Reddit) and a 1:45 multilingual product walkthrough.
+2. **The TwoBreath execution layer** — the 3×4 multi-locale × multi-device AI-answer matrix from Idea #13, expressed as an actual 150-prompt grid running through Peec AI, plus three-rail social content (YouTube / Instagram / Reddit) and a 1:45 multilingual product walkthrough.
 
 Both were built in the same repository, with **Claude Code as the orchestrator**, **Peec AI as the visibility compass**, **Google DeepMind (Gemini TTS, Veo, Imagen) as the multilingual media layer**, and **ElevenLabs Multilingual v2** providing voice-cloned narration of Matthi and Dascha in their own voices. Static-site deploy via GitHub Pages with CI on every push.
 
@@ -31,11 +31,11 @@ The prep doc scored Idea #13 on eight criteria. Here is the post-build honesty p
 | **C — Creativity** | 5 | **5 holds.** The "AI-answer-as-homepage in three locales × four device classes" reframe is what Peec themselves are not yet productizing. Our submission is the only one in the room with a 3×4 matrix rendering live in JP/DE/EN with locale-specific citation sources. | `pitch.html` chapter 03; `plans/peec-ai-visibility-plan.md` |
 | **T — Technical complexity** | 4 | **4 holds, edges toward 5.** Multilingual citability + per-device prompt stratification is real product engineering, not a skin. The honest weakness: one of the three locales (Japanese essay drafting) is the riskiest piece in the demo and is mitigated by a pre-drafted hero piece (see Risk register below). | `generate-narration.js`; `audio/narration/{en,de,ja}/`; `voiceover/twobreath_{en,de,ja}.mp4` |
 | **P — Partner fit** | 5 | **5 holds.** Five partners are load-bearing in the demo: Peec AI (the compass), Gemini TTS via DeepMind MCP (the multilingual voiceover), ElevenLabs (cloned voices in three languages), Lovable (dashboard polish), Entire (human-in-the-loop review of drafted essays). Remove any one and the demo loses a beat. | `pitch.html` chapter 06 + `images/pitch/p05-tools.svg` |
-| **A — First-person authority** | 5 | **5 holds.** Matthi and Dascha are on the team. They have run the morning ritual for three years. Every problem AnswerAtlas solves is a problem they hit last Tuesday. This is the MedAccura pattern, exact. | `pitch.html` chapter 01; the brand story `twobreath_marketing_story.html` |
+| **A — First-person authority** | 5 | **5 holds.** Matthi and Dascha are on the team. They have run the morning ritual for three years. Every problem TwoBreath solves is a problem they hit last Tuesday. This is the MedAccura pattern, exact. | `pitch.html` chapter 01; the brand story `twobreath_marketing_story.html` |
 | **Fit — Track fit** | 5 | **5 holds.** Verbatim Peec brief: *"help early-stage startups find and own organic search & AI answer opportunities — from zero."* twobreath is pre-revenue, three target markets, four device classes, today's visibility = 0%. The brief is the build. | `plans/peec-ai-visibility-plan.md` |
-| **F — Feasibility in 15h** | 5 | **4 in retrospect, not 5.** Green held for the dashboard and content rails. Yellow risk emerged in (1) JP-native citation drafting and (2) the live pitch's chapter 03 narration (the AnswerAtlas → TwoBreath rename happened on Saturday and the spoken audio for that chapter still trails the on-screen caption). See "Demo-day risk register" below. | This file's risk register |
+| **F — Feasibility in 15h** | 5 | **4 in retrospect, not 5.** Green held for the dashboard and content rails. Yellow risk emerged in (1) JP-native citation drafting and (2) the live pitch's chapter 03 narration (the TwoBreath → TwoBreath rename happened on Saturday and the spoken audio for that chapter still trails the on-screen caption). See "Demo-day risk register" below. | This file's risk register |
 | **W — Demo wow factor** | 5 | **5 holds.** The 3×4 matrix rendering live in three languages with locale-specific citation sources is the single shot. The Japanese voice-cloned line at 1:25 of the video is the second. | `pitch.html` chapter 03; the 2-minute video |
-| **EV — Prize EV** | 3 | **3 holds.** Peec AI single track (€2,500). We considered the Buena+Qontext dual via BriefCraft (Idea #6) but committed to AnswerAtlas because of A=5 — the live client on the team was the dominant factor. | This decision is recorded in the Saturday-morning playbook section below |
+| **EV — Prize EV** | 3 | **3 holds.** Peec AI single track (€2,500). We considered the Buena+Qontext dual via BriefCraft (Idea #6) but committed to TwoBreath because of A=5 — the live client on the team was the dominant factor. | This decision is recorded in the Saturday-morning playbook section below |
 
 **Σ post-build estimate: 4.50** (vs. prep's 4.63). The 0.13 drop is honest accounting of feasibility, not a regret.
 
@@ -140,7 +140,7 @@ The honest list, what we mitigated, and what to watch for during the Sunday afte
 
 | # | Risk | Severity | Mitigation in place | Watch on demo day |
 | --- | --- | --- | --- | --- |
-| 1 | **Pitch chapter 03 audio still says "AnswerAtlas"** even though the on-screen text and caption now say "TwoBreath" (the rename happened Saturday; the ElevenLabs narration for that chapter has not been regenerated yet). | Medium | Captions are visible on the deck and read "TwoBreath." If a judge listens carefully they hear the mismatch. | Either (a) regenerate `audio/narration/pitch/p02-matrix.mp3` Sunday morning before the 10:00 polish window, or (b) lead with the captions narrative ("we kept the audio as a record of the rename moment — this is how fast the rebrand happened"). Decide by 09:30. |
+| 1 | **Pitch chapter 03 audio still says "TwoBreath"** even though the on-screen text and caption now say "TwoBreath" (the rename happened Saturday; the ElevenLabs narration for that chapter has not been regenerated yet). | Medium | Captions are visible on the deck and read "TwoBreath." If a judge listens carefully they hear the mismatch. | Either (a) regenerate `audio/narration/pitch/p02-matrix.mp3` Sunday morning before the 10:00 polish window, or (b) lead with the captions narrative ("we kept the audio as a record of the rename moment — this is how fast the rebrand happened"). Decide by 09:30. |
 | 2 | **Japanese essay quality in the JP/iPhone cell drill-down.** Multilingual citability is the hardest claim. | Medium | One pre-drafted hero Japanese essay, written by Gemini and reviewed by a trusted native-level speaker, pre-loaded into the JP/iPhone cell so the drill-down is demo-ready regardless of what the live-generation does. | If live generation underperforms in the rehearsal at 11:00, fall back to the pre-drafted essay and narrate the *why*: "we showed you the pre-drafted version because honest multilingual content is the hardest part — here is what production-quality Japanese citability looks like." Candor as credibility. |
 | 3 | **Network at the demo station.** twobreath.com lives on GitHub Pages; if Delta Campus wifi is congested, page loads stutter. | Low | Local mirror of the entire site running on a laptop on `localhost:8000` (`python3 -m http.server 8000`) with a hard-coded hosts file fallback so the demo URL works without external network. | Keep one laptop offline-capable. The 2-minute submission video is already uploaded and is independent of demo-station network. |
 | 4 | **Voice clone uncanny valley** when Matthi speaks Japanese in the video at 1:25. | Low | Multiple takes rendered Saturday night; selected the one where pacing matches the breathing rhythm (slower than conversational, with beats between sentences). Mixed at -6 dB under the English master with EQ-match to the original recordings. | Watch the jury reaction at 1:25 in the video. If they lean forward, the uncanny worked as intended. |
@@ -148,15 +148,15 @@ The honest list, what we mitigated, and what to watch for during the Sunday afte
 
 ---
 
-## Saturday-morning playbook — how AnswerAtlas got picked over BriefCraft
+## Saturday-morning playbook — how TwoBreath got picked over BriefCraft
 
 Per the prep README's tactical playbook, we walked the **Peec AI / Qontext / Buena** booths in order during the first 90 minutes Saturday:
 
 1. **Peec AI booth (10:30):** the team lit up immediately when we said "live pre-revenue client, three markets, four Apple device classes, today's visibility 0%." They specifically asked to see DE/US/JP citation sources rendered live — exactly the wow moment the prep doc storyboarded. **Lock signal #1: green.**
 2. **Qontext booth (11:00):** receptive but generic. Their reaction to twobreath was "interesting but vertical" — they wanted horizontal context-engine plays. The dual Buena+Qontext (BriefCraft) path was still alive at this point.
-3. **Buena booth (11:20):** less heat than Peec. Buena's brief is property-management context; twobreath does not naturally fit, and forcing it would have weakened the A=5 first-person-authority advantage that was the whole reason we ranked AnswerAtlas first.
+3. **Buena booth (11:20):** less heat than Peec. Buena's brief is property-management context; twobreath does not naturally fit, and forcing it would have weakened the A=5 first-person-authority advantage that was the whole reason we ranked TwoBreath first.
 
-**Decision at 11:30:** lock AnswerAtlas / Peec single-track, drop BriefCraft. The trade was: **EV 3 over EV 5, in exchange for A 5 over A 3, F 5 over F 3, and the storyboard the Peec judge had already audibly responded to.** Net: a higher-confidence shot at one prize over a higher-EV shot at two with materially more execution risk.
+**Decision at 11:30:** lock TwoBreath / Peec single-track, drop BriefCraft. The trade was: **EV 3 over EV 5, in exchange for A 5 over A 3, F 5 over F 3, and the storyboard the Peec judge had already audibly responded to.** Net: a higher-confidence shot at one prize over a higher-EV shot at two with materially more execution risk.
 
 The prep doc's tactical playbook held. The booth-walking order produced exactly the signal we needed.
 
@@ -166,10 +166,10 @@ The prep doc's tactical playbook held. The booth-walking order produced exactly 
 
 The submission deadline is the start of the next sprint, not the end of the project. Two tracks running in parallel from Monday:
 
-* **Marketing flywheel runs.** The 150 Peec prompts re-run weekly. The week-over-week visibility delta from today's baseline gets posted to LinkedIn every Sunday. **First public delta: 2026-05-05.** If we move from 0% to even 8–12% across the twelve cells in two weeks, that is the post that gets attention from the longevity community and validates the AnswerAtlas thesis as a productizable layer.
+* **Marketing flywheel runs.** The 150 Peec prompts re-run weekly. The week-over-week visibility delta from today's baseline gets posted to LinkedIn every Sunday. **First public delta: 2026-05-05.** If we move from 0% to even 8–12% across the twelve cells in two weeks, that is the post that gets attention from the longevity community and validates the TwoBreath thesis as a productizable layer.
 * **App ships.** TwoBreath iOS + Apple Watch launch on **July 1, 2026**. Public TestFlight beta is [live now](https://testflight.apple.com/join/ChJc5vVx). Every couple who joins the beta in the next 60 days is part of the community-not-subscription cohort the pitch is built around.
 
-If AnswerAtlas the layer (separate from twobreath the app) shows real traction in the post-event measurement, the team's likely move is to spin it out as a standalone tool for other early-stage consumer apps launching across multiple locales — exactly the productization gap the prep doc identified Peec themselves not having addressed yet.
+If TwoBreath the layer (separate from twobreath the app) shows real traction in the post-event measurement, the team's likely move is to spin it out as a standalone tool for other early-stage consumer apps launching across multiple locales — exactly the productization gap the prep doc identified Peec themselves not having addressed yet.
 
 ---
 
@@ -180,7 +180,7 @@ If AnswerAtlas the layer (separate from twobreath the app) shows real traction i
 * **Pitch deck:** [twobreath.com/pitch.html](https://www.twobreath.com/pitch.html)
 * **Public TestFlight beta:** [testflight.apple.com/join/ChJc5vVx](https://testflight.apple.com/join/ChJc5vVx)
 * **Visibility plan + execution log:** `plans/peec-ai-visibility-plan.md` in the working repo
-* **Prep doc (this repo):** [README.md](README.md) — Idea #13 starts at line ~roughly the AnswerAtlas section
+* **Prep doc (this repo):** [README.md](README.md) — Idea #13 starts at line ~roughly the TwoBreath section
 * **Personal pitch (this repo):** [pitch-answeratlas-twobreath.md](pitch-answeratlas-twobreath.md)
 
 ---

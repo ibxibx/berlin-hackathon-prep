@@ -1,4 +1,4 @@
-# AnswerAtlas × twobreath — the personal pitch
+# TwoBreath × twobreath — the personal pitch
 
 *A Peec AI track submission · Big Berlin Hack 2026 · [back to README](./README.md)*
 
@@ -76,7 +76,7 @@ This is the pitch as Matthi and Dascha would tell it themselves. It is not a mar
 
 ---
 
-**0:55–1:25 · The problem and the hackathon solution (AnswerAtlas)**
+**0:55–1:25 · The problem and the hackathon solution (TwoBreath)**
 
 🎥 *Visual: a couple somewhere in Tokyo — night, neon-soft lighting, one of them on the phone. Cut to ChatGPT responding in Japanese, recommending Calm, Headspace, Breathe. They close the app.*
 🎧 *Audio: piano drops out for 2 seconds of breath-only. Tension.*
@@ -85,10 +85,10 @@ This is the pitch as Matthi and Dascha would tell it themselves. It is not a mar
 >
 > **M:** "That's our problem. Our app is ready. But in 2026, a couple's first impression of us is not our App Store page. It is what ChatGPT says about us — in English, in Japanese, in German — at 11:47 at night, when one of them just had a hard day."
 
-🎥 *Visual: AnswerAtlas dashboard renders on screen. A 3×4 matrix lights up: US × Japan × Germany, iPhone × iPad × Apple Watch × Apple ecosystem.*
+🎥 *Visual: TwoBreath dashboard renders on screen. A 3×4 matrix lights up: US × Japan × Germany, iPhone × iPad × Apple Watch × Apple ecosystem.*
 🎧 *Audio: piano returns, warmer now.*
 
-> **D:** "So this weekend, we built **AnswerAtlas**, powered by Peec AI. It maps — in three markets, three languages, four Apple device classes — exactly what ChatGPT says about couples breathing today, and what we need to publish to change that."
+> **D:** "So this weekend, we built **TwoBreath**, powered by Peec AI. It maps — in three markets, three languages, four Apple device classes — exactly what ChatGPT says about couples breathing today, and what we need to publish to change that."
 
 ---
 
@@ -181,7 +181,7 @@ The scene: a couple in their 30s in an apartment in Meguro or Setagaya. Tuesday 
    - **Second best:** licensed stock from a Japanese-native photographer (Adobe Stock → filter "Japanese," use photographer name filter, avoid obvious Western-agency work).
    - **Fallback:** AI-generated via Seedream 4.0 or Nano Banana 2 with this prompt: *"A Japanese couple in their early 30s in a small Tokyo apartment at 11:47pm. Soft warm lamp lighting, slight paper-lantern texture visible through a window. She sits on a low couch holding an iPhone, the screen lighting her face faintly blue. He sits beside her on his phone, half-distant. The mood is domestic quiet — not conflict, just the silence of a long relationship. Shallow depth of field, 35mm, handheld feel, grain, cinematic but intimate. Editorial photo, not advertising."*
    - **Do not use:** any couple shot that looks like a meditation-app ad. We are not selling aspiration. We are showing what it actually feels like at 11:47 on a Tuesday when something in your relationship got quiet and you don't know why.
-5. **AnswerAtlas 3×4 matrix (1:15-1:25).** Dashboard screen-record. Grid animates in row by row. Cells start red (zero visibility), flicker to color as the plan loads.
+5. **TwoBreath 3×4 matrix (1:15-1:25).** Dashboard screen-record. Grid animates in row by row. Cells start red (zero visibility), flicker to color as the plan loads.
 6. **Japan/iPhone cell drill-down (1:25-1:45).** Japanese-language Note.com-style essay on screen. Subtitle block below, English.
 7. **Closing frame (1:55-2:00).** Black. White type: **twobreath.com** / *One breath. Two souls.* / *Launch July 1, 2026*
 
@@ -265,7 +265,7 @@ Peec AI is the first company in the world treating **AI-answer visibility as a m
 | **Gemini 3** | Multilingual content drafting in three cultural idioms; prompt-tree generation | Writes the Japanese Note essay that sounds Japanese, not translated. |
 | **Tavily** | Fetches current Note / 5ch / heise / Reddit content to find contribution-worthy gaps | Turns Peec's source list into actual outreach material. |
 | **ai\|coustics** | Cleans the in-app breathwork audio (used in twobreath itself) | The product sounds clean on a morning commute; the ai\|coustics use is real, not decorative. |
-| **Lovable** | The AnswerAtlas dashboard (3×4 matrix + drill-downs + 90-day plan) | What the judge clicks on stage. |
+| **Lovable** | The TwoBreath dashboard (3×4 matrix + drill-downs + 90-day plan) | What the judge clicks on stage. |
 | **Entire** | Human-in-the-loop review of every drafted essay and outreach email | Critical: bad machine-translated Japanese outreach to a Note editor burns the channel permanently. |
 
 **Production-only tool (not a partner, credited in the video):** **ElevenLabs** voice cloning + Multilingual v2 — the reason our own voices can speak Japanese and German in the demo.
