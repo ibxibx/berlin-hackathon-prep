@@ -1,5 +1,7 @@
 ﻿# Big Berlin Hack 2026 - Team Prep & Idea Shortlist
 
+> 🚀 **Post-event update (26 April 2026):** we shipped Idea #13 (AnswerAtlas) on the Peec AI track, with [twobreath.com](https://www.twobreath.com) as the live pre-revenue client. **See [hack-recap-twobreath.md](hack-recap-twobreath.md)** for what actually got built, the artifact ledger, the demo-day risk register, and how the post-build scores compare to the prep rubric. The personal pitch is in [pitch-answeratlas-twobreath.md](pitch-answeratlas-twobreath.md).
+
 **Event:** Big Berlin Hack by {Tech: Europe} × CODE University × The Delta Campus
 **Dates:** 25-26 April 2026
 **Location:** The Delta Campus, Berlin-Neukölln
@@ -13,6 +15,7 @@
 
 ## Table of Contents
 
+0. **[Post-event recap → hack-recap-twobreath.md](hack-recap-twobreath.md)** ← what we actually shipped
 1. [Why this repo exists](#why-this-repo-exists)
 2. [What the jury actually rewards](#what-the-jury-actually-rewards)
 3. [Case study: why MedAccura won in January 2026](#case-study-why-medaccura-won-in-january-2026)
